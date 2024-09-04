@@ -26,14 +26,15 @@ export default {
         'custom-blog-box-width':'80%'
       },
       backgroundColor:{
-        'custom-bg-color':'#3b3b3b'
+        'custom-bg-color':'#3b3b3b',
+        'follow-button':'#ff404f'
       },
       flexBasis:{
         'left-basis':'50%',
         'right-basis': '35%',
         'nav-left':'30%',
         'nav-right':'40%',
-        'left-account-basis':'50%',
+        'left-account-basis':'60%',
         'right-account-basis': '18%',
       },
       borderRadius:{

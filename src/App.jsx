@@ -18,7 +18,7 @@ export default function App() {
       {/* <Login/> */}
       {/* <SignUp/> */}
       {/* <Contact/> */}
-      <Footer/>
+      {/* <Footer/> */}
     </div>
       
   </>
