@@ -12,8 +12,9 @@ export default {
         'custom-blog-height':'250px',
         'custom-textarea-height':'120px',
         'custom-card-height':'355px',
-        'custom-account-sec-height': '70vh'
-        
+        'custom-account-sec-height': '70vh',
+        'custom-hr':'0.1px'
+
       },
       minHeight:{
         'custom-size': '550px'
@@ -55,7 +56,10 @@ export default {
         'custom-skew':'40deg'
       },
      fontSize:{
-      'custom':'7rem'
+      'custom':'16px'
+     },
+     border:{
+      'custom':'1px'
      }
 
       // inset: {

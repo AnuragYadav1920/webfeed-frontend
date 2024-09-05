@@ -1,13 +1,17 @@
 import React from 'react'
 import { BsFillHexagonFill } from "react-icons/bs";
 import { PiCrownSimpleFill } from "react-icons/pi";
+import RankCard from '../../components/RankCard/RankCard';
 
 const TopCreators = () => {
   return (
     <>
         <div>
-            <div className='flex-row space-y-16 my-16'>
-                <div className='h-auto grid w-custom-podium-width grid-cols-3 content-end  items-end  gap-8 mx-auto text-white text-center '>
+            <div className='flex-row space-y-16 my-16 bg-gray-50 rounded-lg'>
+                <div className='text-gray-500 font-bold text-5xl text-center pt-16 '>
+                    <p>༒𝓛𝓮𝓪𝓭𝓮𝓻𝓫𝓸𝓪𝓻𝓭༒</p>
+                </div>
+                <div className='h-auto grid w-custom-podium-width grid-cols-3 content-end  items-end  gap-8 mx-auto text-gray-500 text-center '>
                     <div className='h-48 '>
                             <div className='w-28 mx-auto'>
                                 <div className='bg-gray-400 p-1 rounded-full'>
@@ -22,9 +26,13 @@ const TopCreators = () => {
                                 2
                             </div>
                         </div>
-                            <div className='text-xl bg-gray-400 h-1.5'></div>
-                            <div className='font-bold text-2xl'>@anurag24</div>
-                            <div className='font-semibold text-lg'>Anurag Yadav</div>
+                            <div className=' bg-gray-400 h-1.5 '></div>
+                            <div className=' text-lg font-semibold text-sky-900'>@anurag24</div>
+                            <div className='text-custom'>India</div>
+                            <div className='flex justify-center space-x-1 text-custom py-1'>
+                                <div className='h-5 w-5'><img src="images/flower.png" alt="" /></div>
+                                <div>200k</div>
+                            </div>
                         
                     </div>
                     <div className='h-64'>
@@ -42,8 +50,12 @@ const TopCreators = () => {
                             </div>
                         </div>
                             <div className='text-xl bg-yellow-500 h-1.5'></div>
-                            <div className='font-bold text-2xl'>@anurag24</div>
-                            <div className='font-semibold text-lg'>Anurag Yadav</div>
+                            <div className='text-lg font-semibold text-sky-900'>@anurag24</div>
+                            <div className=' text-custom'>India</div>
+                            <div className='flex justify-center space-x-1 text-custom py-1'>
+                                <div className='h-5 w-5'><img src="images/flower.png" alt="" /></div>
+                                <div>200k</div>
+                            </div>
                          
                     </div>
                     <div className=' h-40  '>
@@ -61,13 +73,27 @@ const TopCreators = () => {
                             </div>
                         </div>
                             <div className='text-xl bg-amber-700 h-1.5'></div>
-                            <div className='font-bold text-2xl'>@anurag24</div>
-                            <div className='font-semibold text-lg'>Anurag Yadav</div>
-                           
-                    </div>
+                            <div className=' text-xl font-semibold text-sky-900'>@anurag24</div>
+                            <div className=' text-custom'>India</div>
+                            <div className='flex justify-center space-x-1 text-custom py-1'>
+                                <div className='h-5 w-5'><img src="images/flower.png" alt="" /></div>
+                                <div>200k</div>
+                            </div>
+                        </div>  
                 </div>
-                <div className='w-full bg-green-200 h-32 '>
-
+                <div className='w-full  h-auto '>
+                    <div className='flex-row  py-8 w-custom-account-sec-width justify-cente mx-auto'>                      
+                        <RankCard/>
+                        <RankCard/>
+                        <RankCard/>
+                        <RankCard/>
+                        <RankCard/>
+                        <RankCard/>
+                        <RankCard/>
+                        <RankCard/>
+                        <RankCard/>
+                        <RankCard/>
+                    </div>
                 </div>
             </div>
             
