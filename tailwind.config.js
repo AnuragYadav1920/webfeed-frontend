@@ -7,23 +7,27 @@ export default {
   theme: {
     extend: {
       height: {
+        'custom':'100%',
         'custom-size': '400px', // You can specify any custom size here
         'custom-blog-height':'250px',
         'custom-textarea-height':'120px',
         'custom-card-height':'355px',
         'custom-account-sec-height': '70vh'
+        
       },
       minHeight:{
         'custom-size': '550px'
       },
       width:{
+        'custom':'80%',
         'custom-width': '92.5vw',
         'custom-blog-width':'500px',
         'custom-input-width':'450px',
         'custom-button-width':'250px',
         'custom-card-width':'220px',
         'custom-account-sec-width': '77%',
-        'custom-blog-box-width':'80%'
+        'custom-blog-box-width':'80%',
+        'custom-podium-width':'600px'
       },
       backgroundColor:{
         'custom-bg-color':'#3b3b3b',
@@ -49,7 +53,10 @@ export default {
       skew:{
         'custom-logo-skew': '20deg',
         'custom-skew':'40deg'
-      }
+      },
+     fontSize:{
+      'custom':'7rem'
+     }
 
       // inset: {
       //   'custom-top': '10px',

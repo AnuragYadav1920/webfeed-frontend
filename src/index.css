@@ -102,3 +102,9 @@ body{
   color:#ff404f
 }
 
+.rank-icon{
+  position:absolute;
+  left: 47%;
+  top:17%
+}
+
