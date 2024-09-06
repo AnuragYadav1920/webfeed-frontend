@@ -26,7 +26,7 @@ const BlogCard = () => {
               </div>
              
             </div>
-            <div className='bg-yellow-500 px-2 py-1 w-full rounded-b-lg font-semibold'>
+            <div className='bg-yellow-500 px-2 py-1 w-full rounded-b-lg font-semibold text-nowrap'>
               <p>Web Development course</p>
             </div>
           </div>

@@ -28,7 +28,8 @@ export default {
         'custom-card-width':'220px',
         'custom-account-sec-width': '77%',
         'custom-blog-box-width':'80%',
-        'custom-podium-width':'600px'
+        'custom-podium-width':'600px',
+        'custom-filter-width':'60%'
       },
       backgroundColor:{
         'custom-bg-color':'#3b3b3b',

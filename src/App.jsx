@@ -7,20 +7,23 @@ import Footer from "./components/Footer/Footer.jsx"
 import Create from "./pages/Create/Create.jsx"
 import AccountDetails from "./pages/AccountInfo/AccountDetails.jsx"
 import TopCreators from "./pages/TopCreators/TopCreators.jsx"
+import Blogs from "./pages/Blogs/Blogs.jsx"
+
 export default function App() {
   return (
     <>
     
     <div className='mx-20'>
       <Navbar/>
-      {/* <Home /> 
-      <Create/>
-      <AccountDetails/>
-      <Login/>
-      <SignUp/>
-      <Contact/>
-      <Footer/> */}
-      <TopCreators/>
+     {/* <Home />  */}
+      {/* <Create/> */}
+      {/* <AccountDetails/> */}
+      {/* <Login/> */}
+      {/* <SignUp/> */}
+      {/* <Contact/> */}
+      {/* <Footer/> */}
+      {/* <TopCreators/> */}
+      <Blogs/>
     </div>
       
   </>

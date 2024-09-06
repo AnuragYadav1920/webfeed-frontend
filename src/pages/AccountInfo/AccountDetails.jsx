@@ -14,10 +14,13 @@ const AccountDetails = () => {
             <div className='h-auto w-custom-account-sec-width bg-zinc-950 relative rounded-lg border-x-2        border-b-2 border-gray-500'>
                 <div className=' h-52 w-full bg-blue-300 relative  rounded-t-lg'>
                     <div className='absolute right-6 top-8 bg-white h-8 w-8 content-center rounded-full z-20'><FaCamera className='mx-auto'/></div>
+                    <div className='h-full w-full'>
+                        <img src="images/mountain.avif" alt=""  className='object-fill w-full h-full rounded-t-lg' />
+                    </div>
                 </div>
                 <div className='w-32 h-32 absolute top-32 px-8 z-20'>
                     <div className='h-32 w-32 bg-white p-1 rounded-full'>
-                        <img src="images/photo-modified.png" alt=""  />
+                        <img src="images/photo-modified.png" alt="" />
                     </div>
                 </div>
                 <div className='flex justify-between px-8 pt-14 text-gray-500 '>
