@@ -7,13 +7,17 @@ import Footer from "./components/Footer/Footer.jsx"
 import Create from "./pages/Create/Create.jsx"
 import AccountDetails from "./pages/AccountInfo/AccountDetails.jsx"
 import TopCreators from "./pages/TopCreators/TopCreators.jsx"
-import Blogs from "./pages/Blogs/Blogs.jsx"
+import HomeBlogPage from "./pages/Blogs/HomeBlogPage.jsx"
+import Profile from "./components/Profile&CoverImage/Profile.jsx"
+import CoverImage from "./components/Profile&CoverImage/CoverImage.jsx"
+import UserEdit from "./pages/EditUser/UserEdit.jsx"
+import UserBlogPage from "./pages/Blogs/UserBlogPage.jsx"
 
 export default function App() {
   return (
     <>
     
-    <div className='mx-20'>
+    <div className=''>
       <Navbar/>
      {/* <Home />  */}
       {/* <Create/> */}
@@ -23,7 +27,11 @@ export default function App() {
       {/* <Contact/> */}
       {/* <Footer/> */}
       {/* <TopCreators/> */}
-      <Blogs/>
+      {/* <HomeBlogPage/> */}
+      {/* <Profile/> */}
+      {/* <CoverImage/> */}
+      {/* <UserEdit/> */}
+      <UserBlogPage/>
     </div>
       
   </>

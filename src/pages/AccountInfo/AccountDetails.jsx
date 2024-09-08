@@ -1,25 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaCamera } from "react-icons/fa";
 import { BsPinAngle } from "react-icons/bs";
 import BlogCard from '../../components/BlogCard/BlogCard.jsx'
 import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
+import Profile from '../../components/Profile&CoverImage/Profile.jsx';
+import CoverImage from '../../components/Profile&CoverImage/CoverImage.jsx';
+import { MdVisibility } from 'react-icons/md';
 
 const AccountDetails = () => {
+    const [photoBoxOpen, setPhotoBoxOpen] = useState(false)
+    const [coverBoxOpen, setCoverBoxOpen] = useState(false)
+
   return (
     <>
-        <div className='grid justify-items-center'>
-                {/* user info */}
+        <div className='absolute w-full h-full '  >
+            {
+                coverBoxOpen && (
+                    <div className='bg absolute top-0  w-full h-full z-20' >
+                        <div className='absolute top-custom-top left-custom-left z-30 h-auto w-auto  '>
+                            <CoverImage close={()=>setCoverBoxOpen(!coverBoxOpen)}/>
+                        </div>
+                    </div>
+                )
+            }
 
-            <div className='h-auto w-custom-account-sec-width bg-zinc-950 relative rounded-lg border-x-2        border-b-2 border-gray-500'>
-                <div className=' h-52 w-full bg-blue-300 relative  rounded-t-lg'>
-                    <div className='absolute right-6 top-8 bg-white h-8 w-8 content-center rounded-full z-20'><FaCamera className='mx-auto'/></div>
-                    <div className='h-full w-full'>
+            {
+                photoBoxOpen && (
+                    <div className='bg absolute top-0  w-full h-full z-20 ' >
+                        <div className='absolute z-20 top-custom-top left-custom-left h-auto'>
+                        <Profile close={()=>setPhotoBoxOpen(!photoBoxOpen)}/>
+                        </div>
+                    </div>
+                    
+                )
+            }
+            
+        <div className='grid justify-items-center -z-20' >
+                {/* user info */}  
+            <div className='h-auto w-custom-account-sec-width bg-zinc-950 relative rounded-lg border-x-2        border-b-2 border-gray-500 '>
+                <div className=' h-52 w-full bg-blue-200 relative  rounded-t-lg'>
+                    <div className='absolute right-6 top-8 bg-white h-8 w-8 content-center rounded-full z-10 cursor-pointer' onClick={()=>setCoverBoxOpen(!coverBoxOpen)}><FaCamera className='mx-auto'/></div>
+                    <div className='h-full w-full '>
                         <img src="images/mountain.avif" alt=""  className='object-fill w-full h-full rounded-t-lg' />
                     </div>
                 </div>
-                <div className='w-32 h-32 absolute top-32 px-8 z-20'>
-                    <div className='h-32 w-32 bg-white p-1 rounded-full'>
+                <div className='w-32 h-32 absolute top-32 px-8 '>
+                    <div className='h-32 w-32 bg-white p-1 cursor-pointer rounded-full' onClick={()=>setPhotoBoxOpen(!photoBoxOpen)}>
                         <img src="images/photo-modified.png" alt="" />
                     </div>
                 </div>
@@ -56,6 +83,7 @@ const AccountDetails = () => {
                         <button className='px-5 py-1 bg-transparent text-gray-500 font-bold rounded-full border-2 border-gray-500 text-nowrap'>All Posts</button>
                     </div>
                 </div>
+
             </div>
                 {/* user all posts */}
             <div className='flex-row w-custom-account-sec-width my-8 border-2 border-gray-500 rounded-lg'>
@@ -76,6 +104,8 @@ const AccountDetails = () => {
                 </div>
             </div>
         </div>
+        
+     </div>
     </>
   )
 }

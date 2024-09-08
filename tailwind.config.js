@@ -8,12 +8,13 @@ export default {
     extend: {
       height: {
         'custom':'100%',
-        'custom-size': '400px', // You can specify any custom size here
+        'custom-size': '400px', 
         'custom-blog-height':'250px',
         'custom-textarea-height':'120px',
         'custom-card-height':'355px',
         'custom-account-sec-height': '70vh',
-        'custom-hr':'0.1px'
+        'custom-hr':'0.1px',
+        'custom-profile&coverImage-height':'500px',
 
       },
       minHeight:{
@@ -26,14 +27,21 @@ export default {
         'custom-input-width':'450px',
         'custom-button-width':'250px',
         'custom-card-width':'220px',
-        'custom-account-sec-width': '77%',
+        'custom-account-sec-width': '70%',
         'custom-blog-box-width':'80%',
         'custom-podium-width':'600px',
-        'custom-filter-width':'60%'
+        'custom-filter-width':'60%',
+        'custom-profile&coverImage-width':'700px',
+        'custom-pc-width':'100vw',
+        'custom-deatils-width':'40%',
+        
       },
       backgroundColor:{
         'custom-bg-color':'#3b3b3b',
         'follow-button':'#ff404f'
+      },
+      backgroundImage:{
+        'custom': 'linear-gradient(to left, rgba(24, 24, 35, 0.7), rgba(18, 18, 21, 0.7))'
       },
       flexBasis:{
         'left-basis':'50%',
@@ -61,12 +69,12 @@ export default {
      },
      border:{
       'custom':'1px'
-     }
+     },
 
-      // inset: {
-      //   'custom-top': '10px',
-      //   'custom-right': '40px',
-      // },
+    inset: {
+      'custom-top': '5%',
+      'custom-left': '26%',
+    },
       
     },
   },

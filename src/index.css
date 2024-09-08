@@ -110,3 +110,8 @@ body{
   top:17%
 }
 
+.bg{
+  background-image: linear-gradient(to left, rgba(24, 24, 35, 0.7), rgba(18, 18, 21, 0.7));
+  overflow-y: hidden;
+}
+

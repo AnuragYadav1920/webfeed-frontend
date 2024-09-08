@@ -6,7 +6,7 @@ import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
 import BlogCard from '../../components/BlogCard/BlogCard.jsx';
 
-const Blogs = () => {
+const HomeBlogPage = () => {
   return (
     <>
      <div className='space-y-8 my-8'>
@@ -43,4 +43,4 @@ const Blogs = () => {
   )
 }
 
-export default Blogs
+export default HomeBlogPage
