@@ -12,6 +12,7 @@ import Profile from "./components/Profile&CoverImage/Profile.jsx"
 import CoverImage from "./components/Profile&CoverImage/CoverImage.jsx"
 import UserEdit from "./pages/EditUser/UserEdit.jsx"
 import UserBlogPage from "./pages/Blogs/UserBlogPage.jsx"
+import EditorBlogPage from "./pages/Blogs/EditorBlogPage.jsx"
 
 export default function App() {
   return (
@@ -31,7 +32,8 @@ export default function App() {
       {/* <Profile/> */}
       {/* <CoverImage/> */}
       {/* <UserEdit/> */}
-      <UserBlogPage/>
+      {/* <UserBlogPage/> */}
+      <EditorBlogPage/>
     </div>
       
   </>
