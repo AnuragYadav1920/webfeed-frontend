@@ -1,21 +1,21 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
 const Discover = () => {
   return (
     <>
       <div>
         <div className='discover text-gray-700' >
             <div className='discover-item'>
-              Blogs
+              <NavLink to="/blogs">Blogs</NavLink>
             </div>
             <div className='discover-item'>
-              Top Creators
+            <NavLink to="/top-creators">Top Creators</NavLink>
             </div>
             <div className='discover-item'>
-              About Us
+            <NavLink to="/about">About us</NavLink>
             </div>
             <div className='discover-item'>
-              Events
+            <NavLink to="/events">Events</NavLink>
             </div>
         </div>
       </div>

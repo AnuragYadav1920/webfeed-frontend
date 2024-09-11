@@ -1,3 +1,12 @@
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+  Outlet,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Index from "./Index.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx"
 import Home from "./pages/HomeSection/Home.jsx"
 import Login from "./pages/Login&SignUp/Login.jsx"
@@ -13,29 +22,71 @@ import CoverImage from "./components/Profile&CoverImage/CoverImage.jsx"
 import UserEdit from "./pages/EditUser/UserEdit.jsx"
 import UserBlogPage from "./pages/Blogs/UserBlogPage.jsx"
 import EditorBlogPage from "./pages/Blogs/EditorBlogPage.jsx"
+import About from "./pages/AboutUs/About.jsx";
+import EditDetailBox from "./components/EditDetailBox/EditDetailBox.jsx";
+import Discover from "./components/Navbar/Discover/Discover.jsx";
+
+const router = createBrowserRouter([
+  {
+    path:"/",
+    element:<Index/>,
+    children:[
+  {
+    path: "/",
+    element:<Home/>
+  },
+  {
+    path: "contact",
+    element: <Contact/>,
+  },
+
+  {
+    path: "create",
+    element: <Create/>,
+  },
+  {
+    path:"login",
+    element:<Login/>
+  },
+  {
+    path:"signup",
+    element:<SignUp/>
+  },
+  {
+    path:"blogs",
+    element:<HomeBlogPage/>
+  },
+  {
+    path:"top-creators",
+    element:<TopCreators/>
+  },
+  {
+    path:"about",
+    element:<About/>
+  },
+  {
+    path: "edit-details",
+    element: <UserEdit/>,
+  },
+  {
+    path:"account-info",
+    element:<AccountDetails/>,
+  },
+  {
+    path:"edit-blogs/blogId",
+    element:<EditorBlogPage/>
+  },
+  {
+    path:"blogs/blogId",
+    element:<UserBlogPage/>
+  } 
+]
+}]);
 
 export default function App() {
   return (
     <>
-    
-    <div className=''>
-      <Navbar/>
-     {/* <Home />  */}
-      {/* <Create/> */}
-      {/* <AccountDetails/> */}
-      {/* <Login/> */}
-      {/* <SignUp/> */}
-      {/* <Contact/> */}
-      {/* <Footer/> */}
-      {/* <TopCreators/> */}
-      {/* <HomeBlogPage/> */}
-      {/* <Profile/> */}
-      {/* <CoverImage/> */}
-      {/* <UserEdit/> */}
-      {/* <UserBlogPage/> */}
-      <EditorBlogPage/>
-    </div>
-      
-  </>
+      <RouterProvider router={router} />   
+    </>
   )
 }

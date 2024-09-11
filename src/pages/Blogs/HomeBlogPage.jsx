@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import Carousal from '../../components/Banner/Carousal.jsx';
 import Filter from '../../components/Filter/Filter.jsx';
 import { CiCircleChevLeft } from "react-icons/ci";
@@ -18,12 +19,30 @@ const HomeBlogPage = () => {
           <div>
           <div className='flex-row w-full bg-transparent mt-8 border-2 border-gray-500 rounded-lg '>
                 <div className='flex gap-8 flex-wrap py-8 px-7 -z-20'>
+                  <NavLink to="/blogs/blogId">
                     <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
                     <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
                     <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
                     <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
                     <BlogCard/>
-                    <BlogCard/> 
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
                 </div>
                 <div className='relative my-8'>
                     <div className='flex px-8 space-x-2  text-gray-500 font-bold absolute bottom-2 right-4'>

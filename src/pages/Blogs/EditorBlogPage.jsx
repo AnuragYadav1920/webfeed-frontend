@@ -4,7 +4,7 @@ import { MdEdit } from "react-icons/md";
 
 const EditorBlogPage = () => {
     const [fullView, setFullView] = useState(false)
-    let style = {
+    const style = {
         height: fullView?"auto":"85vh",
         overflow:fullView?"auto":"hidden"
     }

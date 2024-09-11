@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import { MdLogout } from "react-icons/md"; 
 import { FiEdit } from "react-icons/fi";
 import { VscAccount } from "react-icons/vsc";
@@ -39,7 +40,7 @@ const Account = () => {
                   <VscAccount className='text-lg'/>
                 </div>
                 <div>
-                  Account Info
+                  <NavLink to="/account-info">Account info</NavLink>
                 </div>
               </div>                        
               <div className='flex space-x-4 account-item w-full p-2 rounded-md'>
@@ -47,7 +48,7 @@ const Account = () => {
                   <FiEdit className='text-lg'/>
                 </div>
                 <div>
-                  Edit details
+                  <NavLink to="/edit-details">Edit details</NavLink>
                 </div>
               </div>
               <div className='flex space-x-4 account-item w-full p-2 rounded-md'>
@@ -55,7 +56,7 @@ const Account = () => {
                   <MdLogout className='text-lg'/>
                 </div>
                 <div>
-                  Logout
+                  <NavLink to="logout">Logout</NavLink>
                 </div>
               </div>            
           </div>

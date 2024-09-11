@@ -6,25 +6,18 @@ import { FaChevronCircleRight } from "react-icons/fa";
 const Testimonial = () => {
   return (
     <>
-        <div className='text-yellow-400 text-center space-y-3 my-2 py-20'>
-            <div>
-                <span className='font-bold'>TESTIMONIALS</span>
-            </div>
-            <div>
-                <span className='text-3xl font-bold text-gray-500'>WHAT OUR USERS SAY</span>
-            </div>
-            <div className=''>
-                <hr className='mx-auto outline-none border-none h-1 w-96 bg-yellow-400' />
-            </div>
-            <div className='px-64 py-8'>
+        <div className='testimonial-box '>
+                <span className='testimonial-heading-1'>TESTIMONIALS</span>
+                <span className='testimonial-heading-2'>WHAT OUR USERS SAY</span>
+                <hr className='testimonial-hr' />
+                <div className='testimonial-p'>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam distinctio ipsum voluptates iste at architecto reiciendis exercitationem eligendi quam minus.</p>
-            </div>
-            <div className='py-0'>
-                <div className='flex justify-items-center w-full'>
-                    <div className='text-4xl mx-auto content-center w-0.5/5 cursor-pointer'>
+                </div>
+                <div className='testimonial-inner-box'>
+                    <div className='testimonial-inner-box-arrow'>
                         <FaCircleChevronLeft/>
                     </div>
-                    <div className='space-x-10 px-14  flex overflow-x-auto  w-3/5 '>
+                    <div className='testimonial-inner-box-feedback'>
                         <TestimonialCard/>
                         <TestimonialCard/>
                         <TestimonialCard/>
@@ -34,11 +27,10 @@ const Testimonial = () => {
                         <TestimonialCard/>
                         <TestimonialCard/>
                     </div>
-                    <div className='text-4xl mx-auto content-center w-0.5/5 cursor-pointer'>
+                    <div className='testimonial-inner-box-arrow'>
                         <FaCircleChevronRight/>
                     </div>
                 </div>
-            </div>
         </div>
     </>
   )

@@ -7,14 +7,20 @@ import { CiCircleChevRight } from "react-icons/ci";
 import Profile from '../../components/Profile&CoverImage/Profile.jsx';
 import CoverImage from '../../components/Profile&CoverImage/CoverImage.jsx';
 import { MdVisibility } from 'react-icons/md';
+import { NavLink , Outlet} from 'react-router-dom';
 
 const AccountDetails = () => {
     const [photoBoxOpen, setPhotoBoxOpen] = useState(false)
     const [coverBoxOpen, setCoverBoxOpen] = useState(false)
 
+    const style = {
+        height: photoBoxOpen || coverBoxOpen?"85vh":"auto",
+        overflow:photoBoxOpen || coverBoxOpen?"hidden":"auto"
+    }
+
   return (
     <>
-        <div className='absolute w-full h-full '  >
+        <div className=' w-full  ' style={style} >
             {
                 coverBoxOpen && (
                     <div className='bg absolute top-0  w-full h-full z-20' >
@@ -88,12 +94,21 @@ const AccountDetails = () => {
                 {/* user all posts */}
             <div className='flex-row w-custom-account-sec-width my-8 border-2 border-gray-500 rounded-lg'>
                 <div className='flex gap-8 flex-wrap p-8'>
-                    <BlogCard/>
-                    <BlogCard/>
-                    <BlogCard/>
-                    <BlogCard/>
-                    <BlogCard/>
-                    <BlogCard/> 
+                    <NavLink to="/edit-blogs/blogId" >
+                        <BlogCard/>
+                    </NavLink>
+                    <NavLink to="/edit-blogs/blogId" >
+                        <BlogCard/>
+                    </NavLink>
+                    <NavLink to="/edit-blogs/blogId" >
+                        <BlogCard/>
+                    </NavLink>
+                    <NavLink to="/edit-blogs/blogId" >
+                        <BlogCard/>
+                    </NavLink>
+                    <NavLink to="/edit-blogs/blogId" >
+                        <BlogCard/>
+                    </NavLink>
                 </div>
                 <div className='relative my-8'>
                     <div className='flex px-8 space-x-2  text-gray-500 font-bold absolute bottom-2 right-4'>

@@ -74,6 +74,7 @@ export default {
     inset: {
       'custom-top': '5%',
       'custom-left': '26%',
+      'custom':'100%'
     },
       
     },
