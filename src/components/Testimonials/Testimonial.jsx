@@ -18,14 +18,13 @@ const Testimonial = () => {
                         <FaCircleChevronLeft/>
                     </div>
                     <div className='testimonial-inner-box-feedback'>
-                        <TestimonialCard/>
-                        <TestimonialCard/>
-                        <TestimonialCard/>
-                        <TestimonialCard/>
-                        <TestimonialCard/>
-                        <TestimonialCard/>
-                        <TestimonialCard/>
-                        <TestimonialCard/>
+                        <div className='testimonial-inner-box-feedback-container'>
+                            <TestimonialCard/>
+                            <TestimonialCard/>
+                            <TestimonialCard/>
+                            <TestimonialCard/>
+                            <TestimonialCard/>
+                        </div>
                     </div>
                     <div className='testimonial-inner-box-arrow'>
                         <FaCircleChevronRight/>

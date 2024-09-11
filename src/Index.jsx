@@ -7,7 +7,7 @@ import Hambergurmenu from "./components/Navbar/Hambergurmenu/Hambergurmenu.jsx.j
 const index = () => {
   return (
     <>  
-      <div className=''>
+      <div className='bg-white'>
         <div className=' '>
           <Navbar/>
           {/* <Hambergurmenu/> */}
