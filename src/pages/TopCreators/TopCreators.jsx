@@ -11,7 +11,7 @@ const TopCreators = () => {
                 <div className='text-gray-500 font-bold text-5xl text-center pt-16 '>
                     <p>༒𝓛𝓮𝓪𝓭𝓮𝓻𝓫𝓸𝓪𝓻𝓭༒</p>
                 </div>
-                <div className='h-auto grid w-custom-podium-width grid-cols-3 content-end  items-end  gap-8 mx-auto text-gray-500 text-center '>
+                <div className='h-auto grid w-full grid-cols-3 content-end  items-end  gap-8 mx-auto text-gray-500 text-center '>
                     <div className='h-48 '>
                             <div className='w-28 mx-auto'>
                                 <div className='bg-gray-400 p-1 rounded-full'>

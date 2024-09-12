@@ -12,7 +12,7 @@ const UserBlogPage = () => {
 
   return (
     <>
-        <div className='text-zinc-900 w-custom-account-sec-width border-2   border-slate-300 rounded-lg my-4 mx-auto relative bg-yellow-700 ' style={style}>
+        <div className='text-zinc-900 w-full border-2   border-slate-300 rounded-lg  relative bg-yellow-700 ' style={style}>
             <div className='  '>
                 <div className='w-full h-80 shadow-2xl shadow-slate-950 '>
                     <img src="images/mountain.avif" alt="" className='w-full h-full object-fill rounded-t-lg'/>

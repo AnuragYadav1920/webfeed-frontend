@@ -20,11 +20,11 @@ const AccountDetails = () => {
 
   return (
     <>
-        <div className=' w-full  ' style={style} >
+        <div className='account-details' style={style} >
             {
                 coverBoxOpen && (
-                    <div className='bg absolute top-0  w-full h-full z-20' >
-                        <div className='absolute top-custom-top left-custom-left z-30 h-auto w-auto  '>
+                    <div className='photobox bg ' >
+                        <div className='photobox-box'>
                             <CoverImage close={()=>setCoverBoxOpen(!coverBoxOpen)}/>
                         </div>
                     </div>
@@ -33,8 +33,8 @@ const AccountDetails = () => {
 
             {
                 photoBoxOpen && (
-                    <div className='bg absolute top-0  w-full h-full z-20 ' >
-                        <div className='absolute z-20 top-custom-top left-custom-left h-auto'>
+                    <div className='photobox bg ' >
+                        <div className='photobox-box'>
                         <Profile close={()=>setPhotoBoxOpen(!photoBoxOpen)}/>
                         </div>
                     </div>
@@ -42,58 +42,56 @@ const AccountDetails = () => {
                 )
             }
             
-        <div className='grid justify-items-center -z-20' >
+        <div className='account-details-user' >
                 {/* user info */}  
-            <div className='h-auto w-custom-account-sec-width bg-zinc-950 relative rounded-lg border-x-2        border-b-2 border-gray-500 '>
-                <div className=' h-52 w-full bg-blue-200 relative  rounded-t-lg'>
-                    <div className='absolute right-6 top-8 bg-white h-8 w-8 content-center rounded-full z-10 cursor-pointer' onClick={()=>setCoverBoxOpen(!coverBoxOpen)}><FaCamera className='mx-auto'/></div>
-                    <div className='h-full w-full '>
-                        <img src="images/mountain.avif" alt=""  className='object-fill w-full h-full rounded-t-lg' />
+            <div className='account-details-user-info'>
+                <div className='account-details-user-info-coverImage-section'>
+                    <div className='account-details-user-info-coverImage-section-editCoverImage' onClick={()=>setCoverBoxOpen(!coverBoxOpen)}><FaCamera className='mx-auto'/></div>
+                    <div className='account-details-user-info-coverImage-section-displayCoverImage'>
+                        <img src="images/mountain.avif" alt=""  className='account-details-user-info-coverImage-section-CoverImage' />
                     </div>
                 </div>
-                <div className='w-32 h-32 absolute top-32 px-8 '>
-                    <div className='h-32 w-32 bg-white p-1 cursor-pointer rounded-full' onClick={()=>setPhotoBoxOpen(!photoBoxOpen)}>
+                <div className='account-details-user-info-profileImage-section'>
+                    <div className='account-details-user-info-profileImage-section-view' onClick={()=>setPhotoBoxOpen(!photoBoxOpen)}>
                         <img src="images/photo-modified.png" alt="" />
                     </div>
                 </div>
-                <div className='flex justify-between px-8 pt-14 text-gray-500 '>
-                    <div className='flex-row basis-left-account-basis '>
-                        <div className='text-3xl font-bold'>@anurag24</div>
-                        <div className='text-xl font-bold'>Anurag Yadav</div>
-                        <div className='flex space-x-2'>
-                            <div className='font-semibold'>Email:</div>
+                <div className='account-details-user-info-about-user'>
+                    <div className='account-details-user-info-about-user-details '>
+                        <div className='account-details-user-info-about-user-details-username'>@anurag24</div>
+                        <div className='account-details-user-info-about-user-details-fullName'>Anurag Yadav</div>
+                        <div className='account-details-user-info-about-user-details-data'>
+                            <div className='account-details-user-info-about-user-details-tag'>Email:</div>
                             <div> anurag@gmail.com</div>
                         </div >
-                        <div className='flex-row '>
-                            <div className='flex space-x-4 font-semibold'>
-                                <div className='content-center'>About:</div>
-                                <div className='content-center text-2xl font-semibold'> <BsPinAngle/></div>
+                        <div >
+                            <div className='account-details-user-info-about-user-details-data'>
+                                <div className='account-details-user-info-about-user-details-tag'>About:</div>
+                                <div className='account-details-user-info-about-user-details-pin'> <BsPinAngle/></div>
                             </div>
                             <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla unde tenetur reiciendis quidem iusto. Delectus ea inventore odio incidunt fugiat.</div>
                         </div>
                     </div>
-                    <div className='flex-row basis-right-account-basis space-y-4'>
-                        <div className=''>
-                            <button className='bg-follow-button px-6 py-1 rounded-full text-gray-800'>follow</button>
-                        </div>
-                        <div className='flex space-x-2'>
-                            <div>followers: </div>
-                            <div>100k</div>
+                    <div className='account-details-user-info-about-user-followers'>
+                        <span className='account-details-user-info-about-user-followers-button'>follow</span>
+                        <div className='account-details-user-info-about-user-followers-total-followers'>
+                            <img src="images/flower.png" alt="" className='account-details-user-info-about-user-followers-total-followers-follower-image'/>
+                            <span className='account-details-user-info-about-user-followers-total-followers-follower-value'>100k</span>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div className='flex space-x-4 px-8 py-8'>
-                        <button className=' px-5 py-1 bg-gray-700 text-slate-950 font-bold rounded-full text-nowrap'>Today</button>
-                        <button className='px-5 py-1 bg-transparent text-gray-500 font-bold rounded-full border-2 border-gray-500 text-nowrap'>Recent Posts</button>
-                        <button className='px-5 py-1 bg-transparent text-gray-500 font-bold rounded-full border-2 border-gray-500 text-nowrap'>All Posts</button>
+                    <div className='account-details-user-info-about-user-posts'>
+                        <button className='account-details-user-info-about-user-posts-button'>Today</button>
+                        <button className='account-details-user-info-about-user-posts-button'>Recent Posts</button>
+                        <button className='account-details-user-info-about-user-posts-button'>All Posts</button>
                     </div>
                 </div>
 
             </div>
                 {/* user all posts */}
-            <div className='flex-row w-custom-account-sec-width my-8 border-2 border-gray-500 rounded-lg'>
-                <div className='flex gap-8 flex-wrap p-8'>
+            <div className='account-details-user-info-all-posts'>
+                <div className='account-details-user-info-all-posts-box'>
                     <NavLink to="/edit-blogs/blogId" >
                         <BlogCard/>
                     </NavLink>
@@ -110,11 +108,11 @@ const AccountDetails = () => {
                         <BlogCard/>
                     </NavLink>
                 </div>
-                <div className='relative my-8'>
-                    <div className='flex px-8 space-x-2  text-gray-500 font-bold absolute bottom-2 right-4'>
-                        <div className='content-center text-2xl'><CiCircleChevLeft/></div>
-                        <div className='content-center'>1</div>
-                        <div className='content-center text-2xl'><CiCircleChevRight/></div>
+                <div className='account-details-user-info-all-post-pagination'>
+                    <div className='account-details-user-info-all-post-pagination-box'>
+                        <div className='account-details-user-info-all-post-pagination-icon'><CiCircleChevLeft/></div>
+                        <div className='account-details-user-info-all-post-pagination-page-no'>1</div>
+                        <div className='account-details-user-info-all-post-pagination-icon'><CiCircleChevRight/></div>
                     </div>
                 </div>
             </div>

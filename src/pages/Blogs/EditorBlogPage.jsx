@@ -15,7 +15,7 @@ const EditorBlogPage = () => {
     // console.log(editedImage)
   return (
     <>
-      <div className='border-2 border-gray-400 w-custom-account-sec-width bg-sky-100 relative mx-auto rounded-lg my-8 ' style={style}>
+      <div className='border-2 border-gray-400 w-full bg-sky-100 relative  rounded-lg ' style={style}>
       <div className='  '>
                 <div className='w-full h-80 shadow-2xl shadow-slate-950 relative'>
                     <img src="images/mountain.avif" alt="" className='w-full h-full object-fill rounded-t-lg'/>
