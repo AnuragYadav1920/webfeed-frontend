@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       {/* top section container */}
-
+      <div className='home'>
       <div className='home-top '>
           <div className='home-top-left'>
             <div className='heading'>
@@ -62,7 +62,8 @@ const Home = () => {
       <div className='testimonial'>
         <Testimonial/>  
       </div>
-    </>
+    </div>
+  </>
   )
 }
 export default Home;

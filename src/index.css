@@ -79,7 +79,7 @@ body{
 
 .bg{
   background-image: linear-gradient(to left, rgba(24, 24, 35, 0.7), rgba(18, 18, 21, 0.7));
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 @media (max-width:480px){
@@ -295,7 +295,7 @@ body{
   /* footer */
 .footer-box{
   display:grid;
-  padding: 0 1rem;
+  padding: 1.8rem 1rem;
   width: 100%;
   gap:1.5rem;
   grid-template-columns: auto auto ;
@@ -363,7 +363,7 @@ body{
 /* coverbox and coverImageSelectBox*/
 .coverImageEditBox{
   margin: 0 auto;
-  width: 100%;
+  width: 350px;
   height: auto;
   background: transparent;
   color:white;
@@ -408,6 +408,7 @@ body{
   display: grid;
   justify-content: center;
   border-radius: 10px;
+  padding:0.5rem 1rem ;
 }
 .coverImageEditBox-bottom-edit-button:hover{
   background-color: #6b7280;
@@ -424,6 +425,8 @@ body{
 .coverImageEditBox-bottom-delete-button{
   display: grid;
   justify-content: center;
+  padding:0.5rem 1rem ;
+  border-radius: 10px;
 }
 .coverImageEditBox-bottom-delete-button:hover{
   background-color: #6b7280;
@@ -460,12 +463,16 @@ body{
 .photobox-box{
   position: absolute;
   z-index: 2;
-  top:5%;
-  left:26%;
+  top:5%; 
+  left:9%;
   height: auto;
 }
 
 /* account-details ->>> user info && userposts  */
+.account-details{
+  width:100%;
+  height: auto;
+}
 .account-details-user{
   display: grid;
   justify-items: center;
@@ -705,7 +712,8 @@ body{
 @media (min-width: 481px) and (max-width: 767px) {
                                         /* navbar */
   .navbar{
-    width:100%;
+    width:90%;
+    margin: 0 auto;
     overflow-x:visible;
     display: flex;
     justify-content: space-between;
@@ -726,7 +734,11 @@ body{
   }
 
                                   /* Home */
-.home-top{
+  .home{
+    width: 90%;
+    margin:0 auto;
+  }
+ .home-top{
   display: flex;
   width: 100%;
   height: 400px;
@@ -914,7 +926,7 @@ body{
   /* footer */
   .footer-box{
     display:grid;
-    padding: 0 1rem;
+    padding: 1.8rem 1rem;
     width: 100%;
     gap:1.5rem;
     grid-template-columns: auto auto  ;
@@ -978,24 +990,369 @@ body{
   .footer-box-copyright-icon{
     align-content: center;
   }
+
+  /* account-details */
+  .account-details{
+    width:90%;
+    margin: 0 auto;
+    height: auto;
+  }
+  .account-details-user{
+    display: grid;
+    justify-items: center;
+    z-index: -2;
+  }
+  .account-details-user-info{
+    height: auto;
+    width: 100%;
+    background-color: #09090b;
+    position: relative;
+  }
+  .account-details-user-info-coverImage-section{
+    height: 208px;
+    background-color: #bfdbfe;
+    position: relative;
+  }
+  .account-details-user-info-coverImage-section-editCoverImage{
+    position: absolute;
+    right:2rem;
+    top:2rem;
+    background-color: #fff;
+    height: 2rem;
+    width: 2rem;
+    align-content: center;
+    border-radius: 100%;
+    z-index: 1;
+    cursor: pointer;
+  }
+  .account-details-user-info-coverImage-section-displayCoverImage{
+    width: 100%;
+    height: 100%;
+  }
+  .account-details-user-info-coverImage-section-CoverImage{
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .account-details-user-info-profileImage-section{
+    width: 8rem;
+    height: 8rem;
+    position: absolute;
+    top: 7rem;
+    padding: 1rem;
+  }
+  .account-details-user-info-profileImage-section-view{
+    width: 8rem;
+    height: 8rem;
+    background-color: #fff;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 100%;
+  }
+  .account-details-user-info-about-user{
+    display: flex;
+    justify-content: space-between;
+    color: #facc15;
+    padding: 4rem 1rem 0 1rem;
+  }
+  .account-details-user-info-about-user-details{
+    display:grid;
+    flex-basis: 60%;
+  }
+  .account-details-user-info-about-user-details-username{
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+  .account-details-user-info-about-user-details-fullName{
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .account-details-user-info-about-user-details-data{
+    display: flex;
+    gap:0.5rem;
+  }
+  .account-details-user-info-about-user-details-tag{
+    font-weight: 600;
+  }
+  .account-details-user-info-about-user-details-pin{
+    font-size: 1.5rem;
+  }
+  .account-details-user-info-about-user-followers{
+    flex-basis: 20%;
+  }
+  .account-details-user-info-about-user-followers-button{
+    padding: 5px 12px;
+    background-color: #ff404f;
+    color:rgb(185, 181, 181)
+  }
+  .account-details-user-info-about-user-followers-total-followers{
+    display: flex;
+    gap:0.5rem;
+    margin: 1rem 0;
+    align-content: center;
+  }
+  .account-details-user-info-about-user-followers-total-followers-follower-image{
+    width: 25px;
+    height: 25px;
+  }
+  .account-details-user-info-about-user-followers-total-followers-follower-value{
+    font-size: 1.2rem;
+  }
+  .account-details-user-info-about-user-posts{
+    display: flex;
+    gap:1rem;
+    padding:1rem
+  }
+  .account-details-user-info-about-user-posts-button{
+    padding: 0.25rem 1.25rem;
+    background-color: #374151;
+    color:#020617;
+    font-weight: 700;
+    border-radius: 30px;
+    text-wrap: nowrap;
+  }
+  
+  .account-details-user-info-all-posts{
+    width: 100%;
+    background-color: #d9e9f0;
+  }
+  .account-details-user-info-all-posts-box{
+    padding: 1.8rem 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap:1rem
+  
+  }
+  .account-details-user-info-all-post-pagination{
+    position: relative;
+    margin: 1.2rem 0 ;
+    padding: 0.8rem 0rem;
+  }
+  .account-details-user-info-all-post-pagination-box{
+    display:flex;
+    padding:0 1rem ;
+    gap:2rem;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1rem;
+  }
+  .account-details-user-info-all-post-pagination-icon{
+    align-content: center;
+    font-size: 2.5rem;
+    background: #facc15;
+    border-radius: 100%;
+    color:#fff;
+    font-weight: 900;
+  }
+  .account-details-user-info-all-post-pagination-page-no{
+    align-content:center ;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* coverbox and coverImageSelectBox*/
+.coverImageEditBox{
+  margin: 0 auto;
+  width: 350px;
+  height: auto;
+  background: transparent;
+  color:white;
+  border:2px solid gray;
+  z-index: 2;
+}
+.coverImageEditBox-top{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+.coverImageEditBox-top-title{
+  font-size: 1.2rem;
+}
+.coverImageEditBox-top-close{
+  font-size: 1.5rem;
+  padding: 2px;
+}
+.coverImageEditBox-top-close:hover{
+  background-color: #686966;
+}
+.coverImageEditBox-mid{
+  padding: 0.5rem;
+  height: 288px;
+}
+.coverImageEditBox-mid-image{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.coverImageEditBox-hr{
+  height: 2px;
+  width: 100%;
+  background: #6b7280;
+}
+.coverImageEditBox-bottom{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+.coverImageEditBox-bottom-edit-button{
+  display: grid;
+  justify-content: center;
+  border-radius: 10px;
+  padding:0.5rem 1rem ;
+}
+.coverImageEditBox-bottom-edit-button:hover{
+  background-color: #6b7280;
+}
+.coverImageEditBox-bottom-edit-button-icon{
+  font-size:1.5rem
+}
+.coverImageEditBox-bottom-edit-button-text{
+  font-size: 1rem;
+}
+.coverImageEditBox-bottom-edit-input{
+  display: none;
+}
+.coverImageEditBox-bottom-delete-button{
+  display: grid;
+  justify-content: center;
+  padding:0.5rem 1rem ;
+  border-radius: 10px;
+}
+.coverImageEditBox-bottom-delete-button:hover{
+  background-color: #6b7280;
+}
+.coverImageEditBox-bottom-delete-button-icon{
+  font-size: 1.5rem;
+  margin: 0 auto;;
+}
+.coverImageEditBox-bottom-delete-button-text{
+  font-size: 1rem;
+}
+
+.coverbox{
+  width: 100%;
+  position: absolute;
+  top:0;
+  height: 100%;
+  z-index: 2;
+}
+.coverbox-box{
+  position: absolute;
+  top:10%;
+  z-index: 3;
+  height: auto;
+  width: auto;
+}
+.photobox{
+  position: absolute;
+  top: 5%;
+  width: 90%;
+  height: 100%;
+  z-index: 2;
+}
+.photobox-box{
+  position: absolute;
+  z-index: 2;
+  top:5%; 
+  left:15%;
+  height: auto;
+}
+/* blogCard */
+.blogCard{
+  width: 200px;
+  height: 180px;
+  position: relative;
+  cursor: pointer;
+  color:#111827;
+  background-color: #3b3b3b;
+}
+.blogCard-Image-box{
+  position: absolute;
+  width:100%;
+  border-radius: 0.5rem;
+}
+.blogCard-Image{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+.blogCard-top{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 2.5rem;
+  position: relative;
+  top:0;
+  overflow: hidden;
+  border-top-right-radius: 0.5rem;
+  z-index: 1;
+}
+.blogCard-top-like{
+  align-content: center;
+  padding: 0.25rem 2rem;
+  font-size: 1.5rem;
+}
+.blogCard-top-like-icon{
+  font-size: 1.5rem;
+}
+.blogCard-top-like-total-likes{
+  background-color: transparent;
+  width: 112px;
+  padding: 0.5rem 1rem;
+  align-content: center;
+  text-align: center;
+  transform: skewX(40deg);
+  position: absolute;
+  right: -1rem;
+  color:#f9cc17;
+  font-size: 0.8rem;
+}
+.blogCard-top-like-total-likes-text{
+  transform: skewX(-40deg);
+}
+.blogCard-post-info{
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
+}
+.blogCard-post-date{
+  width: 40%;
+  padding:0.25rem 0.5rem;
+  background-color: transparent ;
+  color:#f6e528;
+  font-size: 1rem;
+}
+.blogCard-post-title{
+  background-color: #f9cc17;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  font-weight: 600;
+  text-wrap: nowrap;
+  font-size: 1rem;
+}
 }
 
 @media (min-width: 767px) and (max-width: 1024px) {
                                       /* navbar */
   .navbar{
-    width:100%;
+    width:85%;
+    margin: 0 auto;
     overflow-x:visible;
     display: flex;
+    gap:1rem;
     justify-content: space-between;
   }
   .nav-left-items{
     display: flex;
-    gap:2rem;
+    gap:1rem;
   }
   .nav-right-items{
     display: flex;
-    gap:2rem;
-    justify-content: end;
+    gap:1rem;
     visibility: visible;
   }
   .hamberger{
@@ -1003,6 +1360,10 @@ body{
   }
 
                           /* home-top */
+  .home{
+    width: 85%;
+    margin:0 auto;
+  }
   .home-top{
     display: flex;
     justify-content: space-between;
@@ -1191,7 +1552,7 @@ body{
   /* footer */
   .footer-box{
     display:grid;
-    padding: 0 1rem;
+    padding: 1.8rem 1rem;
     width: 100%;
     gap:1.5rem;
     grid-template-columns: auto auto auto auto;
@@ -1255,13 +1616,359 @@ body{
   .footer-box-copyright-icon{
     align-content: center;
   }
+
+  /* account-details */
+  .account-details{
+    width:85%;
+    margin: 0 auto;
+    height: auto;
+  }
+  .account-details-user{
+    display: grid;
+    justify-items: center;
+    z-index: -2;
+  }
+  .account-details-user-info{
+    height: auto;
+    width: 100%;
+    background-color: #09090b;
+    position: relative;
+
+  }
+  .account-details-user-info-coverImage-section{
+    height: 208px;
+    background-color: #bfdbfe;
+    position: relative;
+  }
+  .account-details-user-info-coverImage-section-editCoverImage{
+    position: absolute;
+    right:2rem;
+    top:2rem;
+    background-color: #fff;
+    height: 2rem;
+    width: 2rem;
+    align-content: center;
+    border-radius: 100%;
+    z-index: 1;
+    cursor: pointer;
+  }
+  .account-details-user-info-coverImage-section-displayCoverImage{
+    width: 100%;
+    height: 100%;
+  }
+  .account-details-user-info-coverImage-section-CoverImage{
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .account-details-user-info-profileImage-section{
+    width: 8rem;
+    height: 8rem;
+    position: absolute;
+    top: 7rem;
+    padding: 1rem;
+  }
+  .account-details-user-info-profileImage-section-view{
+    width: 8rem;
+    height: 8rem;
+    background-color: #fff;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 100%;
+  }
+  .account-details-user-info-about-user{
+    display: flex;
+    justify-content: space-between;
+    color: #facc15;
+    padding: 4rem 1rem 0 1rem;
+  }
+  .account-details-user-info-about-user-details{
+    display:grid;
+    flex-basis: 60%;
+  }
+  .account-details-user-info-about-user-details-username{
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+  .account-details-user-info-about-user-details-fullName{
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .account-details-user-info-about-user-details-data{
+    display: flex;
+    gap:0.5rem;
+  }
+  .account-details-user-info-about-user-details-tag{
+    font-weight: 600;
+  }
+  .account-details-user-info-about-user-details-pin{
+    font-size: 1.5rem;
+  }
+  .account-details-user-info-about-user-followers{
+    flex-basis: 20%;
+  }
+  .account-details-user-info-about-user-followers-button{
+    padding: 5px 12px;
+    background-color: #ff404f;
+    color:rgb(185, 181, 181)
+  }
+  .account-details-user-info-about-user-followers-total-followers{
+    display: flex;
+    gap:0.5rem;
+    margin: 1rem 0;
+    align-content: center;
+  }
+  .account-details-user-info-about-user-followers-total-followers-follower-image{
+    width: 25px;
+    height: 25px;
+  }
+  .account-details-user-info-about-user-followers-total-followers-follower-value{
+    font-size: 1.2rem;
+  }
+  .account-details-user-info-about-user-posts{
+    display: flex;
+    gap:1rem;
+    padding:1rem
+  }
+  .account-details-user-info-about-user-posts-button{
+    padding: 0.25rem 1.25rem;
+    background-color: #374151;
+    color:#020617;
+    font-weight: 700;
+    border-radius: 30px;
+    text-wrap: nowrap;
+  }
+  
+  .account-details-user-info-all-posts{
+    width: 100%;
+    background-color: #d9e9f0;
+  }
+  .account-details-user-info-all-posts-box{
+    padding: 1.8rem 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    gap:2rem
+  
+  }
+  .account-details-user-info-all-post-pagination{
+    position: relative;
+    margin: 1.2rem 0 ;
+    padding: 0.8rem 0rem;
+  }
+  .account-details-user-info-all-post-pagination-box{
+    display:flex;
+    padding:0 1rem ;
+    gap:2rem;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1rem;
+  }
+  .account-details-user-info-all-post-pagination-icon{
+    align-content: center;
+    font-size: 2.5rem;
+    background: #facc15;
+    border-radius: 100%;
+    color:#fff;
+    font-weight: 900;
+  }
+  .account-details-user-info-all-post-pagination-page-no{
+    align-content:center ;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* coverbox and coverImageSelectBox*/
+.coverImageEditBox{
+  margin: 0 auto;
+  width: 350px;
+  height: auto;
+  background: transparent;
+  color:white;
+  border:2px solid gray;
+  z-index: 2;
+}
+.coverImageEditBox-top{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+.coverImageEditBox-top-title{
+  font-size: 1.2rem;
+}
+.coverImageEditBox-top-close{
+  font-size: 1.5rem;
+  padding: 2px;
+}
+.coverImageEditBox-top-close:hover{
+  background-color: #686966;
+}
+.coverImageEditBox-mid{
+  padding: 0.5rem;
+  height: 288px;
+}
+.coverImageEditBox-mid-image{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.coverImageEditBox-hr{
+  height: 2px;
+  width: 100%;
+  background: #6b7280;
+}
+.coverImageEditBox-bottom{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+.coverImageEditBox-bottom-edit-button{
+  display: grid;
+  justify-content: center;
+  border-radius: 10px;
+  padding:0.5rem 1rem ;
+}
+.coverImageEditBox-bottom-edit-button:hover{
+  background-color: #6b7280;
+}
+.coverImageEditBox-bottom-edit-button-icon{
+  font-size:1.5rem
+}
+.coverImageEditBox-bottom-edit-button-text{
+  font-size: 1rem;
+}
+.coverImageEditBox-bottom-edit-input{
+  display: none;
+}
+.coverImageEditBox-bottom-delete-button{
+  display: grid;
+  justify-content: center;
+  padding:0.5rem 1rem ;
+  border-radius: 10px;
+}
+.coverImageEditBox-bottom-delete-button:hover{
+  background-color: #6b7280;
+}
+.coverImageEditBox-bottom-delete-button-icon{
+  font-size: 1.5rem;
+  margin: 0 auto;;
+}
+.coverImageEditBox-bottom-delete-button-text{
+  font-size: 1rem;
+}
+
+.coverbox{
+  width: 100%;
+  position: absolute;
+  top:0;
+  height: 100%;
+  z-index: 2;
+}
+.coverbox-box{
+  position: absolute;
+  top:10%;
+  z-index: 3;
+  height: auto;
+  width: auto;
+}
+.photobox{
+  position: absolute;
+  top: 5%;
+  width: 70%;
+  height: 100%;
+  z-index: 2;
+}
+.photobox-box{
+  position: absolute;
+  z-index: 2;
+  top:5%; 
+  left:26%;
+  height: auto;
+}
+/* blogCard */
+.blogCard{
+  width: 220px;
+  height: 180px;
+  position: relative;
+  cursor: pointer;
+  color:#111827;
+  background-color: #3b3b3b;
+}
+.blogCard-Image-box{
+  position: absolute;
+  width:100%;
+  border-radius: 0.5rem;
+}
+.blogCard-Image{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+.blogCard-top{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 2.5rem;
+  position: relative;
+  top:0;
+  overflow: hidden;
+  border-top-right-radius: 0.5rem;
+  z-index: 1;
+}
+.blogCard-top-like{
+  align-content: center;
+  padding: 0.25rem 2rem;
+  font-size: 1.5rem;
+}
+.blogCard-top-like-icon{
+  font-size: 1.5rem;
+}
+.blogCard-top-like-total-likes{
+  background-color: transparent;
+  width: 112px;
+  padding: 0.5rem 1rem;
+  align-content: center;
+  text-align: center;
+  transform: skewX(40deg);
+  position: absolute;
+  right: -1rem;
+  color:#f9cc17;
+  font-size: 0.8rem;
+}
+.blogCard-top-like-total-likes-text{
+  transform: skewX(-40deg);
+}
+.blogCard-post-info{
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
+}
+.blogCard-post-date{
+  width: 40%;
+  padding:0.25rem 0.5rem;
+  background-color: transparent ;
+  color:#f6e528;
+  font-size: 1rem;
+}
+.blogCard-post-title{
+  background-color: #f9cc17;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  font-weight: 600;
+  text-wrap: nowrap;
+  font-size: 1rem;
+}
 }
 
 @media (min-width:1025px) {
                                      /* navbar */
   .navbar{
-    width:100%;
-    overflow-x:visible;
+    width:80%;
+    margin: 0 auto;
+    /* overflow-x:visible; */
     display: flex;
     justify-content: space-between;
   }
@@ -1271,7 +1978,7 @@ body{
   }
   .nav-right-items{
     display: flex;
-    gap:5rem;
+    gap:2rem;
     justify-content: end;
     visibility: visible;
   }
@@ -1279,10 +1986,14 @@ body{
     display: none;
   }
                                 /* Home */
+  .home{
+    width: 80%;
+    margin:0 auto;
+  }
   .home-top{
     margin:2rem 0;
     height: auto;
-    width: 100%;
+    width:100%;
     display: flex;
     justify-content:space-around;
   }
@@ -1470,7 +2181,7 @@ body{
     /* footer */
 .footer-box{
   display:grid;
-  padding: 0 1rem;
+  padding: 1.8rem 1rem;
   width: 100%;
   gap:1.5rem;
   grid-template-columns: auto auto auto auto;
@@ -1533,6 +2244,351 @@ body{
 }
 .footer-box-copyright-icon{
   align-content: center;
+}
+/* account-details */
+.account-details{
+  width:80%;
+  margin: 0 auto;
+  height: auto;
+}
+.account-details-user{
+  display: grid;
+  justify-items: center;
+  z-index: -2;
+}
+.account-details-user-info{
+  height: auto;
+  width: 100%;
+  background-color: #09090b;
+  position: relative;
+}
+.account-details-user-info-coverImage-section{
+  height: 208px;
+  background-color: #bfdbfe;
+  position: relative;
+}
+.account-details-user-info-coverImage-section-editCoverImage{
+  position: absolute;
+  right:2rem;
+  top:2rem;
+  background-color: #fff;
+  height: 2rem;
+  width: 2rem;
+  align-content: center;
+  border-radius: 100%;
+  z-index: 1;
+  cursor: pointer;
+}
+.account-details-user-info-coverImage-section-displayCoverImage{
+  width: 100%;
+  height: 100%;
+}
+.account-details-user-info-coverImage-section-CoverImage{
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
+}
+
+.account-details-user-info-profileImage-section{
+  width: 8rem;
+  height: 8rem;
+  position: absolute;
+  top: 7rem;
+  padding: 1rem;
+}
+.account-details-user-info-profileImage-section-view{
+  width: 8rem;
+  height: 8rem;
+  background-color: #fff;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+.account-details-user-info-about-user{
+  display: flex;
+  justify-content: space-between;
+  color: #facc15;
+  padding: 4rem 1rem 0 1rem;
+}
+.account-details-user-info-about-user-details{
+  display:grid;
+  flex-basis: 60%;
+}
+.account-details-user-info-about-user-details-username{
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+.account-details-user-info-about-user-details-fullName{
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.account-details-user-info-about-user-details-data{
+  display: flex;
+  gap:0.5rem;
+}
+.account-details-user-info-about-user-details-tag{
+  font-weight: 600;
+}
+.account-details-user-info-about-user-details-pin{
+  font-size: 1.5rem;
+}
+.account-details-user-info-about-user-followers{
+  flex-basis: 20%;
+}
+.account-details-user-info-about-user-followers-button{
+  padding: 5px 12px;
+  background-color: #ff404f;
+  color:rgb(185, 181, 181)
+}
+.account-details-user-info-about-user-followers-total-followers{
+  display: flex;
+  gap:0.5rem;
+  margin: 1rem 0;
+  align-content: center;
+}
+.account-details-user-info-about-user-followers-total-followers-follower-image{
+  width: 25px;
+  height: 25px;
+}
+.account-details-user-info-about-user-followers-total-followers-follower-value{
+  font-size: 1.2rem;
+}
+.account-details-user-info-about-user-posts{
+  display: flex;
+  gap:1rem;
+  padding:1rem
+}
+.account-details-user-info-about-user-posts-button{
+  padding: 0.25rem 1.25rem;
+  background-color: #374151;
+  color:#020617;
+  font-weight: 700;
+  border-radius: 30px;
+  text-wrap: nowrap;
+}
+
+.account-details-user-info-all-posts{
+  width: 100%;
+  background-color: #d9e9f0;
+}
+.account-details-user-info-all-posts-box{
+  padding: 1.8rem 1rem;
+  display: flex;
+  /* grid-template-columns: auto auto auto auto; */
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  gap:2rem
+
+}
+.account-details-user-info-all-post-pagination{
+  position: relative;
+  margin: 1.2rem 0 ;
+  padding: 0.8rem 0rem;
+}
+.account-details-user-info-all-post-pagination-box{
+  display:flex;
+  padding:0 1rem ;
+  gap:2rem;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+}
+.account-details-user-info-all-post-pagination-icon{
+  align-content: center;
+  font-size: 2.5rem;
+  background: #facc15;
+  border-radius: 100%;
+  color:#fff;
+  font-weight: 900;
+}
+.account-details-user-info-all-post-pagination-page-no{
+  align-content:center ;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* coverbox and coverImageSelectBox*/
+.coverImageEditBox{
+  margin: 0 auto;
+  width: 350px;
+  height: auto;
+  background: transparent;
+  color:white;
+  border:2px solid gray;
+  z-index: 2;
+}
+.coverImageEditBox-top{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+.coverImageEditBox-top-title{
+  font-size: 1.2rem;
+}
+.coverImageEditBox-top-close{
+  font-size: 1.5rem;
+  padding: 2px;
+}
+.coverImageEditBox-top-close:hover{
+  background-color: #686966;
+}
+.coverImageEditBox-mid{
+  padding: 0.5rem;
+  height: 288px;
+}
+.coverImageEditBox-mid-image{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.coverImageEditBox-hr{
+  height: 2px;
+  width: 100%;
+  background: #6b7280;
+}
+.coverImageEditBox-bottom{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+.coverImageEditBox-bottom-edit-button{
+  display: grid;
+  justify-content: center;
+  border-radius: 10px;
+  padding:0.5rem 1rem ;
+}
+.coverImageEditBox-bottom-edit-button:hover{
+  background-color: #6b7280;
+}
+.coverImageEditBox-bottom-edit-button-icon{
+  font-size:1.5rem
+}
+.coverImageEditBox-bottom-edit-button-text{
+  font-size: 1rem;
+}
+.coverImageEditBox-bottom-edit-input{
+  display: none;
+}
+.coverImageEditBox-bottom-delete-button{
+  display: grid;
+  justify-content: center;
+  padding:0.5rem 1rem ;
+  border-radius: 10px;
+}
+.coverImageEditBox-bottom-delete-button:hover{
+  background-color: #6b7280;
+}
+.coverImageEditBox-bottom-delete-button-icon{
+  font-size: 1.5rem;
+  margin: 0 auto;;
+}
+.coverImageEditBox-bottom-delete-button-text{
+  font-size: 1rem;
+}
+
+.coverbox{
+  width: 100%;
+  position: absolute;
+  top:0;
+  height: 100%;
+  z-index: 2;
+}
+.coverbox-box{
+  position: absolute;
+  top:10%;
+  z-index: 3;
+  height: auto;
+  width: auto;
+}
+.photobox{
+  position: absolute;
+  top: 5%;
+  width: 70%;
+  height: 100%;
+  z-index: 2;
+}
+.photobox-box{
+  position: absolute;
+  z-index: 2;
+  top:5%; 
+  left:40%;
+  height: auto;
+}
+
+/* blogCard */
+.blogCard{
+  width: 250px;
+  height: 180px;
+  position: relative;
+  cursor: pointer;
+  color:#111827;
+  background-color: #3b3b3b;
+}
+.blogCard-Image-box{
+  position: absolute;
+  width:100%;
+  border-radius: 0.5rem;
+}
+.blogCard-Image{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+.blogCard-top{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 2.5rem;
+  position: relative;
+  top:0;
+  overflow: hidden;
+  border-top-right-radius: 0.5rem;
+  z-index: 1;
+}
+.blogCard-top-like{
+  align-content: center;
+  padding: 0.25rem 2rem;
+  font-size: 1.5rem;
+}
+.blogCard-top-like-icon{
+  font-size: 1.5rem;
+}
+.blogCard-top-like-total-likes{
+  background-color: transparent;
+  width: 112px;
+  padding: 0.5rem 1rem;
+  align-content: center;
+  text-align: center;
+  transform: skewX(40deg);
+  position: absolute;
+  right: -1rem;
+  color:#f9cc17;
+  font-size: 0.8rem;
+}
+.blogCard-top-like-total-likes-text{
+  transform: skewX(-40deg);
+}
+.blogCard-post-info{
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
+}
+.blogCard-post-date{
+  width: 40%;
+  padding:0.25rem 0.5rem;
+  background-color: transparent ;
+  color:#f6e528;
+  font-size: 1rem;
+}
+.blogCard-post-title{
+  background-color: #f9cc17;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  font-weight: 600;
+  text-wrap: nowrap;
+  font-size: 1rem;
 }
 
 }

@@ -14,16 +14,16 @@ const AccountDetails = () => {
     const [coverBoxOpen, setCoverBoxOpen] = useState(false)
 
     const style = {
-        height: photoBoxOpen || coverBoxOpen?"85vh":"auto",
-        overflow:photoBoxOpen || coverBoxOpen?"hidden":"auto"
+        height: photoBoxOpen || coverBoxOpen?"60vh":"auto",
+        overflow: photoBoxOpen || coverBoxOpen?"hidden":"auto"
     }
 
   return (
     <>
-        <div className='account-details' style={style} >
+        <div className='account-details ' >
             {
                 coverBoxOpen && (
-                    <div className='photobox bg ' >
+                    <div className='photobox ' >
                         <div className='photobox-box'>
                             <CoverImage close={()=>setCoverBoxOpen(!coverBoxOpen)}/>
                         </div>
@@ -33,7 +33,7 @@ const AccountDetails = () => {
 
             {
                 photoBoxOpen && (
-                    <div className='photobox bg ' >
+                    <div className='photobox ' >
                         <div className='photobox-box'>
                         <Profile close={()=>setPhotoBoxOpen(!photoBoxOpen)}/>
                         </div>

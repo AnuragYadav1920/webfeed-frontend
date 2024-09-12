@@ -11,7 +11,7 @@ import { FaCopyright } from "react-icons/fa";
 const Footer = () => {
   return (
 <>
-        <div className='footer-box'>
+        <div className='footer-box bg-green-800'>
             <div className='footer-box-1'>              
                 <div className='footer-box-1-logo'>
                     <img src="images/logo.png" alt="" className='footer-box-1-logo-image'/>
