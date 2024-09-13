@@ -23,12 +23,12 @@ const Carousal = () => {
   }
   return (
     <>
-      <div className='w-full h-96  flex text-gray-900 relative '>
-          <div className=' h-full absolute left-0 content-center px-2 text-2xl cursor-pointer' ><FaChevronLeft  onClick={handleClickPrev} /></div>
-          <div className='w-full h-full '>
-            <img src={`images/${slides[currentIndex].url}`} alt="" className='object-fill w-full h-full rounded-lg'/> 
+      <div className='carousal'>
+          <div className='carousal-postview-icon-box' ><FaChevronLeft  onClick={handleClickPrev} /></div>
+          <div className='carousal-bg-image-box'>
+            <img src={`images/${slides[currentIndex].url}`} alt="" className='carousal-bg-image-box-image'/> 
           </div>
-          <div className=' h-full absolute right-0 content-center px-2 text-2xl cursor-pointer' ><FaChevronRight onClick={handleClickNext}/></div>
+          <div className='carousal-preview-icon-box' ><FaChevronRight onClick={handleClickNext}/></div>
       </div>
     </>
   )

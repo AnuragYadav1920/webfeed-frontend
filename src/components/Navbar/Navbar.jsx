@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaSearch } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink} from 'react-router-dom'
 import Account from '../Navbar/Account/Account.jsx'
 import Discover from './Discover/Discover.jsx';
@@ -25,90 +26,69 @@ const Navbar = () => {
 
   return (
     <>
-        <nav className="relative z-20   bg-sky-800">
-            <div className="navbar text-yellow-400 text-sm py-1.5">
-                {/* navbar-container-left-section-start */}
-                <div className='nav-left-items flex space-x-10 content-center '>
-                    {/* logo-section */}
-                    <NavLink to="/">
-                        <div className='flex'>
-                            <img src="images/logo.png" alt="logo" className='object-fill w-10 h-10 ' />
-                            <span className='content-center text-xl font-bold'>WebFeed</span>
-                        </div>
-                    </NavLink>                   
-                    {/* search-bar section */}
-                    <div className='flex border-2 border-yellow-400 px-3 rounded-full content-center'>
-                        <input type="text" placeholder='Search here' className='bg-transparent border-none outline-none placeholder-yellow-400'   />
-                        <span className='text-lg content-center '> <FaSearch /> </span>
-                    </div> 
-                </div> 
-                
-                {/* navbar-container-left-section-end */}
-                    <div className='nav-right-items '>
-
-                        <div className='content-center'>
-                            <NavLink to="/">Home</NavLink>
-                        </div>
-
-                        {/* discover */}
-                        <div className='content-center cursor-pointer'>
-                            <p onClick={()=>handleClick("Discover")}>Discover</p>
-                            {discover && (
-                                <div className='absolute top-20 right-100  bg-yellow-400 rounded-lg'>
-                                <Discover />
-                                </div>
-                            )}
-                        </div>
-                        {/* Contact */}
-
-                        <div className='content-center '>
-                            <NavLink to="/contact">Contact</NavLink>
-                        </div>
-
-                        {/* login  & Sign Up */}
-
-                            {!isLoggedIn &&(
-                                <>
-                                    <div className='content-center'>
-                                        <NavLink to="/login">Login</NavLink>
-                                    </div>
-                                    <div className='content-center'>
-                                        <NavLink to="/signup">Sign Up</NavLink>
-                                    </div>
-                                </>
-                            )}  
-
-
-                        {/* account & Create*/}
-
-                            {isLoggedIn &&(
-                                <>
-                                    <div className='content-center'>
-                                        <NavLink to="/create">Create</NavLink>
-                                    </div>
-
-                                    <div className='content-center h-10 w-10 cursor-pointer'>
-                                        <img src="images/photo-modified.png"alt="" className='w-8 h-8 object-fill' onClick={()=>handleClick("Profile")} />
-                                        {profile &&  (
-                                            <div className='absolute top-20 right-10  bg-yellow-400 rounded-lg'>
-                                                <Account/>
-                                            </div>
-                                        )}
-                                    </div>                                  
-                                </>
-                            )}
-                    </div> 
-                        <span className='hamberger px-4 py-0.5 hover:backdrop-brightness-75 backdrop-opacity-20 content-center'  onClick={()=>setHamberger(!hamberger)}>Menu</span>
+       <nav className='navbar'>
+                    
+            <div className='navbar-container'>
+            {/* navbar-left-section */}
+            <div className='navbar-container-left-section'>
+                <div className='navbar-container-left-section-logo'>
+                    <ul>
+                        <li><NavLink to="/">WebFeed</NavLink></li>
+                    </ul>
+                </div>
+                <div className='navbar-container-left-section-links'>
+                    <ul>
+                        <li><NavLink to="/">HOME</NavLink></li>
+                        <li onClick={()=>handleClick("Discover")}>EXPLORE</li>
+                        <li><NavLink to="/contact">CONTACT</NavLink></li>
+                        <li><NavLink to="/create">CREATE</NavLink></li>
+                    </ul>
+                    {
+                        discover&&(
+                            <div className='navbar-container-left-section-discover'>
+                                <Discover/>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+            {/* navbar-right-section for tablets and pc */}
+            <div className='navbar-container-right-section'>
+            <div className='navbar-container-right-section-search'>
+                <FaSearch/>
+            </div>
+            {
+                !isLoggedIn&&(
+                    <div className='navbar-container-right-section-links'>
+                        <ul>
+                            <li><NavLink to="/login">Login</NavLink></li>
+                            <li><NavLink to="/signup">Sign up</NavLink></li>
+                        </ul>
+                    </div>
+                )
+            }
+            {
+                isLoggedIn&&(
+                    <div className='navbar-container-right-section-account'>
+                        <li onClick={()=>handleClick("Profile")}>A</li>
                         {
-                            hamberger&&(
-                                <div className='absolute top-12 right-0'>
-                                    <Hambergurmenu/>
+                            profile&&(
+                                <div className='navbar-container-right-section-account-box'>
+                                    <Account/>
                                 </div>
                             )
                         }
-                </div>
-            </nav>
-    </>
+                    </div>
+                )
+            }
+            {/* navbar-right-section for mobile devices */}
+            <div className='navbar-container-right-section-hamberger-menu'>
+                <li><GiHamburgerMenu/></li> 
+            </div>
+            </div>
+        </div>
+    </nav>
+</>
   )
 }
 

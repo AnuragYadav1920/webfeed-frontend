@@ -25,15 +25,6 @@ const Account = () => {
                   </div>
               </div>
           </div>
-          <div>
-            <div className='flex flex-wrap justify-start gap-4 text-gray-400'>
-              <div className='w-16 h-16 bg-custom-bg-color text-center content-center rounded-lg'>All Posts</div>
-              <div className='w-16 h-16 bg-custom-bg-color text-center content-center rounded-lg'>All Posts</div>
-              <div className='w-16 h-16 bg-custom-bg-color text-center content-center rounded-lg'>All Posts</div>
-              <div className='w-16 h-16 bg-custom-bg-color text-center content-center rounded-lg'>All Posts</div>
-              <div className='w-16 h-16 bg-custom-bg-color text-center content-center rounded-lg'>All Posts</div>
-            </div>
-          </div>
           <div className='grid text-gray-700 my-4'>                    
               <div className='flex space-x-4 account-item w-full p-2 rounded-md'>
                 <div className='content-center'>

@@ -11,7 +11,8 @@ import { FaCopyright } from "react-icons/fa";
 const Footer = () => {
   return (
 <>
-        <div className='footer-box bg-green-800'>
+    <div className='footer'>
+        <div className='footer-box'>
             <div className='footer-box-1'>              
                 <div className='footer-box-1-logo'>
                     <img src="images/logo.png" alt="" className='footer-box-1-logo-image'/>
@@ -59,6 +60,7 @@ const Footer = () => {
             <span className='footer-box-copyright-icon'> <FaCopyright /></span>
             <span> WebFeed.com || All Right Reserved</span>
         </div>
+    </div>
 </>
   )
 }

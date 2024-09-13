@@ -10,24 +10,19 @@ const Home = () => {
     <>
       {/* top section container */}
       <div className='home'>
-      <div className='home-top '>
-          <div className='home-top-left'>
+          <div className='home-top'>
             <div className='heading'>
               <span>Discover <br /> </span>
               <span>and  create the <br /></span>
               <span>Feeds</span>
             </div>
-            <div className='home-desc'>welcome to WebFeed, where you can feed your brain with your search.</div>
+            <div className='home-desc'>welcome to WebFeed, where you can feed your <br /> brain with your search.</div>
             <div>
               <button className='bg-yellow-400 px-6 py-3 rounded-full'>
                 Start your search
               </button>
             </div>
           </div>
-        <div className='home-top-right' >
-            <img src="images/mountain.avif" alt="" className='home-top-right-image'/>
-        </div>
-      </div>
 
       {/* mid section container */}
 
