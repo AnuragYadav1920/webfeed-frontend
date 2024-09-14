@@ -7,27 +7,27 @@ const Filter = () => {
   return (
     <>
         <div>
-            <div className='flex justify-between relative '>
-                <div className='w-custom-filter-width flex text-gray-400 bg-transparent px-4 py-2 content-center space-x-2 border-2 border-gray-500 rounded-md cursor-pointer'>
-                    <div className='content-center'>
-                        <FaSearch className='font-bold text-xl'/>
+            <div className='filter-container'>
+                <div className='filter-container-left'>
+                    <div className='filter-container-left-search-icon-box'>
+                        <FaSearch className='filter-container-left-search-icon'/>
                     </div>
-                    <div className='content-center'>
-                        <input type="text" className='bg-transparent border-none outline-none w-custom-input-width' placeholder='filter the blogs'/>
+                    <div className='filter-container-left-search-input-box'>
+                        <input type="text" className='filter-container-left-search-input' placeholder='filter the blogs'/>
                     </div>
                 </div>
                 
-                <div className='flex  space-x-2 text-gray-300 px-2 py-2 border-2 border-gray-500 rounded-md cursor-pointer' onClick={()=>setFilter(!filter)}>
-                    <div className='content-center'>
-                        <FaFilter className='bg-gray  text-lg '/>
+                <div className='filter-container-right' onClick={()=>setFilter(!filter)}>
+                    <div className='filter-container-right-filter-icon-box'>
+                        <FaFilter className='filter-container-right-filter-icon'/>
                     </div>
-                    <div className='content-center font-semibold'>
+                    <div className='filter-container-right-filter-text'>
                         Filter
                     </div>
                 </div>
                 {       
                         filter && (
-                            <div className='absolute top-16 right-2 z-20'>
+                            <div className='filter-container-right-filter-options-box'>
                                 <FilterBox/>
                             </div>
                             

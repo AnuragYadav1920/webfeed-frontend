@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { FaCamera } from "react-icons/fa";
 import { BsPinAngle } from "react-icons/bs";
-import BlogCard from '../../components/BlogCard/BlogCard.jsx'
-import { CiCircleChevLeft } from "react-icons/ci";
-import { CiCircleChevRight } from "react-icons/ci";
 import Profile from '../../components/Profile&CoverImage/Profile.jsx';
 import CoverImage from '../../components/Profile&CoverImage/CoverImage.jsx';
-import { MdVisibility } from 'react-icons/md';
-import { NavLink , Outlet} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import UserBlogContainer from '../../components/BlogContainer/UserBlogContainer.jsx';
 
 const AccountDetails = () => {
     const [photoBoxOpen, setPhotoBoxOpen] = useState(false)
@@ -20,7 +17,7 @@ const AccountDetails = () => {
 
   return (
     <>
-        <div className='account-details ' >
+        <div className='account-details '>
             {
                 coverBoxOpen && (
                     <div className='photobox ' >
@@ -87,35 +84,12 @@ const AccountDetails = () => {
                         <button className='account-details-user-info-about-user-posts-button'>All Posts</button>
                     </div>
                 </div>
-
+                
             </div>
                 {/* user all posts */}
-            <div className='account-details-user-info-all-posts'>
-                <div className='account-details-user-info-all-posts-box'>
-                    <NavLink to="/edit-blogs/blogId" >
-                        <BlogCard/>
-                    </NavLink>
-                    <NavLink to="/edit-blogs/blogId" >
-                        <BlogCard/>
-                    </NavLink>
-                    <NavLink to="/edit-blogs/blogId" >
-                        <BlogCard/>
-                    </NavLink>
-                    <NavLink to="/edit-blogs/blogId" >
-                        <BlogCard/>
-                    </NavLink>
-                    <NavLink to="/edit-blogs/blogId" >
-                        <BlogCard/>
-                    </NavLink>
+                <div  className='account-details-user-posts'>
+                <UserBlogContainer/>
                 </div>
-                <div className='account-details-user-info-all-post-pagination'>
-                    <div className='account-details-user-info-all-post-pagination-box'>
-                        <div className='account-details-user-info-all-post-pagination-icon'><CiCircleChevLeft/></div>
-                        <div className='account-details-user-info-all-post-pagination-page-no'>1</div>
-                        <div className='account-details-user-info-all-post-pagination-icon'><CiCircleChevRight/></div>
-                    </div>
-                </div>
-            </div>
         </div>
         
      </div>
