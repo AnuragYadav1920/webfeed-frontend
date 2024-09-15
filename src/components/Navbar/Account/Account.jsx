@@ -8,45 +8,45 @@ const Account = () => {
   return (
     <>
      <div className='account ' >
-          <div className='flex gap-4 text-gray-700'>
-              <div className='content-center'>
-                <div className='py-8'>
-                  <img src="images/photo-modified.png" alt="" height={65} width={65}/>
-                </div>
+          <div className='account-top'>
+              <div className='account-top-image-box'>
+                <img src="images/photo-modified.png" alt="" className='account-top-image-box-image'/>
               </div>
-              <div className='flex-row content-center space-y-2'>
-                  <div className='flex text-2xl font-semibold space-x-2'>
-                    <div className='content-center'>@anurag24</div>
-                    <div className='content-center'><MdVerified/></div>
+              <div className='account-top-user-details-box'>
+                  <div className='account-top-user-details-box-username-box'>
+                    <div >@anurag24</div>
+                    <div className='verified-icon'><MdVerified/></div>
                   </div>
-                  <div className='flex text-sm space-x-2 '>
-                      <div>followers:</div>
-                      <div>110k</div>                  
+                  <div className='account-top-user-details-box-followers-box '>
+                      <div className='follower-icon'>
+                        <img src="images/flower.png" alt="" />
+                      </div>
+                      <div className='total-followers'>110k</div>                  
                   </div>
               </div>
           </div>
-          <div className='grid text-gray-700 my-4'>                    
-              <div className='flex space-x-4 account-item w-full p-2 rounded-md'>
-                <div className='content-center'>
-                  <VscAccount className='text-lg'/>
+          <div className='account-bottom'>                    
+              <div className='account-bottom-item-box'>
+                <div className='account-bottom-item-box-icon'>
+                  <VscAccount />
                 </div>
-                <div>
+                <div className='account-bottom-item-box-text'>
                   <NavLink to="/account-info">Account info</NavLink>
                 </div>
               </div>                        
-              <div className='flex space-x-4 account-item w-full p-2 rounded-md'>
-                <div className='content-center'>
-                  <FiEdit className='text-lg'/>
+              <div className='account-bottom-item-box'>
+                <div className='account-bottom-item-box-icon'>
+                  <FiEdit />
                 </div>
-                <div>
+                <div className='account-bottom-item-box-text'>
                   <NavLink to="/edit-details">Edit details</NavLink>
                 </div>
               </div>
-              <div className='flex space-x-4 account-item w-full p-2 rounded-md'>
-                <div className='content-center'>
-                  <MdLogout className='text-lg'/>
+              <div className='account-bottom-item-box'>
+                <div className='account-bottom-item-box-icon'>
+                  <MdLogout />
                 </div>
-                <div>
+                <div className='account-bottom-item-box-text'>
                   <NavLink to="logout">Logout</NavLink>
                 </div>
               </div>            

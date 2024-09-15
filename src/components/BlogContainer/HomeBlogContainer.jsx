@@ -15,6 +15,24 @@ const BlogContainer = () => {
                   <NavLink to="/blogs/blogId">
                     <BlogCard/>
                   </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
+                  <NavLink to="/blogs/blogId">
+                    <BlogCard/>
+                  </NavLink> 
             </div>
           </div>
           <div className='home-blogs-page-search-blogs-and-filter-all-blogs-pagination'>

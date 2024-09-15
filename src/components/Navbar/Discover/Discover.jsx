@@ -4,7 +4,7 @@ const Discover = () => {
   return (
     <>
       <div>
-        <div className='discover text-gray-700' >
+        <div className='discover ' >
             <div className='discover-item'>
               <NavLink to="/blogs">Blogs</NavLink>
             </div>

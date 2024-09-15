@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink} from 'react-router-dom'
 import Account from '../Navbar/Account/Account.jsx'
 import Discover from './Discover/Discover.jsx';
+import SearchBar from './SearchBar/SearchBar.jsx';
 import Hambergurmenu from './Hambergurmenu/Hambergurmenu.jsx.jsx';
 
 const Navbar = () => {
@@ -13,6 +14,7 @@ const Navbar = () => {
     const [profile, setProfile] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const [hamberger, setHamberger] = useState(false)
+    const [searchBoxOpen, isSearchBoxOpen] = useState(false)
 
     const handleClick = (tabname)=>{
         if(tabname === "Discover"){
@@ -39,7 +41,7 @@ const Navbar = () => {
                 <div className='navbar-container-left-section-links'>
                     <ul>
                         <li><NavLink to="/">HOME</NavLink></li>
-                        <li onClick={()=>handleClick("Discover")}>EXPLORE</li>
+                        <li onClick={()=>handleClick("Discover")}>DISCOVER</li>
                         <li><NavLink to="/contact">CONTACT</NavLink></li>
                         <li><NavLink to="/create">CREATE</NavLink></li>
                     </ul>
@@ -55,7 +57,14 @@ const Navbar = () => {
             {/* navbar-right-section for tablets and pc */}
             <div className='navbar-container-right-section'>
             <div className='navbar-container-right-section-search'>
-                <FaSearch/>
+                {
+                    searchBoxOpen&&(
+                        <div className='search-bar'>
+                            <SearchBar/>
+                        </div>
+                    )
+                }
+                <div className='navbar-container-right-section-search-icon' onClick={()=>isSearchBoxOpen(!searchBoxOpen)}><FaSearch/></div>  
             </div>
             {
                 !isLoggedIn&&(
@@ -70,7 +79,9 @@ const Navbar = () => {
             {
                 isLoggedIn&&(
                     <div className='navbar-container-right-section-account'>
-                        <li onClick={()=>handleClick("Profile")}>A</li>
+                        <li onClick={()=>handleClick("Profile")}>
+                            <img src="images/photo-modified.png" alt="" className='account-icon' />
+                        </li>
                         {
                             profile&&(
                                 <div className='navbar-container-right-section-account-box'>
