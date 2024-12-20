@@ -1,0 +1,61 @@
+.edit-detail-container{
+    border-bottom: 2px solid gray;
+  }
+  .edit-detail-container-box{
+    display: flex;
+    padding: 0.75rem;
+    position: relative;
+  }
+  .edit-detail-container-box-main{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .edit-detail-container-box-main-left{
+    display: flex;
+    gap:2rem;
+  }
+  .dataKey{
+    width: 120px;
+    color:#1da0d8;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .edit-detail-container-box-main-left-edit-box{
+    display: grid;
+  }
+  
+  .edit-detail-container-box-main-left-edit-box-input{
+    padding: 0.5rem 1rem;
+    background-color: #fdfdfd;
+    width: 200%;
+    border: 2px solid gray;
+    outline: none;
+  }
+  .edit-detail-container-box-main-left-edit-box-buttons{
+    display: flex;
+    justify-content: center;
+    gap:1rem;
+    margin-top: 0.5rem;
+  }
+  .edit-detail-container-box-main-left-edit-box-buttons-button-delete{
+    padding:  0.375rem 0.5rem;
+    background-color: #848487;
+    color:#fff
+  }
+  .edit-detail-container-box-main-left-edit-box-buttons-button-save{
+    padding:  0.375rem 0.5rem;
+    background-color: #255076;
+    color:#fff
+  }
+  
+  .edit-detail-container-box-main-right{
+    color:#1d4ed8;
+    align-content: center;
+    cursor:pointer;
+  }
+  .edit-detail-container-box-main-right-icon{
+    font-size: 1.5rem;
+    align-content: center;
+  }

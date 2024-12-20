@@ -1,75 +1,173 @@
-import React from 'react'
-
+import React, { useContext, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext.js";
+import Loader from "../../components/Spinner/Loader.jsx";
 const SignUp = () => {
+  const { setUser, setNotification } = useContext(UserContext);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const createNewUser = async (formData) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        "http://localhost:8000/api/v1/users/register",
+        {
+          method: "POST",
+          credentials: "include",
+          body: formData,
+        }
+      );
+      const results = await response.json();
+      if (results.success) {
+        setNotification({
+          value: true,
+          message: results.message,
+        });
+        navigate("/login");
+      } else {
+        setNotification({
+          value: true,
+          message: "Sorry, user registration failed",
+        });
+      }
+    } catch (error) {
+      console.log("Error", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    createNewUser(formData);
+  };
+
   return (
     <>
-        <div className='my-32 text-yellow-400 space-y-16'>
-            <div className='text-center '>
-                <h1 className='text-5xl font-bold'>Sign Up</h1>
-            </div>
-            <div>
-                <form action="">
-                    <div className='grid justify-items-center space-y-4'>
-                        <div className='grid space-y-2 '>
-                            <div>
-                                <label htmlFor="">Userame</label>                                   
-                            </div>
-                            <div className='border-2 border-yellow-400 p-2 w-custom-input-width rounded-lg'>
-                                <input type="text" placeholder='enter your username' className='placeholder-yellow-400 bg-transparent outline-none border-none ' />
-                            </div>
-                        </div>
-                        <div className='grid space-y-2 '>
-                            <div>
-                                <label htmlFor="">Full Name</label>                                   
-                            </div>
-                            <div className='border-2 border-yellow-400 p-2 w-custom-input-width rounded-lg'>
-                                <input type="text" placeholder='enter your full Name' className='placeholder-yellow-400 bg-transparent outline-none border-none ' />
-                            </div>
-                        </div>
-                        <div className='grid space-y-2 '>
-                            <div>
-                                <label htmlFor="">Email address</label>                                   
-                            </div>
-                            <div className='border-2 border-yellow-400 p-2 w-custom-input-width rounded-lg'>
-                                <input type="text" placeholder='example@gmail.com' className='placeholder-yellow-400 bg-transparent outline-none border-none ' />
-                            </div>
-                        </div>
-                        <div className='grid space-y-2 '>
-                            <div>
-                                <label htmlFor="">Avatar</label>                                   
-                            </div>
-                            <div className='border-2 border-yellow-400 p-2 w-custom-input-width rounded-lg'>
-                                <input type="file" placeholder='Select avatar' className='placeholder-yellow-400 bg-transparent outline-none border-none ' />
-                            </div>
-                        </div>
-                        <div className='grid space-y-2 '>
-                            <div>
-                                <label htmlFor="">Cover Image</label>                                   
-                            </div>
-                            <div className='border-2 border-yellow-400 p-2 w-custom-input-width rounded-lg'>
-                                <input type="file" placeholder='Select cover image' className='placeholder-yellow-400 bg-transparent outline-none border-none ' />
-                            </div>
-                        </div>
-                        <div className='grid space-y-2'>
-                            <div>
-                                <label htmlFor="">Password</label>                                   
-                            </div>
-                            <div className='border-2 border-yellow-400 p-2 w-custom-input-width rounded-lg'>
-                                <input type="text" placeholder='password123' className='placeholder-yellow-400 bg-transparent outline-none border-none  file-' />
-                            </div>
-                        </div>
-                        <div className='w-custom-button-width bg-yellow-400 text-black p-2 text-center rounded-full '>
-                            <button>Submit</button>
-                        </div>
-                        <div>
-                            <span><span className='font-bold'>Already registered ? </span>login</span>
-                        </div>                      
-                    </div>   
-                </form>
-            </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="signup-container">
+          <div className="signup-heading-div">
+            <span className="signup-heading-text">Sign Up</span>
+          </div>
+          <div className="signup-form-div">
+            <form onSubmit={handleSubmit}>
+              <div className="signup-form-inner-div">
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="username">Username :</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="enter your username"
+                    required
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="fullName">Full Name :</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="enter your Full Name"
+                    required
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="email">Email :</label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="enter your email"
+                    required
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="password">Password :</label>
+                  <input
+                    type="text"
+                    id="password"
+                    name="password"
+                    placeholder="enter your password"
+                    required
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="avatar">Profile Image :</label>
+                  <input type="file" id="avatar" name="avatar" required />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="coverImage">Cover Image :</label>
+                  <input
+                    type="file"
+                    id="coverImage"
+                    name="coverImage"
+                    required
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="instagram">Instagram :</label>
+                  <input
+                    type="text"
+                    id="instagram"
+                    name="instagram"
+                    placeholder="enter your Instagram Id"
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="facebook">Facebook :</label>
+                  <input
+                    type="text"
+                    id="facebook"
+                    name="facebook"
+                    placeholder="enter your Facebook Id"
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="linkedin">LinkedIn :</label>
+                  <input
+                    type="text"
+                    id="linkedin"
+                    name="linkedin"
+                    placeholder="enter your LinkedIn Id"
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="website">Website :</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    placeholder="enter your website "
+                  />
+                </div>
+                <div className="signup-form-input-label-div">
+                  <label htmlFor="about">About :</label>
+                  <textarea name="about" id="about" rows={3} placeholder="tell us about yourself">                   
+                  </textarea>
+                </div>
+              </div>
+              <div className="signup-from-button-div">
+                <button type="submit">submit</button>
+              </div>
+            </form>
+          </div>
+          <div className="login-container-link-div">
+            <span>Already registered? </span>
+            <span className="login-link">
+              <NavLink to="/login">Login</NavLink>
+            </span>
+          </div>
         </div>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;

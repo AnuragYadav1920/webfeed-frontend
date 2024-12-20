@@ -1,0 +1,34 @@
+.carousal{
+    width: 100%;
+    height: 384px;
+    display: flex;
+    position: relative;
+    color:#111827;
+  }
+  .carousal-preview-icon-box{
+    height: 100%;
+    position: absolute;
+    right: 0;
+    align-content: center;
+    padding:0 0.5rem;
+    font-size: 1.5rem;
+    cursor:pointer
+  }
+  .carousal-postview-icon-box{
+    height: 100%;
+    position: absolute;
+    left: 0;
+    align-content: center;
+    padding:0 0.5rem;
+    font-size: 1.5rem;
+    cursor:pointer
+  }
+  .carousal-bg-image-box{
+    width: 100%;
+    height: 100%;
+  }
+  .carousal-bg-image-box-image{
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+  }

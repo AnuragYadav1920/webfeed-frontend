@@ -1,0 +1,47 @@
+.add-comment-section{
+    display: flex;
+    gap:1rem;
+    width: 100%;
+    padding: 2rem 0;
+  }
+  .commenting-user-img{
+  width: 27px;
+  height: 25px;
+  }
+  .commenting-user-avatar{
+    width: 27px;
+    height: 25px;
+    object-fit: fill;
+    border-radius: 100%;
+    background-color: #8a8a8b;
+  }
+  .comment-write-box{
+    width: 100%;
+    display: flex;
+    gap:1rem;
+    margin-right: 3rem;
+  }
+  .comment-input-div{
+    width:100%
+  }
+  .comment-input{
+    width: 100%;
+    font-size: 1rem;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.068);
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
+    resize:vertical;
+    min-height: 35px;
+    max-height:100px;
+  }
+  .comment-send-button{
+    position: relative;
+  }
+  .comment-send-icon{
+    font-size: 2rem;
+    color:#296291;
+    align-content: center;
+    position: absolute;
+    bottom: 0.5rem;
+  }

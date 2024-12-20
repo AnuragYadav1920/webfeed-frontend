@@ -1,0 +1,37 @@
+.hamberger-box{
+    max-width: 12rem;
+    text-align: left;
+    min-height: 30vh;
+    background-color: rgba(208, 208, 208, 0.957);
+    font-size: 1rem;
+    font-weight: 100;
+    padding: 2rem;
+    color:#767676;
+    text-wrap: nowrap;
+}
+.hamberger-links{
+    padding: 0.2rem 0;
+}
+
+.hamberger-discover-my-account{
+    display: flex;
+    gap:0.5rem;
+}
+.hamberger-discover li{
+    align-content: center;
+}
+.hamberger-discover-sub-links{
+    padding: 0.5rem 1.5rem;
+}
+.hamberger-discover-sub-links li{
+    padding: 0.2rem 0;
+    text-wrap: nowrap;
+    color:#a4a4a4
+}
+.hamberger-discover-sub-links li:hover{
+    color:black;
+}
+.arrow-li{
+    align-content: center;
+    font-size: 0.8rem;
+}

@@ -1,0 +1,77 @@
+.SERP-container{
+    width: 100%;
+    margin:0 auto;
+    background-color: #f9f7f7;
+    box-shadow: 2px 2px 5px #e4e4e4;
+    
+}
+.SERP-container-box{
+    min-height: auto;
+    max-height: 50vh;
+    overflow: auto;
+    
+}
+.SERP-result{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap:1rem;
+    padding: 0.5rem 0.5rem; 
+    justify-content: space-evenly;
+    text-wrap: nowrap;
+    cursor: pointer;
+}
+.SERP-search-icon{
+    font-size: 1.5rem;
+    color:#b4b2b2;
+    align-content: center;
+    
+}
+.SERP-result-details{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    gap:1rem;
+    justify-content: space-between;
+}
+.SERP-results-user-info{
+    display: grid;
+}
+.SERP-results-user-info-username{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color:#1d6199
+}
+.SERP-results-user-info-fullname{
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 0.5rem;
+}
+.SERP-results-user-info-image{
+    width: 35px;
+    height: 35px;
+}
+.SERP-results-user-info-user-image{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}
+.SERP-arrow-icon{
+    font-size: 1.5rem;
+    color:#b4b2b2;
+    align-content: center;
+}
+.SERP-results-post-title{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color:#1d6199;
+}
+.SERP-results-post-image-box{
+    width: 35px;
+    height: 35px;
+}
+.SERP-results-post-image{
+    width: 35px;
+    height: 35px;
+    border-radius: 0.2rem;
+}

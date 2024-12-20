@@ -1,43 +1,99 @@
-import React from 'react'
+import React, { useContext, useState } from "react";
+import "./login&signup.css";
+import { Navigate, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Spinner from "../../components/Spinner/Spinner";
+import UserContext from "../../context/UserContext";
 
 const Login = () => {
+  const { setUser, setLoading, setNotification, setIsLoggedIn } =
+    useContext(UserContext);
+  const navigate = useNavigate();
+
+  const userLogin = async (formObj) => {
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(formObj),
+      });
+      const results = await response.json();
+      if (results.success) {
+        setUser(results.data);
+        localStorage.setItem("user", JSON.stringify(results.data));
+        setNotification({
+          value: true,
+          message: results.message,
+        });
+        setIsLoggedIn(true);
+        console.log("Success");
+      } else {
+        setNotification({
+          value: true,
+          message: "Invalid userId or password",
+        });
+      }
+    } catch (error) {
+      console.log("Error", error);
+    } finally {
+      setLoading(false);
+      navigate("/");
+    }
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const formObj = Object.fromEntries(formData.entries());
+    userLogin(formObj);
+  };
   return (
     <>
-        <div className='my-32 text-yellow-400 space-y-16'>
-            <div className='text-center '>
-                <h1 className='text-5xl font-bold'>Login</h1>
-            </div>
-            <div>
-                <form action="">
-                    <div className='grid justify-items-center space-y-4'>
-                        <div className='grid space-y-2 '>
-                            <div>
-                                <label htmlFor="">Email address</label>                                   
-                            </div>
-                            <div className='border-2 border-yellow-400 p-2 w-custom-input-width rounded-lg'>
-                                <input type="text" placeholder='example@gmail.com' className='placeholder-yellow-400 bg-transparent outline-none border-none ' />
-                            </div>
-                        </div>
-                        <div className='grid space-y-2'>
-                            <div>
-                                <label htmlFor="">Password</label>                                   
-                            </div>
-                            <div className='border-2 border-yellow-400 p-2 w-custom-input-width rounded-lg'>
-                                <input type="text" placeholder='password123' className='placeholder-yellow-400 bg-transparent outline-none border-none ' />
-                            </div>
-                        </div>
-                        <div className='w-custom-button-width bg-yellow-400 text-black p-2 text-center rounded-full '>
-                            <button>Submit</button>
-                        </div>
-                        <div>
-                            <span><span className='font-bold'>New user?  </span> Create an account</span>
-                        </div>                      
-                    </div>   
-                </form>
-            </div>
+      <div className="login-container">
+        <div className="login-heading-div">
+          <span className="login-heading-div-text">Login</span>
         </div>
+        <div className="login-form-div">
+          <form onSubmit={handleSubmit}>
+            <div className="login-form-input-label-div">
+              <label htmlFor="email">Email :</label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="enter your email"
+                required
+              />
+            </div>
+            <div className="login-form-input-label-div">
+              <label htmlFor="password">Password :</label>
+              <input
+                type="text"
+                name="password"
+                id="password"
+                placeholder="enter your password"
+                required
+              />
+            </div>
+            <div className="login-from-button-div">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div className="login-container-link-div">
+          <span>New User?</span>
+          <span className="signup-link">
+            <NavLink to="/signup">Create Account</NavLink>
+          </span>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

@@ -1,44 +1,128 @@
-import React from 'react'
-import { IoIosClose } from "react-icons/io";
-import { RiArrowUpWideLine } from "react-icons/ri";
-import { VscVerifiedFilled } from "react-icons/vsc";
+import React, { useState, useContext, useEffect } from "react";
+import "./hamberger.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { RiArrowRightWideLine } from "react-icons/ri";
+import UserContext from "../../../context/UserContext.js";
 const Hambergurmenu = () => {
+  const { setIsLoggedIn,setUser, setNotification, isLoggedIn } = useContext(UserContext);
+  const navigate = useNavigate();
+  const [openDiscover, setOpenDiscover] = useState(false);
+  const [openAccount, setOpenAccount] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      const respose = await fetch("http://localhost:8000/api/v1/users/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      const results = await respose.json();
+      if (results.success) {
+        setUser(null);
+        localStorage.removeItem("user");
+        setNotification({
+          value: "true",
+          message: results.message,
+        });
+        setIsLoggedIn(false);
+        navigate("/");
+      } else {
+        setNotification({
+          value: "true",
+          message: "Sorry, logging out user failed",
+        });
+      }
+    } catch (error) {
+      console.log("Error occured while logging out", error);
+    }
+  };
+
+  useEffect(()=>{
+  },[isLoggedIn])
+
   return (
     <>
-      <div className=' bg-gray-400'>
-        <div className='flex space-x-4 text-zinc-950 p-4 bg-transparent backdrop-brightness-50  backdrop-opacity-60'>           
-            <div className='space-y-1 content-center '>
-              <div className='flex space-x-0'>
-                <span className='text-2xl font-semibold'>@anurag24</span>
-                <span className='content-center text-lg'><VscVerifiedFilled/></span>
-              </div>
-              
-              <div className='flex  space-x-3 content-center '>
-                <img src="images/flower.png" alt="" className='w-5 h-5 object-fill'/>
-                <span className='text-sm'>100k</span>
-              </div>
+      <div className="hamberger-box">
+        <div className="hamberger-links">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+        </div>
+        <div className="hamberger-links">
+          <div className="hamberger-discover-my-account">
+            <li>Discover</li>
+            <li
+              onClick={() => setOpenDiscover(!openDiscover)}
+              className="arrow-li"
+            >
+              <RiArrowRightWideLine
+                style={openDiscover ? { rotate: "90deg" } : { rotate: "0deg" }}
+              />
+            </li>
+          </div>
+
+          {openDiscover && (
+            <div className="hamberger-discover-sub-links">
+              <li>
+                <NavLink to="/posts">Posts</NavLink>
+              </li>
+              <li>
+                <NavLink to="/top-creators">Top Creators</NavLink>
+              </li>
+              <li>
+                <NavLink to="/about">About Us</NavLink>
+              </li>
+              <li>
+                <NavLink to="/events">Events</NavLink>
+              </li>
             </div>
-            <div className='content-center'>
-                <div className='h-12 w-12 p-0.5 bg-white rounded-full'>
-                  <img src="images/photo-modified.png" alt="" className='w-full h-full object-fill'/>
-                </div>
+          )}
+        </div>
+        {isLoggedIn && (
+          <div className="hamberger-links">
+            <div className="hamberger-discover-my-account">
+              <li>My Account</li>
+              <li
+                onClick={() => setOpenAccount(!openAccount)}
+                className="arrow-li"
+              >
+                <RiArrowRightWideLine
+                  style={openAccount ? { rotate: "90deg" } : { rotate: "0deg" }}
+                />
+              </li>
             </div>
-            
+            {openAccount && (
+              <div className="hamberger-discover-sub-links">
+                <li>
+                  <NavLink to="/my-profile">Dashbaord</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/edit-details">Edit-details</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/create">Create Post</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/create">Liked Post</NavLink>
+                </li>
+              </div>
+            )}
+          </div>
+        )}
+        <div className="hamberger-links">
+          <li>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
         </div>
-        <div className='text-slate-900 p-2 relative cursor-pointer '>
-            <div className='p-2 hover:bg-zinc-950 rounded-md hover:text-white'>Home</div>
-            <div className='p-2 hover:bg-zinc-950 rounded-md hover:text-white'>Discover</div>
-            <div className='p-2 hover:bg-zinc-950 rounded-md hover:text-white'>Contact</div>
-            <div className='p-2 hover:bg-zinc-950 rounded-md hover:text-white'>Create</div>
-            <div className='p-2 hover:bg-zinc-950 rounded-md hover:text-white'>Account</div>
-        </div>
-        <div className='flex space-x-2 content-center justify-center text-lg py-2 bg-transparent text-gray-300 cursor-pointer backdrop-brightness-50 backdrop-opacity-55'>
-          <span className='content-center font-bold'><RiArrowUpWideLine/></span>
-          <span className='text-sm'>Close</span>
-        </div>
+        {isLoggedIn && (
+          <div className="hamberger-links">
+            <li onClick={handleLogout}>
+              <NavLink>Logout</NavLink>
+            </li>
+          </div>
+        )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Hambergurmenu
+export default Hambergurmenu;

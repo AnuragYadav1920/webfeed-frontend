@@ -1,0 +1,75 @@
+.about-us{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    background-color: #f9f7f7;
+}
+.about-us-heading-1{
+    font-size: 0.8rem;
+    color:#545353;
+    font-weight: 100;
+    padding:2rem;
+   
+}
+.about-us-top{
+    display: flex;
+    gap:1rem;
+    padding:0 2rem;
+}
+.about-us-top-left{
+    flex-basis: 60%;
+}
+
+.about-us-top-left-heading-2{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #545353;
+    line-height: 2.5rem;
+}
+.about-us-top-left-p{
+    font-size: 1rem;
+    color:#8e8e8e;
+    font-weight: 300;
+    padding-top: 1rem ;
+
+}
+.about-us-top-left-signup{
+    padding-top:2.5rem
+}
+.about-us-top-left-signup-button{
+    padding: 0.5rem 1rem;
+    background-color: #296291;
+    color:#bebbbb;
+}
+.about-us-top-right{
+    width: 100%;
+    flex-basis: 40%;
+    align-content: center;
+    
+}
+.about-us-top-right-image{
+    width: 300px;
+    height: 300px;
+    object-fit: fill;
+    margin:0 auto;
+    flex-shrink: 0;
+}
+.about-us-bottom{
+    margin-bottom: 3rem;
+    min-height: 40vh;
+    background-color: transparent;
+    align-content: center;
+}
+.about-us-bottom-heading{
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+    color:#545353;
+}
+.about-us-bottom-p{
+    font-size: 1rem;
+    color:#8e8e8e;
+    font-weight: 300;
+    width: 80%;
+    margin: 1rem auto;
+}

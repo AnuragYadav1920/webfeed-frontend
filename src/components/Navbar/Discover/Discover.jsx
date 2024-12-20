@@ -5,18 +5,18 @@ const Discover = () => {
     <>
       <div>
         <div className='discover ' >
-            <div className='discover-item'>
-              <NavLink to="/blogs">Blogs</NavLink>
-            </div>
-            <div className='discover-item'>
-            <NavLink to="/top-creators">Top Creators</NavLink>
-            </div>
-            <div className='discover-item'>
-            <NavLink to="/about">About us</NavLink>
-            </div>
-            <div className='discover-item'>
-            <NavLink to="/events">Events</NavLink>
-            </div>
+          <NavLink to="/posts">
+            <div className='discover-item'>Posts</div>
+          </NavLink>
+          <NavLink to="/top-creators">
+            <div className='discover-item'>Top Creators</div>
+          </NavLink>
+          <NavLink to="/about">
+            <div className='discover-item'>About us</div>
+          </NavLink>
+          <NavLink to="/events">
+            <div className='discover-item'>Events</div>
+          </NavLink>
         </div>
       </div>
     </>

@@ -1,0 +1,71 @@
+.footer{
+    margin-top:5rem;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .footer-box{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    width:80%;
+    margin: 0 auto;
+    gap:1rem
+  }
+  .footer-box-1{
+    display: grid;
+  }
+  .footer-box-1-logo{
+    width:60px;
+    height: 60px;
+  }
+  .footer-box-1-logo-image{
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+  }
+  .footer-box-1-logo-name{
+    display: flex;
+    gap:2px;
+    font-size:2rem;
+    font-weight: 900;
+  }
+  .footer-box-1-slogan{
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  .footer-box-2-3{
+    display: grid;
+  }
+  .footer-box-2-3-4-heading{
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .footer-box-2-3-links{
+    list-style: none;
+    font-weight: 400;
+    color:#646262;
+  }
+  .footer-box-4-links{
+    display: grid;
+    gap:0.2rem;
+  }
+  .footer-box-4-link{
+    display: flex;
+    gap:0.5rem;
+    color:#646262;
+  }
+  .footer-box-hr{
+    margin-top: 1rem ;
+    height:1px;
+    width:100%;
+    background: #000;
+  }
+  .footer-box-copyright{
+    padding:0.5rem 0;
+    display:flex;
+    gap:4px;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .footer-box-copyright-icon{
+    align-content: center;
+  }

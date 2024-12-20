@@ -1,4 +1,6 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import './footer.css'
 import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io5";
 import { BsInstagram } from "react-icons/bs";
@@ -26,11 +28,10 @@ const Footer = () => {
             <div className='footer-box-2-3'>
                 <div className='footer-box-2-3-4-heading'>Information</div>
                 <div className='footer-box-2-3-links'>
-                    <li>About Us</li>
-                    <li>Blog</li>
-                    <li>More Search</li>
-                    <li>Testimonials</li>
-                    <li>Events</li>
+                    <li><NavLink to="/signup">Sign Up</NavLink></li>
+                    <li><NavLink to="testimonials">Testimonials</NavLink></li>
+                    <li><NavLink to="feedback">Feedback</NavLink></li>
+                    <li><NavLink to="/posts">Developer</NavLink></li>
                 </div>
                 
             </div>
@@ -49,7 +50,7 @@ const Footer = () => {
                 </div>
                 <div className='footer-box-4-links'>
                     <div className='footer-box-4-link'><FaPhoneAlt/><span className=''>000-001-234-56789</span></div>
-                    <div className='footer-box-4-link'><HiOutlineMail/><span className=''> example@gmail.com</span></div>
+                    <div className='footer-box-4-link'><HiOutlineMail/><span className=''> webfeed@gmail.com</span></div>
                     <div className='footer-box-4-link'><FaFacebookSquare className=''/><BsInstagram className=''/><IoLogoYoutube className=''/><FaLinkedin className=''/></div>
                 </div>
             </div>

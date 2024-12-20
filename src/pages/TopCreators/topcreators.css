@@ -1,0 +1,218 @@
+.top-creators{
+    width:80%;
+    height: auto;
+    margin:0 auto;
+    background-color: #f9f7f7;
+  }
+  .top-creators-container{
+    width: 100%;
+  }
+  .top-creators-container-heading-box{
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .top-creators-container-podium{
+    height: 100%;
+    width: 67%;
+    display: grid;
+    grid-template-columns:repeat(3, auto);
+    align-content: flex-end;
+    align-items: flex-end;
+    gap:2rem;
+    margin: 0 auto;
+    color:gray;
+    text-align: center;
+  }
+  
+  /* rank 2 */
+  .top-creators-container-podium-for-rank2-box{
+    height: 12rem;
+  }
+  .top-creators-container-podium-for-rank2-box-image-box{
+    width: 7rem;
+    margin: 0 auto;
+  }
+  .top-creators-container-podium-for-rank2-box-image-box-inner-box{
+    background-color:#9ca3af ;
+    border-radius: 100%;
+    /* padding: 0.25rem; */
+  }
+  .top-creators-container-podium-for-rank2-box-image-box-inner-box-image{
+    border-radius: 100%;
+    object-fit: fill;
+    height: 7rem;
+    width: 7rem;
+  }
+  .top-creators-container-podium-for-rank2-box-hexagoanl-box{
+    display: grid;
+    justify-content: center;
+    color:#fff;
+    position: relative;
+    font-weight: bold;
+    bottom: 1.25rem;
+  }
+  .top-creators-container-podium-for-rank2-box-hexagoanl-box-icon{
+    color:#6b7280;
+    font-size: 2.25rem;
+    justify-content: center;
+  }
+  .rank-icon{
+    position:absolute;
+    left: 48%;
+    top:17%
+  }
+  .top-creators-container-podium-rank2-details-box{
+    background-color: gray;
+    height: 0.375rem;
+  }
+  .top-creators-container-podium-rank2-details-box-username{
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  .top-creators-container-podium-rank2-details-box-country{
+    font-size: 16px;
+  }
+  .top-creators-container-podium-rank2-details-box-followers{
+    display: flex;
+    justify-content: center;
+    gap:0.5rem;
+    font-size: 16px;
+    padding: 0.25rem 0;
+  }
+  .top-creators-container-podium-rank2-details-box-followers-icon{
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* rank-1 */
+  
+  .top-creators-container-podium-for-rank1-box{
+    height: 16rem;
+  }
+  .top-creators-container-podium-for-rank1-box-image-box{
+    width: 8rem;
+    margin: 0 auto;
+  }
+  .top-creators-container-podium-for-rank1-box-image-box-inner-box{
+    background-color:#eab308 ;
+    border-radius: 100%;
+    /* padding: 0.25rem; */
+  }
+  .top-creators-container-podium-for-rank1-box-image-box-inner-box-image{
+    height: 8rem;
+    width: 8rem;
+    border-radius: 100%;
+    object-fit: fill;
+  }
+  .top-creators-container-podium-for-rank1-box-hexagoanl-box{
+    display: grid;
+    justify-content: center;
+    color:#fff;
+    position: relative;
+    font-weight: bold;
+    bottom: 1.5rem;
+  }
+  .top-creators-container-podium-for-rank1-box-hexagoanl-box-icon{
+    color:#ca8a04;
+    font-size: 2.25rem;
+    justify-content: center;
+  }
+  .rank-icon{
+    position:absolute;
+    left: 48%;
+    top:17%
+  }
+  .top-creators-container-podium-rank1-details-box{
+    background-color: #ca8a04;
+    height: 0.375rem;
+  }
+  .top-creators-container-podium-rank1-details-box-username{
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  .top-creators-container-podium-rank1-details-box-country{
+    font-size: 16px;
+  }
+  .top-creators-container-podium-rank1-details-box-followers{
+    display: flex;
+    justify-content: center;
+    gap:0.5rem;
+    font-size: 16px;
+    padding: 0.25rem 0;
+  }
+  .top-creators-container-podium-rank1-details-box-followers-icon{
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  /* rank 3 */
+  .top-creators-container-podium-for-rank3-box{
+    height: 10rem;
+  }
+  .top-creators-container-podium-for-rank3-box-image-box{
+    width: 6rem;
+    margin: 0 auto;
+  }
+  .top-creators-container-podium-for-rank3-box-image-box-inner-box{
+    background-color:#963b3b ;
+    border-radius: 100%;
+    /* padding: 0.25rem; */
+  }
+  .top-creators-container-podium-for-rank3-box-image-box-inner-box-image{
+    border-radius: 100%;
+    object-fit: fill;
+    height: 6em;
+    width: 6rem;
+  }
+  .top-creators-container-podium-for-rank3-box-hexagoanl-box{
+    display: grid;
+    justify-content: center;
+    color:#fff;
+    position: relative;
+    font-weight: bold;
+    bottom: 1.5rem;
+  }
+  .top-creators-container-podium-for-rank3-box-hexagoanl-box-icon{
+    color:#963b3b;
+    font-size: 2.25rem;
+    justify-content: center;
+  }
+  .rank-icon{
+    position:absolute;
+    left: 48%;
+    top:17%
+  }
+  .top-creators-container-podium-rank3-details-box{
+    background-color: #963b3b;
+    height: 0.375rem;
+  }
+  .top-creators-container-podium-rank3-details-box-username{
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  .top-creators-container-podium-rank3-details-box-country{
+    font-size: 16px;
+  }
+  .top-creators-container-podium-rank3-details-box-followers{
+    display: flex;
+    justify-content: center;
+    gap:0.5rem;
+    font-size: 16px;
+    padding: 0.25rem 0;
+  }
+  .top-creators-container-podium-rank3-details-box-followers-icon{
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .top-creators-container-4th-onward-ranking-container{
+   width: 100%;
+   height: auto;
+  }
+  .top-creators-container-4th-onward-ranking-container-box{
+    padding: 2rem 2rem;
+    width: 100%;
+    justify-content: center;
+    margin-top:3rem;
+  }

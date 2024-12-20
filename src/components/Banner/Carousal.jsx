@@ -1,4 +1,5 @@
 import React from 'react'
+import './carousal.css'
 import { useState } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FaChevronRight } from 'react-icons/fa';

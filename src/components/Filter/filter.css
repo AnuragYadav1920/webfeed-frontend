@@ -1,0 +1,35 @@
+/* filter */
+.filter-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    color:#2887c2
+  }
+  .filter-container-left{
+    width: 60%;
+    display: flex;
+    gap:1rem;
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    align-content: center;
+    border:2px solid #2887c2;
+    cursor: pointer;
+    border-radius: 0.5rem;
+  }
+  .filter-container-left-search-icon-box{
+    align-content: center;
+  }
+  .filter-container-left-search-icon{
+    align-content: center;
+    font-size: 1.25rem;
+  }
+  .filter-container-left-search-input-box{
+    align-content: center;
+    width:80%;
+  }
+  .filter-container-left-search-input{
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+  }

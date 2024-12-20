@@ -1,11 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import Navbar from './components/Navbar/Navbar.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import App from './App.jsx'
 import './index.css'
+import { UserContextProvider } from './context/UserContextProvider.jsx';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <UserContextProvider >
+      <App/>
+    </UserContextProvider>
+  </React.StrictMode>
 )

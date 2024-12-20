@@ -1,0 +1,16 @@
+.notification-box{
+    background-color: rgb(54, 101, 39);
+    padding: 1.5rem 2rem;
+    display: flex;
+    gap:1rem;
+    border-radius: 1rem;
+}
+.notification-message{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color:#ffffff ;
+}
+.notification-icon{
+    font-size: 2rem;
+    color:#ffffff
+}
