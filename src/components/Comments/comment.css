@@ -1,3 +1,4 @@
+
 .add-comment-section{
     display: flex;
     gap:1rem;
@@ -5,11 +6,12 @@
     padding: 2rem 0;
   }
   .commenting-user-img{
-  width: 27px;
+  width: 25px;
   height: 25px;
+  flex-shrink: 0;
   }
   .commenting-user-avatar{
-    width: 27px;
+    width: 25px;
     height: 25px;
     object-fit: fill;
     border-radius: 100%;
@@ -45,3 +47,31 @@
     position: absolute;
     bottom: 0.5rem;
   }
+  .coment{
+    display:flex;
+    justify-content: flex-start;
+    gap:0.5rem
+  }
+.comment-user-avatar{
+  width: 35px;
+  height: auto;
+  padding-top: 0.5rem;
+  flex-shrink: 0;
+}
+.comment-user-image{
+  padding: 5px auto;
+  width: 25px;
+  height: 25px;
+  object-fit: fill;
+  flex-shrink: 0;
+}
+.comment-data{
+  line-height: 1.2rem;
+}
+.comment-username{
+  font-size: 0.8rem;
+}
+.comment-value{
+  font-size: 1rem;
+  font-weight: 100;
+}

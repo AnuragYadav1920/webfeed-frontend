@@ -1,38 +1,37 @@
 import React, { useState, useContext } from "react";
-import "./edituser.css";
-import { MdEdit } from "react-icons/md";
-import EditDetailBox from "../../components/EditDetailBox/EditDetailBox";
 import UserContext from "../../context/UserContext.js";
-import ChooseProfileAndCoverImage from "../../components/Profile&CoverImage/Profile_Cover_Image.jsx"
+import Components from "../../Imports/Components.js"
+import "./edituser.css";
 
 const UserEdit = () => {
-  const { user,openComponents, setOpenComponents } = useContext(UserContext);
-  const [openProfile, setOpenProfile] = useState(false);
+  const { user} = useContext(UserContext);
+  const [openProfile, setOpenProfile] = useState(false)
   const [openCoverImage, setOpenCoverImage] = useState(false)
 
-  const handleComponents = (tabName) =>{
-    setOpenComponents(openComponents.map(component=>({
-      ...component,
-      isOpen:component.id === tabName?!component.isOpen:false
-    })))
-}
-
-
+  const handleProfileCover = (value) =>{
+    if(value==="profile"){
+      setOpenProfile(true)
+      setOpenCoverImage(false)
+    }else{
+      setOpenCoverImage(true)
+      setOpenProfile(false)
+    }
+  }
   return (
     <>
       <div className="edit-user-detail-container">
       {
-                openComponents[3].isOpen && (
+                openCoverImage && (
                     <div className='profile-cover-Image-container' >
-                        <ChooseProfileAndCoverImage name={"Cover Image"} />
+                        <Components.ChooseProfileAndCoverImage name={"Cover Image"} onClick={()=>setOpenCoverImage(false)} />
                     </div>
                 )
             }
 
             {
-                openComponents[2].isOpen && (
+                openProfile&& (
                     <div className='profile-cover-Image-container' >
-                        <ChooseProfileAndCoverImage name={"Profile Photo"} />
+                        <Components.ChooseProfileAndCoverImage name={"Profile Photo"} onClick={()=>setOpenProfile(false)}/>
                     </div>
                     
                 )
@@ -60,20 +59,20 @@ const UserEdit = () => {
             </div>
             <div className="edit-user-images-button">
               <div className="edit-user-images-button-inner-div">
-                <button className="profile-cover-button" onClick={()=>handleComponents("profileImage")}>Edit Profile Image</button>
-                <button className="profile-cover-button" onClick={()=>handleComponents("coverImage")}>Edit Cover Image</button>
+                <button className="profile-cover-button" onClick={()=>handleProfileCover("profile")}>Edit Profile Image</button>
+                <button className="profile-cover-button" onClick={()=>handleProfileCover("cover")}>Edit Cover Image</button>
               </div>
             </div>
           </div>
           <div className="edit-fields">
-            <EditDetailBox dataKey={"username"} />
-            <EditDetailBox dataKey={"fullName"} />
-            <EditDetailBox dataKey={"email"} />
-            <EditDetailBox dataKey={"instagram"} />
-            <EditDetailBox dataKey={"facebook"} />
-            <EditDetailBox dataKey={"linkedin"} />
-            <EditDetailBox dataKey={"website"} />
-            <EditDetailBox dataKey={"about"} />
+            <Components.EditDetailBox dataKey={"username"} />
+            <Components.EditDetailBox dataKey={"fullName"} />
+            <Components.EditDetailBox dataKey={"email"} />
+            <Components.EditDetailBox dataKey={"instagram"} />
+            <Components.EditDetailBox dataKey={"facebook"} />
+            <Components.EditDetailBox dataKey={"linkedin"} />
+            <Components.EditDetailBox dataKey={"website"} />
+            <Components.EditDetailBox dataKey={"about"} />
           </div>
         </div>
       </div>

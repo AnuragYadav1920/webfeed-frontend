@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-import "./hamberger.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import { RiArrowRightWideLine } from "react-icons/ri";
 import UserContext from "../../../context/UserContext.js";
-const Hambergurmenu = () => {
-  const { setIsLoggedIn,setUser, setNotification, isLoggedIn } = useContext(UserContext);
+import { RiArrowRightWideLine } from "react-icons/ri";
+import "./hamberger.css";
+
+const Hambergurmenu = ({onClick}) => {
+  const { setIsLoggedIn,setUser, isLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
   const [openDiscover, setOpenDiscover] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
@@ -19,17 +20,11 @@ const Hambergurmenu = () => {
       if (results.success) {
         setUser(null);
         localStorage.removeItem("user");
-        setNotification({
-          value: "true",
-          message: results.message,
-        });
+        alert(results.message)
         setIsLoggedIn(false);
         navigate("/");
       } else {
-        setNotification({
-          value: "true",
-          message: "Sorry, logging out user failed",
-        });
+       alert("failed while logging out")
       }
     } catch (error) {
       console.log("Error occured while logging out", error);
@@ -41,13 +36,13 @@ const Hambergurmenu = () => {
 
   return (
     <>
-      <div className="hamberger-box">
-        <div className="hamberger-links">
+      <div className="hamberger-box" >
+        <div className="hamberger-links" >
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/" onClick={onClick}>Home</NavLink>
           </li>
         </div>
-        <div className="hamberger-links">
+        <div className="hamberger-links" >
           <div className="hamberger-discover-my-account">
             <li>Discover</li>
             <li
@@ -61,7 +56,7 @@ const Hambergurmenu = () => {
           </div>
 
           {openDiscover && (
-            <div className="hamberger-discover-sub-links">
+            <div className="hamberger-discover-sub-links" onClick={onClick}>
               <li>
                 <NavLink to="/posts">Posts</NavLink>
               </li>
@@ -91,7 +86,7 @@ const Hambergurmenu = () => {
               </li>
             </div>
             {openAccount && (
-              <div className="hamberger-discover-sub-links">
+              <div className="hamberger-discover-sub-links" onClick={onClick}>
                 <li>
                   <NavLink to="/my-profile">Dashbaord</NavLink>
                 </li>
@@ -102,15 +97,15 @@ const Hambergurmenu = () => {
                   <NavLink to="/create">Create Post</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/create">Liked Post</NavLink>
+                  <NavLink to="/liked-post">Liked Post</NavLink>
                 </li>
               </div>
             )}
           </div>
         )}
-        <div className="hamberger-links">
+        <div className="hamberger-links" >
           <li>
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/contact" onClick={onClick}>Contact</NavLink>
           </li>
         </div>
         {isLoggedIn && (

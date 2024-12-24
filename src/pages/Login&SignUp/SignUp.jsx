@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext.js";
-import Loader from "../../components/Spinner/Loader.jsx";
+import Components from "../../Imports/Components.js"
+import "./login&signup.css"
+
 const SignUp = () => {
-  const { setUser, setNotification } = useContext(UserContext);
+  const { setUser} = useContext(UserContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -19,18 +21,10 @@ const SignUp = () => {
         }
       );
       const results = await response.json();
-      if (results.success) {
-        setNotification({
-          value: true,
-          message: results.message,
-        });
+      if(results.success){
+        alert(results.message)
         navigate("/login");
-      } else {
-        setNotification({
-          value: true,
-          message: "Sorry, user registration failed",
-        });
-      }
+      }  
     } catch (error) {
       console.log("Error", error);
     } finally {
@@ -49,7 +43,7 @@ const SignUp = () => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <Components.Loader />
       ) : (
         <div className="signup-container">
           <div className="signup-heading-div">

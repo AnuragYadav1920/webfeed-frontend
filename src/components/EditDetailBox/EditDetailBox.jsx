@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
+import UserContext from '../../context/UserContext.js';
 import { MdEdit } from "react-icons/md";
 import './editdetailbox.css'
-import UserContext from '../../context/UserContext.js';
+
 
 const EditDetailBox = ({dataKey}) => {
-    const {user,setUser,setNotification} = useContext(UserContext)
+    const {user,setUser} = useContext(UserContext)
     const [showEditDetailBox, setShowEditDetailBox] = useState(false)
     const [showUserDetail, setShowUserDetail] = useState(true)
 
@@ -22,19 +23,13 @@ const EditDetailBox = ({dataKey}) => {
             if(results.success){
                 setUser(results.data)
                 localStorage.removeItem('user')
-                setNotification({
-                    value:true,
-                    message:results.message
-                })
+                alert(results.message)
                 localStorage.setItem('user',JSON.stringify(results.data))  
                 handleClick()          
             }
         } catch (error) {
             console.log("Error", error);
-            setNotification({
-                value: true,
-                message: 'Failed to update user details'
-            })
+            alert("failed to update user details")
         }
         
     }

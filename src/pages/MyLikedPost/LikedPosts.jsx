@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Components from "../../Imports/Components.js"
 import './myLikedPosts.css'
-import BlogCard from "../../components/BlogCard/BlogCard.jsx";
-import Loader from "../../components/Spinner/Loader.jsx";
 
 const LikedPosts = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -56,13 +55,13 @@ const LikedPosts = () => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <Components.Loader />
       ) : (
         <div className="my-liked-posts">
           {blogPosts.length > 0 ?
             blogPosts.map((blogdata, index) => (
               <NavLink to={`/posts/${blogdata._id}`} key={index} >
-                <BlogCard blogdata={blogdata} />
+                <Components.BlogCard blogdata={blogdata} />
               </NavLink>  
               )):
               "No Post Found"

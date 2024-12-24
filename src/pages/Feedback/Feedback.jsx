@@ -29,15 +29,7 @@ const Feedback = () => {
         }
       );
       const results = await response.json();
-      if (results.success) {
-        setNotification({
-          value: true,
-          message: "feedback send successfully",
-        });
-        console.log(results);
-      } else {
-        console.log("failed to send feedback");
-      }
+      alert(results.message)
     } catch (error) {
       console.log("Error", error);
     } finally {

@@ -3,6 +3,7 @@ import {NavLink, useNavigate} from 'react-router-dom'
 import { IoMdSearch } from "react-icons/io";
 import { LuArrowUpLeft } from "react-icons/lu";
 import "./serp.css";
+
 const SERP = ({ posts, channels }) => {
   return (
     <>

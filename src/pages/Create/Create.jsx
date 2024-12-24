@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import "./create.css";
 import { Editor } from "@tinymce/tinymce-react";
-import { FaImage } from "react-icons/fa";
 import UserContext from "../../context/UserContext.js";
 
 const Create = () => {
-  const { setNotification } = useContext(UserContext);
+
   const [description, setDescription] = useState('');
   const uploadBlog = async (formData) => {
     try {
@@ -18,19 +17,10 @@ const Create = () => {
         }
       );
       const results = await response.json();
-      if (results.success) {
-        setNotification({
-          value: true,
-          message: results.message,
-        });
-      } else {
-        setNotification({
-          value: true,
-          message: "Failed to create the post",
-        });
-      }
-      console.log("Success", results);
-    } catch (error) {
+      if (results.success){
+        alert("Post Created successfully")
+        };
+    } catch(error) {
       console.log("Error", error);
     }
   };

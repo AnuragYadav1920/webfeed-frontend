@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./topcreators.css";
 import { BsFillHexagonFill } from "react-icons/bs";
-import { PiCrownSimpleFill } from "react-icons/pi";
-import RankCard from "../../components/RankCard/RankCard";
-import Loader from "../../components/Spinner/Loader";
+import Components from "../../Imports/Components.js"
+import "./topcreators.css";
 
 const TopCreators = () => {
   const [topCreators, setTopCreators] = useState(null);
@@ -38,7 +36,7 @@ const TopCreators = () => {
     <>
       {" "}
       {loading ? (
-        <Loader />
+        <Components.Loader />
       ) : (
         <div className="top-creators">
           <div className="top-creators-container">
@@ -149,7 +147,7 @@ const TopCreators = () => {
             <div className="top-creators-container-4th-onward-ranking-container">
               <div className="top-creators-container-4th-onward-ranking-container-box">
                 {topCreators?.slice(3).map((channel, index) => (
-                  <RankCard channel={channel} rank={index} key={index} />
+                  <Components.RankCard channel={channel} rank={index} key={index} />
                 ))}
               </div>
             </div>

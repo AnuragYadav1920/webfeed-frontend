@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { IoClose } from "react-icons/io5";
 import UserContext from "../../context/UserContext";
+import { IoClose } from "react-icons/io5";
 import "./profile&cover.css";
 
-const ChooseProfileAndCoverImage = ({ name }) => {
-  const {user, closeAllComponents, setNotification } =
-    useContext(UserContext);
-
+const ChooseProfileAndCoverImage = ({ name, onClick }) => {
+  const {user} = useContext(UserContext);
   const [urlParams, setUrlParams] = useState(null);
+
 
   const handleImageChange = async (formData) => {
     try {
@@ -22,10 +21,7 @@ const ChooseProfileAndCoverImage = ({ name }) => {
       const results = await response.json();
       if (results.success) {
         localStorage.removeItem("user");
-        setNotification({
-          value: true,
-          message: `${name} updated successfully`,
-        });
+        alert(`${name} updated successfully`)
         localStorage.setItem("user", JSON.stringify(results.data));
       } else {
         console.log("failed in updating the avatar");
@@ -58,7 +54,7 @@ const ChooseProfileAndCoverImage = ({ name }) => {
           </div>
           <div
             className="edit-profile-cover-image-top-section-close-button"
-            onClick={closeAllComponents}
+            onClick={onClick}
           >
             <IoClose />
           </div>
@@ -96,14 +92,6 @@ const ChooseProfileAndCoverImage = ({ name }) => {
               </button>
             </div>
           </form>
-          <div className="edit-profile-cover-image-bottom-section-right">
-            <div
-              className="edit-profile-cover-image-bottom-section-button"
-              onClick={closeAllComponents}
-            >
-              Delete
-            </div>
-          </div>
         </div>
       </div>
     </>

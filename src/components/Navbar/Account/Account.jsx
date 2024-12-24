@@ -1,12 +1,12 @@
 import React, {useContext, useEffect} from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
+import UserContext from '../../../context/UserContext';
 import { MdLogout } from "react-icons/md"; 
 import { FiEdit } from "react-icons/fi";
 import { VscAccount } from "react-icons/vsc";
 import { MdVerified } from "react-icons/md";
 import { BiLike } from "react-icons/bi";
-import {FaHistory} from "react-icons/fa"
-import UserContext from '../../../context/UserContext';
+
 const Account = () => {
   const {user,setUser,setNotification, setIsLoggedIn} = useContext(UserContext);
     const navigate = useNavigate()
@@ -22,17 +22,11 @@ const Account = () => {
       if(results.success){
         setUser(null);  
         localStorage.removeItem('user');
-        setNotification({
-          value:'true',
-          message:results.message
-        });
+        alert(results.message)
         setIsLoggedIn(false)
         navigate('/')
       }else{
-        setNotification({
-          value:'true',
-          message:'Sorry, logging out user failed'
-        });
+        alert('failed while loggging out')
       }      
       } catch (error) {
         console.log("Error occured while logging out", error)

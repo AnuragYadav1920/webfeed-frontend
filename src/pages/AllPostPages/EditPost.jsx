@@ -1,14 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import "./blogs.css";
 import {NavLink, useParams} from 'react-router-dom'
 import { Editor } from "@tinymce/tinymce-react";
 import UserContext from '../../context/UserContext.js'
-import Loader from "../../components/Spinner/Loader.jsx";
+import Components from "../../Imports/Components.js"
+import "./blogs.css";
 
 const EditPost = () => {
   const {postId} = useParams()
   const [loading, setLoading] = useState(false)
-  const {setNotification} = useContext(UserContext)
   const [postDetails, setPostDetails] = useState(null);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -49,12 +48,9 @@ const EditPost = () => {
       const results = await response.json()
       if(results.success){
         setPostDetails(results.data)
-        setNotification({
-          value:true,
-          message:"Post Image updated successfully"
-        })
+       alert("Post updated successfully")
       }else{
-        console.log('failed to update post image')
+        alert("failed to update the post")
       }
     } catch (error) {
       console.log('Error', error)
@@ -77,18 +73,11 @@ const EditPost = () => {
         const results = await response.json()
         if(results.success){
             setPostDetails(results.data)
-            setNotification({
-                value:true,
-                message:results.message
-            })
-            console.log(results)
+            alert("Post Updated successfully")
         }
     } catch (error) {
         console.log("Error", error);
-        setNotification({
-            value: true,
-            message: 'Failed to update post details'
-        })
+        alert("failed to update the post")
     }finally{
       setLoading(false)
     }
@@ -135,7 +124,7 @@ const EditPost = () => {
   return (
     <>
     {
-      loading?<Loader/>:
+      loading?<Components.Loader/>:
       <div className="edit-post-container">
       <div className="edit-post-container-top">
         <div className="edit-post-container-left">

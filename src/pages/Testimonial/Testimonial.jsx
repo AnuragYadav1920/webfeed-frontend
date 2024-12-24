@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Components from "../../Imports/Components.js"
 import "./testimonial.css";
-import TestimonialCard from "../../components/Testimonials/TestimonialCard.jsx";
 
 const Testimonial = () => {
   const [feedbacks, setFeedbacks] = useState(null);
@@ -34,7 +34,7 @@ const Testimonial = () => {
           <div className="review-col">
             {feedbacks && feedbacks.length > 0
               ? feedbacks.map((feedback, index) => (
-                  <TestimonialCard data={feedback} key={index} />
+                  <Components.TestimonialCard data={feedback} key={index} />
                 ))
               : "No feedbacks found"}
           </div>

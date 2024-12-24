@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./search.css";
 import { NavLink, useLocation } from "react-router-dom";
-import BlogCard from "../../components/BlogCard/BlogCard.jsx";
 import { CiCircleChevLeft } from "react-icons/ci";
 import { CiCircleChevRight } from "react-icons/ci";
-import Channel from "../../components/Channel/Channel.jsx";
-import Loader from "../../components/Spinner/Loader.jsx";
+import Components from "../../Imports/Components.js"
+import "./search.css";
 
 const Search = () => {
   const location = useLocation();
@@ -102,7 +100,7 @@ const Search = () => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <Components.Loader />
       ) : (
         <div className="search-container">
           <div className="result-choose">
@@ -130,14 +128,14 @@ const Search = () => {
                       <>
                         {allData.map((data, index) => (
                           <NavLink to={`/posts/${data._id}`} key={index}>
-                            <BlogCard blogdata={data} />
+                            <Components.BlogCard blogdata={data} />
                           </NavLink>
                         ))}
                       </>
                     ) : (
                       <>
                         {allData.map((data, index) => (
-                          <Channel channelData={data} key={index} />
+                          <Components.Channel channelData={data} key={index} />
                         ))}
                       </>
                     )}

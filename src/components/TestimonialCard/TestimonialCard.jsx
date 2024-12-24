@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './testimonial.css'
+
 const TestimonialCard = ({data}) => {
     const [userDetails, setUserDetails] = useState(null)
     const getUserDetails = async()=>{

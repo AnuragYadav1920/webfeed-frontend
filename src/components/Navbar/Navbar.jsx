@@ -1,42 +1,45 @@
-import React, { useState, useEffect, useContext } from "react";
-import "./navbar.css";
+import React, { useState, useEffect, useContext , useRef} from "react";
+import { NavLink } from "react-router-dom";
+import UserContext from "../../context/UserContext.js";
 import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
-import Account from "../Navbar/Account/Account.jsx";
-import Discover from "./Discover/Discover.jsx";
-import Hambergurmenu from "./Hambergurmenu/Hambergurmenu.jsx.jsx";
-import UserContext from "../../context/UserContext.js";
+import Components from "../../Imports/Components.js"
+import "./navbar.css";
+
 
 const Navbar = () => {
-  const { user, openComponents, setOpenComponents, isLoggedIn } =
-    useContext(UserContext);
+  const { user, isLoggedIn } = useContext(UserContext);
   const [hamberger, setHamberger] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
+  const [openDiscover, setOpenDiscover] = useState(false)
+  const [openAccount, setOpenAccount]  = useState(false)
   const [query, setQuery] = useState(null);
 
-  const handleOpenComponents = (tabName) => {
-    setOpenComponents(
-      openComponents.map((component) => ({
-        ...component,
-        isOpen: component.id === tabName ? !component.isOpen : false,
-      }))
-    );
-  };
-  const closeAllComponents = () => {
-    setOpenComponents(
-      openComponents.map((component) => ({
-        ...component,
-        isOpen: false,
-      }))
-    );
-  };
-  const handleSearchbar = ()=>{
-    if(openSearchBar){
-      setOpenSearchBar(false)
+  const handleClick = (value)=>{
+    if(value==="search"){
+      setOpenSearchBar(true);
+      setOpenDiscover(false)
+      setOpenAccount(false)
+      setHamberger(false)
+    }else if(value==="discover"){
+      setOpenSearchBar(false);
+      setOpenDiscover(true)
+      setOpenAccount(false)
+      setHamberger(false)
+    }else if(value==="account"){
+      setOpenSearchBar(false);
+      setOpenDiscover(false)
+      setOpenAccount(true)
+      setHamberger(false)
+    }else{
+      setOpenSearchBar(false);
+      setOpenDiscover(false)
+      setOpenAccount(false)
+      setHamberger(true)
     }
   }
-  useEffect(() => {}, []);
+  useEffect(() => {
+  }, []);
   return (
     <>
       <section className="section">
@@ -58,7 +61,7 @@ const Navbar = () => {
                   </li>
                   <li
                     className="remaining-link"
-                    onClick={() => handleOpenComponents("discover")}
+                    onClick={()=>handleClick("discover")}
                   >
                     Discover
                   </li>
@@ -66,12 +69,12 @@ const Navbar = () => {
                     <NavLink to="/contact">Contact</NavLink>
                   </li>
                 </ul>
-                {openComponents[0].isOpen && (
+                {openDiscover&& (
                   <div
                     className="navbar-container-left-section-discover"
-                    onClick={closeAllComponents}
+                    onClick={()=>setOpenDiscover(false)}
                   >
-                    <Discover />
+                    <Components.Discover />
                   </div>
                 )}
               </div>
@@ -81,7 +84,7 @@ const Navbar = () => {
               <div className="navbar-container-right-section-search">
                 <div
                   className="navbar-container-right-section-search-icon "
-                  onClick={() => setOpenSearchBar(!openSearchBar)}
+                  onClick={()=>handleClick("search")}
                 >
                   <FaSearch />
                 </div>
@@ -97,7 +100,7 @@ const Navbar = () => {
               )}
               {isLoggedIn && (
                 <div className="navbar-container-right-section-account">
-                  <li onClick={() => handleOpenComponents("profile")}>
+                  <li onClick={() => handleClick("account")}>
                     {user && (
                       <img
                         src={user?.avatar}
@@ -106,19 +109,19 @@ const Navbar = () => {
                       />
                     )}
                   </li>
-                  {openComponents[1].isOpen && (
+                  {openAccount&& (
                     <div
                       className="navbar-container-right-section-account-box"
-                      onClick={closeAllComponents}
+                      onClick={()=>setOpenAccount(false)}
                     >
-                      <Account />
+                      <Components.Account />
                     </div>
                   )}
                 </div>
               )}
               {/* navbar-right-section for mobile devices */}
               <div className="navbar-container-right-section-hamberger-menu">
-                <GiHamburgerMenu onClick={() => setHamberger(!hamberger)} />
+                <GiHamburgerMenu onClick={() =>handleClick()} />
               </div>
             </div>
           </div>
@@ -126,7 +129,7 @@ const Navbar = () => {
 
         {openSearchBar && (
           <div className="navbar-search">
-            <div className="input-searchbar">
+            <div className="input-searchbar" >
               <input
                 type="text"
                 className="navbar-search-input"
@@ -134,7 +137,7 @@ const Navbar = () => {
                 onChange={(e) => setQuery(e.target.value)}
                 required
               />
-              <button className="navbar-search-button" onClick={handleSearchbar}>
+              <button className="navbar-search-button" onClick={()=>setOpenSearchBar(false)}>
                 <NavLink to={`/search?query=${query}`}>
                   <FaSearch />
                 </NavLink>
@@ -151,7 +154,7 @@ const Navbar = () => {
 
         {hamberger && (
           <div className="hamberger-div">
-            <Hambergurmenu className="hamberger" />
+            <Components.Hambergurmenu className="hamberger" onClick={()=>setHamberger(false)}/>
           </div>
         )}
       </section>

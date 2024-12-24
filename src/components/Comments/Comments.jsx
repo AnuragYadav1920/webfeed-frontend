@@ -1,30 +1,38 @@
-import React from "react";
-import "./comment.css";
-import { IoIosSend } from "react-icons/io";
+import React, { useState } from 'react'
+import "./comment.css"
 
-const Comments = () => {
+const Comments = ({postId}) => {
+    const [allComment, setAllComments] = useState(null)
+
+    const fetchComments = async()=>{
+        try {
+            const response = await fetch(`http://localhost:8000/api/v1/blogs/all-comments/${postId}`,
+                {
+                    method:'GET'
+                }
+            )
+            const results = await response.json()
+            if(results.success){
+                setAllComments(results.data)
+            }
+        } catch (error) {
+            console.log("Error", error)
+        }
+    }
+
   return (
     <>
-      <div className="add-comment-section">
-        <div className="commenting-user-img">
-          <img
-            src="https://res.cloudinary.com/dll4smvrf/image/upload/v1726639336/h9hlltm9f0p8yyzua0gt.webp"
-            alt=""
-            className="commenting-user-avatar"
-          />
+        <div className='coment'>
+            <div className='comment-user-avatar'>
+                <img src="../images/photo-modified.png" alt="" className='comment-user-image'/>
+            </div>
+            <div className='comment-data'>
+                <div className='comment-username'>username</div>
+                <div className='comment-value'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, molestiae?</div>
+            </div>
         </div>
-        <div className="comment-write-box">
-          <div className="comment-input-div">
-            <textarea type="text" className="comment-input" rows={1} placeholder="Add a comment...">
-            </textarea>
-          </div>
-          <div className="comment-send-button">
-            <IoIosSend className="comment-send-icon" />
-          </div>
-        </div>
-      </div>
     </>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments

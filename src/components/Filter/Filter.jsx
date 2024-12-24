@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './filter.css'
 import {FaSearch} from "react-icons/fa"
+
 const Filter = ({filterChange}) => {
     const handleChange = (event)=>{
         filterChange(event.target.value)

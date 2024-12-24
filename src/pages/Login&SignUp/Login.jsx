@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import "./login&signup.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import Spinner from "../../components/Spinner/Spinner";
 import UserContext from "../../context/UserContext";
+import "./login&signup.css";
+
 
 const Login = () => {
-  const { setUser, setLoading, setNotification, setIsLoggedIn } =
+  const { setUser, setLoading, setIsLoggedIn } =
     useContext(UserContext);
   const navigate = useNavigate();
 
@@ -25,17 +25,10 @@ const Login = () => {
       if (results.success) {
         setUser(results.data);
         localStorage.setItem("user", JSON.stringify(results.data));
-        setNotification({
-          value: true,
-          message: results.message,
-        });
         setIsLoggedIn(true);
-        console.log("Success");
-      } else {
-        setNotification({
-          value: true,
-          message: "Invalid userId or password",
-        });
+        alert(results.message);
+      }else{
+        alert(results.message)
       }
     } catch (error) {
       console.log("Error", error);

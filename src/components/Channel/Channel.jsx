@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './channel.css'
-import { NavLink, useSearchParams } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
+
 const Channel = ({channelData}) => {
     const [totalSubscribers, setTotalSubscribers] = useState(0)
 

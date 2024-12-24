@@ -1,41 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./profile.css";
-import { BsPinAngle } from "react-icons/bs";
 import UserContext from "../../context/UserContext.js";
+import { BsPinAngle } from "react-icons/bs";
+import "./profile.css";
+
 const Profile = ({ userdata }) => {
   const {user} = useContext(UserContext)
-  const { setNotification } = useContext(UserContext);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [totalSubscribers, setTotalSubscribers] = useState(0)
-  const DoSubscribe = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:8000/api/v1/channel/subscribe",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({ subscribeTo: userdata?._id, action: "subscribe" }),
-        }
-      );
-      const results = await response.json();
-      if (results.success) {
-        setNotification({
-          value: true,
-          message: `Subscribed to ${userdata?.username}`,
-        });
-        setIsSubscribed(true)
-      } else {
-        console.log(`failed to subscribe  ${userdata?.username}`);
-      }
-    } catch (error) {
-      console.log("Error", error);
-    }
-  };
 
-  const DoUnSubscribe = async () => {
+  const DoSubscribeAndUnSubscribe = async () => {
     try {
       const response = await fetch(
         "http://localhost:8000/api/v1/channel/subscribe",
@@ -46,20 +19,16 @@ const Profile = ({ userdata }) => {
           },
           credentials: "include",
           body: JSON.stringify({
-            subscribeTo: userdata?._id,
-            action: "unsubscribe",
+            subscribeTo: userdata?._id
           }),
         }
       );
       const results = await response.json();
       if (results.success) {
-        setNotification({
-          value: true,
-          message: `UnSubscribed to ${userdata?.username}`,
-        });
-        setIsSubscribed(false)
+        alert(`${results.data.subscribed?'Subscribed':'Unsubscribed'} to ${userdata.username}`)
+        setIsSubscribed(results.data.subscribed);
       } else {
-        console.log(`failed to Unsubscribe  ${userdata?.username}`);
+        console.log(`failed to subscribe  ${userdata.username}`);
       }
     } catch (error) {
       console.log("Error", error);
@@ -169,7 +138,7 @@ const Profile = ({ userdata }) => {
               user?._id != userdata?._id&&(
                 <span
               className="account-details-user-info-about-user-followers-button"
-              onClick={isSubscribed?DoUnSubscribe:DoSubscribe}
+              onClick={DoSubscribeAndUnSubscribe}
             >
               {isSubscribed?'Unsubscribe':'Subscribe'}
             </span>

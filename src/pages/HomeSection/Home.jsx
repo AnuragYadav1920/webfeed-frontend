@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./home.css";
-import Testimonial from "../Testimonial/Testimonial.jsx";
 import { NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import SERP from "../../components/SERP/SERP.jsx";
+import Components from "../../Imports/Components.js"
+import Pages from "../../Imports/Pages.js"
+import "./home.css";
+
 const Home = () => {
   const [showMore, setShowMore] = useState(false);
   const [query, setQuery] = useState("");
@@ -92,7 +93,7 @@ const Home = () => {
               </div>
               {openSERP && (
               <div className="SERP">
-                <SERP channels={fetchedUsers} posts={fetchedPosts} />
+                <Components.SERP channels={fetchedUsers} posts={fetchedPosts} />
               </div>
             )}
             </div>
@@ -137,7 +138,7 @@ const Home = () => {
         {/* testimonials */}
         <div className="testimonial" style={style}>
           <div className="testimonial-container">
-            <Testimonial />
+            <Pages.Testimonial />
           </div>
           <div className="testimonial-button-box">
             <div className="testimonial-hide-and-open">
