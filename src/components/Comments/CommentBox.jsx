@@ -4,8 +4,8 @@ import { IoIosSend } from "react-icons/io";
 import UserContext from "../../context/UserContext.js";
 
 const CommentBox = ({ postId }) => {
-  const { user, setNotification } = useContext(UserContext);
-  const [commentData, setCommentData] = useState(null);
+  const { user} = useContext(UserContext);
+  const [commentData, setCommentData] = useState("");
   const sendComment = async () => {
     try {
       const response = await fetch(
@@ -31,6 +31,7 @@ const CommentBox = ({ postId }) => {
   };
   const handleSubmitComment = () => {
     sendComment();
+    setCommentData("")
   };
   return (
     <>
@@ -45,6 +46,7 @@ const CommentBox = ({ postId }) => {
               className="comment-input"
               rows={1}
               placeholder="Add a comment..."
+              value={commentData}
               onChange={(e) => setCommentData(e.target.value)}
             ></textarea>
           </div>

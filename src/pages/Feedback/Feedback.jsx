@@ -3,7 +3,6 @@ import "./feedback.css";
 import UserContext from "../../context/UserContext.js";
 
 const Feedback = () => {
-  const { setNotification } = useContext(UserContext);
   const [feedback, setFeedback] = useState({
     email: "",
     work: "",

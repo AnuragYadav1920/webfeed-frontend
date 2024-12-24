@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import Components from "../../Imports/Components.js"
-import Pages from "../../Imports/Pages.js"
 import "./home.css";
 
 const Home = () => {
@@ -138,7 +137,7 @@ const Home = () => {
         {/* testimonials */}
         <div className="testimonial" style={style}>
           <div className="testimonial-container">
-            <Pages.Testimonial />
+            <Components.Testimonial />
           </div>
           <div className="testimonial-button-box">
             <div className="testimonial-hide-and-open">

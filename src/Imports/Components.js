@@ -16,7 +16,8 @@ import RankCard from "../components/RankCard/RankCard.jsx";
 import SERP from "../components/SERP/SERP.jsx";
 import Spinner from "../components/Spinner/Spinner.jsx";
 import Loader from "../components/Spinner/Loader.jsx";
-import TestimonialCard from "../components/TestimonialCard/TestimonialCard.jsx";
+import Testimonial from "../components/Testimonial/Testimonial.jsx";
+import TestimonialCard from "../components/Testimonial/TestimonialCard.jsx";
 import Pagination from "../components/Pagination/Pagination.jsx"
 
 const Components = {
@@ -38,6 +39,7 @@ const Components = {
   SERP,
   Spinner,
   Loader,
+  Testimonial,
   TestimonialCard,
   Pagination
 };

@@ -34,7 +34,7 @@ export default function App() {
               <Route path="posts" element={<Pages.PostsPage />} />
               <Route path="posts/:postId" element={<Pages.ViewPost />} />
               <Route path="feedback" element={<Pages.Feedback />} />
-              <Route path="testimonials" element={<Pages.Testimonial />} />
+              <Route path="testimonials" element={<Components.Testimonial />} />
               <Route path="search" element={<Pages.Search />} />
               <Route path="channels/:channelName" element={<Pages.Channel />} />
               <Route path="*" element={<Pages.Error />} />

@@ -14,11 +14,26 @@ import Login from "../pages/Login&SignUp/Login.jsx";
 import SignUp from "../pages/Login&SignUp/SignUp.jsx";
 import LikedPosts from "../pages/MyLikedPost/likedPosts.jsx";
 import Search from "../pages/Search/Search.jsx";
-import Testimonial from "../pages/Testimonial/Testimonial.jsx";
 import TopCreators from "../pages/TopCreators/TopCreators.jsx";
 
 const Pages = {
-    About,AccountDetails,EditPost,PostsPage,ViewPost,Channel,Contact,Create,UserEdit,Error,Feedback,Home,Login,SignUp,LikedPosts,Search,Testimonial,TopCreators
-}
+  About,
+  AccountDetails,
+  EditPost,
+  PostsPage,
+  ViewPost,
+  Channel,
+  Contact,
+  Create,
+  UserEdit,
+  Error,
+  Feedback,
+  Home,
+  Login,
+  SignUp,
+  LikedPosts,
+  Search,
+  TopCreators,
+};
 
 export default Pages;

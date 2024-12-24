@@ -33,6 +33,27 @@ const AccountDetails = () => {
     }
   };
 
+  const handleDeletePost = async(postId)=>{
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/v1/blogs/delete-post/${postId}`,
+        {
+          method: "DELETE",
+          credentials: "include",
+        }
+      );
+      const results = await response.json();
+      if(results.success){
+        alert(results.message)
+        userAllPosts()
+      }else{
+        alert("failed to delete the post")
+      }
+    } catch (error) {
+      console.log("Error",error)
+    }
+  }
+
   const handleFilterChange = (value) => {
     setQuery(value);
   };
@@ -42,7 +63,7 @@ const AccountDetails = () => {
   };
   useEffect(() => {
     userAllPosts();
-  }, [page, query]);
+  }, [page, query, allPosts]);
   return (
     <>
       {loading ? (
@@ -73,7 +94,7 @@ const AccountDetails = () => {
                                   Edit
                                 </NavLink>
                               </button>
-                              <button className="user-post-delete">
+                              <button className="user-post-delete" onClick={()=>handleDeletePost(post._id)}>
                                 Delete
                               </button>
                             </div>

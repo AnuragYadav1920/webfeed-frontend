@@ -1,41 +1,47 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import UserContext from "../../context/UserContext.js";
-import Components from "../../Imports/Components.js"
+import Components from "../../Imports/Components.js";
 import "./edituser.css";
 
 const UserEdit = () => {
-  const { user} = useContext(UserContext);
-  const [openProfile, setOpenProfile] = useState(false)
-  const [openCoverImage, setOpenCoverImage] = useState(false)
+  const { user } = useContext(UserContext);
+  const [openProfile, setOpenProfile] = useState(false);
+  const [openCoverImage, setOpenCoverImage] = useState(false);
 
-  const handleProfileCover = (value) =>{
-    if(value==="profile"){
-      setOpenProfile(true)
-      setOpenCoverImage(false)
-    }else{
-      setOpenCoverImage(true)
-      setOpenProfile(false)
+  const handleProfileOrCover = (value) => {
+    if (value === "profile") {
+      setOpenProfile(true);
+      setOpenCoverImage(false);
+    } else {
+      setOpenCoverImage(true);
+      setOpenProfile(false);
     }
+  };
+
+  const closeProfileAndCover = (value) =>{
+    setOpenCoverImage(value)
+    setOpenProfile(value)
   }
   return (
     <>
       <div className="edit-user-detail-container">
-      {
-                openCoverImage && (
-                    <div className='profile-cover-Image-container' >
-                        <Components.ChooseProfileAndCoverImage name={"Cover Image"} onClick={()=>setOpenCoverImage(false)} />
-                    </div>
-                )
-            }
+        {openCoverImage && (
+          <div className="profile-cover-Image-container">
+            <Components.ChooseProfileAndCoverImage
+              name={"Cover Image"}
+              handleProfileAndCoverBox={closeProfileAndCover}
+            />
+          </div>
+        )}
 
-            {
-                openProfile&& (
-                    <div className='profile-cover-Image-container' >
-                        <Components.ChooseProfileAndCoverImage name={"Profile Photo"} onClick={()=>setOpenProfile(false)}/>
-                    </div>
-                    
-                )
-            }
+        {openProfile && (
+          <div className="profile-cover-Image-container">
+            <Components.ChooseProfileAndCoverImage
+              name={"Profile Photo"}
+              handleProfileAndCoverBox={closeProfileAndCover}
+            />
+          </div>
+        )}
         <div className="edit-user-detail-container-box">
           <div className="edit-user-detail-container-box-heading">
             Edit Details
@@ -59,13 +65,22 @@ const UserEdit = () => {
             </div>
             <div className="edit-user-images-button">
               <div className="edit-user-images-button-inner-div">
-                <button className="profile-cover-button" onClick={()=>handleProfileCover("profile")}>Edit Profile Image</button>
-                <button className="profile-cover-button" onClick={()=>handleProfileCover("cover")}>Edit Cover Image</button>
+                <button
+                  className="profile-cover-button"
+                  onClick={() => handleProfileOrCover("profile")}
+                >
+                  Edit Profile Image
+                </button>
+                <button
+                  className="profile-cover-button"
+                  onClick={() => handleProfileOrCover("cover")}
+                >
+                  Edit Cover Image
+                </button>
               </div>
             </div>
           </div>
           <div className="edit-fields">
-            <Components.EditDetailBox dataKey={"username"} />
             <Components.EditDetailBox dataKey={"fullName"} />
             <Components.EditDetailBox dataKey={"email"} />
             <Components.EditDetailBox dataKey={"instagram"} />

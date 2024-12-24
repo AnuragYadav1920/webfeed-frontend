@@ -317,6 +317,11 @@ body{
     gap:1rem
   }
 
+  /* comment */
+  .comment-box {
+    width: 100%;
+  }
+
 }
 
 @media (min-width: 767px){
