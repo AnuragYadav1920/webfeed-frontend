@@ -1,14 +1,33 @@
-import React from 'react'
-import './blogCard.css'
-const BlogCard = ({blogdata}) => {
-  return (
-    <>
-        <div className='blogCard'>
-              <img src={blogdata.postImage} alt="postImage" className='blogCard-Image' />           
-              <div className='blogCard-desc'>{blogdata.title}</div>                
-      </div>
-    </> 
- )
-}
+import React from "react";
+import "./blogcard.css";
 
-export default BlogCard
+const Blogcard = ({post}) => {
+  return (
+    <div className="blogcard-container">
+      <div className="blogcard-image">
+        <img
+          src={post['postImage']}
+        />
+      </div>
+      <div className="blogcard-details">
+        <div className="blogcard-creator">
+          <span className="blogcard-date">{new Date(post['createdAt']).toLocaleDateString()}</span>
+          <div className="creator-image-wrapper">
+            <img
+              src={post['creator']?.avatar}
+              alt="creator"
+              className="creator-image"
+            />
+          </div>
+        </div>
+        <div className="blogcard-td">
+          <span className="blogcard-title">
+            {post['title']}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Blogcard;

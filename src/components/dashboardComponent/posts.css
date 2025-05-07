@@ -1,0 +1,51 @@
+
+.posts-container {
+  margin-top: 2rem;
+  padding: 20px;
+}
+
+.posts-container h2 {
+  margin-bottom: 20px;
+}
+
+.posts-table {
+  width: 100%;
+  margin: 20px 10px;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.posts-table th,
+.posts-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.posts-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.posts-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.posts-table button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.posts-table .edit-btn {
+  background-color: #3498db;
+}
+
+.posts-table .delete-btn {
+  background-color: #e74c3c;
+}
+

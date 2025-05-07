@@ -1,165 +1,102 @@
-import React, { useState, useEffect, useContext , useRef} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import UserContext from "../../context/UserContext.js";
-import { FaSearch } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Components from "../../Imports/Components.js"
+import { CiSearch } from "react-icons/ci";
+import { MdAccountCircle } from "react-icons/md";
 import "./navbar.css";
-
+import components from "../../exports/components";
+import useClickOutside from "../../hooks/useClickOutside";
 
 const Navbar = () => {
-  const { user, isLoggedIn } = useContext(UserContext);
-  const [hamberger, setHamberger] = useState(false);
-  const [openSearchBar, setOpenSearchBar] = useState(false);
-  const [openDiscover, setOpenDiscover] = useState(false)
-  const [openAccount, setOpenAccount]  = useState(false)
-  const [query, setQuery] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-  const handleClick = (value)=>{
-    if(value==="search"){
-      setOpenSearchBar(true);
-      setOpenDiscover(false)
-      setOpenAccount(false)
-      setHamberger(false)
-    }else if(value==="discover"){
-      setOpenSearchBar(false);
-      setOpenDiscover(true)
-      setOpenAccount(false)
-      setHamberger(false)
-    }else if(value==="account"){
-      setOpenSearchBar(false);
-      setOpenDiscover(false)
-      setOpenAccount(true)
-      setHamberger(false)
-    }else{
-      setOpenSearchBar(false);
-      setOpenDiscover(false)
-      setOpenAccount(false)
-      setHamberger(true)
-    }
-  }
-  useEffect(() => {
-  }, []);
+  const exploreRef = useRef(null);
+  const searchRef = useRef(null);
+  const dashboardRef = useRef(null);
+  const menuRef = useRef(null);
+
+
+  const toggleDropdown = (dropdown) => {
+    setOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
+  };
+
+
+
   return (
-    <>
-      <section className="section">
-        <nav className="navbar">
-          <div className="navbar-container">
-            {/* navbar-left-section */}
-            <div className="navbar-container-left-section">
-              <div className="navbar-container-left-section-logo">
-                <ul>
-                  <li>
-                    <NavLink to="/">WebFeed</NavLink>
-                  </li>
-                </ul>
-              </div>
-              <div className="navbar-container-left-section-links">
-                <ul>
-                  <li className="home-link">
-                    <NavLink to="/">Home</NavLink>
-                  </li>
-                  <li
-                    className="remaining-link"
-                    onClick={()=>handleClick("discover")}
-                  >
-                    Discover
-                  </li>
-                  <li className="remaining-link">
-                    <NavLink to="/contact">Contact</NavLink>
-                  </li>
-                </ul>
-                {openDiscover&& (
-                  <div
-                    className="navbar-container-left-section-discover"
-                    onClick={()=>setOpenDiscover(false)}
-                  >
-                    <Components.Discover />
-                  </div>
-                )}
-              </div>
+    <nav className="navbar">
+      <div className="nav-container">
+        <div className="nav-bar">
+          <div className="nav-container-left">
+            <div className="logo">
+              <NavLink to="/">WebFeed</NavLink>
             </div>
-            {/* navbar-right-section for tablets and pc */}
-            <div className="navbar-container-right-section">
-              <div className="navbar-container-right-section-search">
-                <div
-                  className="navbar-container-right-section-search-icon "
-                  onClick={()=>handleClick("search")}
-                >
-                  <FaSearch />
-                </div>
+            <div className="nav-links">
+              <div
+                className="explore nav-active"
+                onClick={() => toggleDropdown("explore")}
+              >
+                <span className="explore-btn">Explore</span>
+                <span className="explore-icon">
+                  <IoIosArrowDown className="icon" />
+                </span>
               </div>
-              {!isLoggedIn && (
-                <div className="navbar-container-right-section-links">
-                  <ul>
-                    <li className="remaining-link">
-                      <NavLink to="/login">Sign In</NavLink>
-                    </li>
-                  </ul>
-                </div>
-              )}
-              {isLoggedIn && (
-                <div className="navbar-container-right-section-account">
-                  <li onClick={() => handleClick("account")}>
-                    {user && (
-                      <img
-                        src={user?.avatar}
-                        alt="User"
-                        className="account-icon"
-                      />
-                    )}
-                  </li>
-                  {openAccount&& (
-                    <div
-                      className="navbar-container-right-section-account-box"
-                      onClick={()=>setOpenAccount(false)}
-                    >
-                      <Components.Account />
-                    </div>
-                  )}
-                </div>
-              )}
-              {/* navbar-right-section for mobile devices */}
-              <div className="navbar-container-right-section-hamberger-menu">
-                <GiHamburgerMenu onClick={() =>handleClick()} />
-              </div>
+              <span className="link nav-active">
+                <NavLink to="/blogs">Blogs</NavLink>
+              </span>
+              <span className="link nav-active">
+                <NavLink to="/about">About</NavLink>
+              </span>
+              <span className="link nav-active">
+                <NavLink to="/contact">Contact</NavLink>
+              </span>
             </div>
           </div>
-        </nav>
-
-        {openSearchBar && (
-          <div className="navbar-search">
-            <div className="input-searchbar" >
-              <input
-                type="text"
-                className="navbar-search-input"
-                placeholder="explore your feeds"
-                onChange={(e) => setQuery(e.target.value)}
-                required
-              />
-              <button className="navbar-search-button" onClick={()=>setOpenSearchBar(false)}>
-                <NavLink to={`/search?query=${query}`}>
-                  <FaSearch />
-                </NavLink>
-              </button>
-            </div>
-            <div
-              className="navbar-searchbar-close"
-              onClick={() => setOpenSearchBar(false)}
+          <div className="nav-container-right">
+            <span
+              className="link nav-active"
+              onClick={() => toggleDropdown("search")}
             >
-              Close
+              <CiSearch />
+            </span>
+            <div className="login nav-active">
+              <NavLink to="/login">Login</NavLink>
             </div>
+            <div className="login nav-active">
+              <NavLink to="/register">Register</NavLink>
+            </div>
+            <div className="login nav-active hidden">
+              <NavLink to="/dashboard"><MdAccountCircle/></NavLink>
+            </div>
+            <span
+              className="link nav-active hidden"
+              onClick={() => toggleDropdown("menu")}
+            >
+              <GiHamburgerMenu />
+            </span>
+          </div>
+        </div>
+        <hr />
+        {openDropdown === "explore" && (
+          <div className="nav-component" ref={exploreRef}>
+            <components.Explore closeComponent={setOpenDropdown} />
           </div>
         )}
-
-        {hamberger && (
-          <div className="hamberger-div">
-            <Components.Hambergurmenu className="hamberger" onClick={()=>setHamberger(false)}/>
+        {openDropdown === "search" && (
+          <div className="nav-component" ref={searchRef}>
+            <components.Search closeComponent={setOpenDropdown} />
           </div>
         )}
-      </section>
-    </>
+        {openDropdown === "menu" && (
+          <div className="nav-dropdown" ref={menuRef}>
+            <components.Menu closeComponent={setOpenDropdown} />
+          </div>
+        )}
+      </div>
+    </nav>
   );
 };
 
 export default Navbar;
+
+

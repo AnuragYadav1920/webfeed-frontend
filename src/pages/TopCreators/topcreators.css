@@ -1,218 +1,116 @@
-.top-creators{
-    width:80%;
-    height: auto;
-    margin:0 auto;
-    background-color: #f9f7f7;
-  }
-  .top-creators-container{
+/* Container */
+.top-creators-page {
     width: 100%;
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  .top-creators-container-heading-box{
-    font-size: 3rem;
-    font-weight: bold;
+  
+  /* Heading */
+  .top-creators-page h1 {
     text-align: center;
-    padding: 1rem 0;
-  }
-  .top-creators-container-podium{
-    height: 100%;
-    width: 67%;
-    display: grid;
-    grid-template-columns:repeat(3, auto);
-    align-content: flex-end;
-    align-items: flex-end;
-    gap:2rem;
-    margin: 0 auto;
-    color:gray;
-    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
   }
   
-  /* rank 2 */
-  .top-creators-container-podium-for-rank2-box{
-    height: 12rem;
-  }
-  .top-creators-container-podium-for-rank2-box-image-box{
-    width: 7rem;
-    margin: 0 auto;
-  }
-  .top-creators-container-podium-for-rank2-box-image-box-inner-box{
-    background-color:#9ca3af ;
-    border-radius: 100%;
-    /* padding: 0.25rem; */
-  }
-  .top-creators-container-podium-for-rank2-box-image-box-inner-box-image{
-    border-radius: 100%;
-    object-fit: fill;
-    height: 7rem;
-    width: 7rem;
-  }
-  .top-creators-container-podium-for-rank2-box-hexagoanl-box{
-    display: grid;
-    justify-content: center;
-    color:#fff;
-    position: relative;
-    font-weight: bold;
-    bottom: 1.25rem;
-  }
-  .top-creators-container-podium-for-rank2-box-hexagoanl-box-icon{
-    color:#6b7280;
-    font-size: 2.25rem;
-    justify-content: center;
-  }
-  .rank-icon{
-    position:absolute;
-    left: 48%;
-    top:17%
-  }
-  .top-creators-container-podium-rank2-details-box{
-    background-color: gray;
-    height: 0.375rem;
-  }
-  .top-creators-container-podium-rank2-details-box-username{
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-  .top-creators-container-podium-rank2-details-box-country{
-    font-size: 16px;
-  }
-  .top-creators-container-podium-rank2-details-box-followers{
-    display: flex;
-    justify-content: center;
-    gap:0.5rem;
-    font-size: 16px;
-    padding: 0.25rem 0;
-  }
-  .top-creators-container-podium-rank2-details-box-followers-icon{
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-  
-  /* rank-1 */
-  
-  .top-creators-container-podium-for-rank1-box{
-    height: 16rem;
-  }
-  .top-creators-container-podium-for-rank1-box-image-box{
-    width: 8rem;
-    margin: 0 auto;
-  }
-  .top-creators-container-podium-for-rank1-box-image-box-inner-box{
-    background-color:#eab308 ;
-    border-radius: 100%;
-    /* padding: 0.25rem; */
-  }
-  .top-creators-container-podium-for-rank1-box-image-box-inner-box-image{
-    height: 8rem;
-    width: 8rem;
-    border-radius: 100%;
-    object-fit: fill;
-  }
-  .top-creators-container-podium-for-rank1-box-hexagoanl-box{
-    display: grid;
-    justify-content: center;
-    color:#fff;
-    position: relative;
-    font-weight: bold;
-    bottom: 1.5rem;
-  }
-  .top-creators-container-podium-for-rank1-box-hexagoanl-box-icon{
-    color:#ca8a04;
-    font-size: 2.25rem;
-    justify-content: center;
-  }
-  .rank-icon{
-    position:absolute;
-    left: 48%;
-    top:17%
-  }
-  .top-creators-container-podium-rank1-details-box{
-    background-color: #ca8a04;
-    height: 0.375rem;
-  }
-  .top-creators-container-podium-rank1-details-box-username{
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-  .top-creators-container-podium-rank1-details-box-country{
-    font-size: 16px;
-  }
-  .top-creators-container-podium-rank1-details-box-followers{
-    display: flex;
-    justify-content: center;
-    gap:0.5rem;
-    font-size: 16px;
-    padding: 0.25rem 0;
-  }
-  .top-creators-container-podium-rank1-details-box-followers-icon{
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-  /* rank 3 */
-  .top-creators-container-podium-for-rank3-box{
-    height: 10rem;
-  }
-  .top-creators-container-podium-for-rank3-box-image-box{
-    width: 6rem;
-    margin: 0 auto;
-  }
-  .top-creators-container-podium-for-rank3-box-image-box-inner-box{
-    background-color:#963b3b ;
-    border-radius: 100%;
-    /* padding: 0.25rem; */
-  }
-  .top-creators-container-podium-for-rank3-box-image-box-inner-box-image{
-    border-radius: 100%;
-    object-fit: fill;
-    height: 6em;
-    width: 6rem;
-  }
-  .top-creators-container-podium-for-rank3-box-hexagoanl-box{
-    display: grid;
-    justify-content: center;
-    color:#fff;
-    position: relative;
-    font-weight: bold;
-    bottom: 1.5rem;
-  }
-  .top-creators-container-podium-for-rank3-box-hexagoanl-box-icon{
-    color:#963b3b;
-    font-size: 2.25rem;
-    justify-content: center;
-  }
-  .rank-icon{
-    position:absolute;
-    left: 48%;
-    top:17%
-  }
-  .top-creators-container-podium-rank3-details-box{
-    background-color: #963b3b;
-    height: 0.375rem;
-  }
-  .top-creators-container-podium-rank3-details-box-username{
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-  .top-creators-container-podium-rank3-details-box-country{
-    font-size: 16px;
-  }
-  .top-creators-container-podium-rank3-details-box-followers{
-    display: flex;
-    justify-content: center;
-    gap:0.5rem;
-    font-size: 16px;
-    padding: 0.25rem 0;
-  }
-  .top-creators-container-podium-rank3-details-box-followers-icon{
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-  
-  .top-creators-container-4th-onward-ranking-container{
-   width: 100%;
-   height: auto;
-  }
-  .top-creators-container-4th-onward-ranking-container-box{
-    padding: 2rem 2rem;
+  /* Search Input */
+  .top-creators-search-input{
     width: 100%;
-    justify-content: center;
-    margin-top:3rem;
+    max-width: 400px;
+    padding: 10px 13px;
+    margin: 3rem auto ;
+    display: block;
+    border:1px solid gray;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
   }
+  
+  /* Creators List */
+  .creators-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Creator Card */
+  .creator-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding:20px;
+    text-align: center;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .creator-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Creator Avatar */
+  .creator-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Creator Info */
+  .creator-info-box h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .creator-info-box p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  /* Follow Button */
+  .follow-button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .follow-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination li a {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    color: #007bff;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .pagination li.active a {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+  
+  .pagination li a:hover {
+    background-color: #e9ecef;
+  }
+  

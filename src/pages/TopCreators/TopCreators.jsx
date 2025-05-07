@@ -1,161 +1,73 @@
-import React, { useEffect, useState } from "react";
-import { BsFillHexagonFill } from "react-icons/bs";
-import Components from "../../Imports/Components.js"
-import "./topcreators.css";
+// TopCreatorsPage.js
+import React, { useState } from 'react';
+import ReactPaginate from 'react-paginate';
+import './topcreators.css';
 
-const TopCreators = () => {
-  const [topCreators, setTopCreators] = useState(null);
-  const [loading, setLoading] = useState(false);
+const creators = [
+    {
+      id: 1,
+      name: 'MrBeast',
+      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2khex_SbvLiPN9ql0GClkY16Z5xfnZI16xg&s',
+      subscribers: 387000000,
+    },
+    {
+      id: 2,
+      name: 'T-Series',
+      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmaGaqWZKn1C9ZyOLUI1NSOe7sjvAi7R1M1A&s',
+      subscribers: 292000000,
+    },
+    
+  ];
 
-  const getTopCreators = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        "http://localhost:8000/api/v1/channel/get-top-creators",
-        {
-          method: "GET",
-        }
-      );
-      const results = await response.json();
-      if (results.success) {
-        setTopCreators(results.data);
-      } else {
-        console.log("error occurred while fetching the details");
-      }
-    } catch (error) {
-      console.log("Server error");
-    } finally {
-      setLoading(false);
-    }
+const TopCreatorsPage = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(0);
+  const creatorsPerPage = 10;
+
+  const filteredCreators = creators.filter(creator =>
+    creator.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const pageCount = Math.ceil(filteredCreators.length / creatorsPerPage);
+  const offset = currentPage * creatorsPerPage;
+  const currentCreators = filteredCreators.slice(offset, offset + creatorsPerPage);
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
   };
 
-  useEffect(() => {
-    getTopCreators();
-  }, []);
   return (
-    <>
-      {" "}
-      {loading ? (
-        <Components.Loader />
-      ) : (
-        <div className="top-creators">
-          <div className="top-creators-container">
-            <div className="top-creators-container-heading-box">
-              <p>Top Creators</p>
-            </div>
-            <div className="top-creators-container-podium">
-              <div className="top-creators-container-podium-for-rank2-box">
-                <div className="top-creators-container-podium-for-rank2-box-image-box">
-                  <div className="top-creators-container-podium-for-rank2-box-image-box-inner-box">
-                    <img
-                      src={topCreators?.[1].channelDetails.avatar}
-                      alt=""
-                      className="top-creators-container-podium-for-rank2-box-image-box-inner-box-image"
-                    />
-                  </div>
-                </div>
-                <div className="top-creators-container-podium-for-rank2-box-hexagoanl-box">
-                  <div className="top-creators-container-podium-for-rank2-box-hexagoanl-box-icon">
-                    <BsFillHexagonFill />
-                  </div>
-                  <div className="rank-icon">2</div>
-                </div>
-                <div className="top-creators-container-podium-rank2-details-box "></div>
-                <div className="top-creators-container-podium-rank2-details-box-username">
-                  {topCreators?.[1].channelDetails.fullName}
-                </div>
-                <div className="top-creators-container-podium-rank2-details-box-country">
-                  {topCreators?.[1].channelDetails.username}
-                </div>
-                <div className="top-creators-container-podium-rank2-details-box-followers">
-                  <div className="top-creators-container-podium-rank2-details-box-followers-icon">
-                    <img
-                      src="https://res.cloudinary.com/dll4smvrf/image/upload/v1726639336/h9hlltm9f0p8yyzua0gt.webp"
-                      alt=""
-                    />
-                  </div>
-                  <div>{topCreators?.[1].count}</div>
-                </div>
-              </div>
-              <div className="top-creators-container-podium-for-rank1-box">
-                <div className="top-creators-container-podium-for-rank1-box-image-box">
-                  <div className="top-creators-container-podium-for-rank1-box-image-box-inner-box">
-                    <img
-                      src={topCreators?.[0].channelDetails.avatar}
-                      alt=""
-                      className="top-creators-container-podium-for-rank1-box-image-box-inner-box-image"
-                    />
-                  </div>
-                </div>
-                <div className="top-creators-container-podium-for-rank1-box-hexagoanl-box">
-                  <div className="top-creators-container-podium-for-rank1-box-hexagoanl-box-icon">
-                    <BsFillHexagonFill />
-                  </div>
-                  <div className="rank-icon">1</div>
-                </div>
-                <div className="top-creators-container-podium-rank1-details-box"></div>
-                <div className="top-creators-container-podium-rank1-details-box-username">
-                  {topCreators?.[0].channelDetails.fullName}
-                </div>
-                <div className=" top-creators-container-podium-rank1-details-box-country">
-                  {topCreators?.[0].channelDetails.username}
-                </div>
-                <div className="top-creators-container-podium-rank1-details-box-followers">
-                  <div className="top-creators-container-podium-rank1-details-box-followers-icon">
-                    <img
-                      src="https://res.cloudinary.com/dll4smvrf/image/upload/v1726639336/h9hlltm9f0p8yyzua0gt.webp"
-                      alt=""
-                    />
-                  </div>
-                  <div>{topCreators?.[0].count}</div>
-                </div>
-              </div>
-              <div className="top-creators-container-podium-for-rank3-box">
-                <div className="top-creators-container-podium-for-rank3-box-image-box">
-                  <div className="top-creators-container-podium-for-rank3-box-image-box-inner-box">
-                    <img
-                      src={topCreators?.[2].channelDetails.avatar}
-                      alt=""
-                      className="top-creators-container-podium-for-rank3-box-image-box-inner-box-image"
-                    />
-                  </div>
-                </div>
-                <div className="top-creators-container-podium-for-rank3-box-hexagoanl-box">
-                  <div className="top-creators-container-podium-for-rank3-box-hexagoanl-box-icon">
-                    <BsFillHexagonFill />
-                  </div>
-                  <div className="rank-icon">3</div>
-                </div>
-                <div className="top-creators-container-podium-rank3-details-box "></div>
-                <div className="top-creators-container-podium-rank3-details-box-username">
-                  {topCreators?.[2].channelDetails.fullName}
-                </div>
-                <div className="top-creators-container-podium-rank3-details-box-country">
-                  {topCreators?.[2].channelDetails.username}
-                </div>
-                <div className="top-creators-container-podium-rank3-details-box-followers">
-                  <div className="top-creators-container-podium-rank3-details-box-followers-icon">
-                    <img
-                      src="https://res.cloudinary.com/dll4smvrf/image/upload/v1726639336/h9hlltm9f0p8yyzua0gt.webp"
-                      alt=""
-                    />
-                  </div>
-                  <div>{topCreators?.[2].count}</div>
-                </div>
-              </div>
-            </div>
-            <div className="top-creators-container-4th-onward-ranking-container">
-              <div className="top-creators-container-4th-onward-ranking-container-box">
-                {topCreators?.slice(3).map((channel, index) => (
-                  <Components.RankCard channel={channel} rank={index} key={index} />
-                ))}
-              </div>
+    <div className="top-creators-page">
+      <h1>Top Creators</h1>
+      <input
+        type="text"
+        placeholder="Search creators..."
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+        className="top-creators-search-input"
+      />
+      <div className="creators-list">
+        {currentCreators.map((creator, index) => (
+          <div key={creator.id} className="creator-card">
+            <img src={creator.avatar} alt={creator.name} className="creator-avatar" />
+            <div className="creator-info-box">
+              <h2>{creator.name}</h2>
+              <p>{creator.subscribers.toLocaleString()} subscribers</p>
+              <button className="follow-button">Follow</button>
             </div>
           </div>
-        </div>
-      )}
-    </>
+        ))}
+      </div>
+      <ReactPaginate
+        previousLabel={'← Previous'}
+        nextLabel={'Next →'}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+      />
+    </div>
   );
 };
 
-export default TopCreators;
+export default TopCreatorsPage;

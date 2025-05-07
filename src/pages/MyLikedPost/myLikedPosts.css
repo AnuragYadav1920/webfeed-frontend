@@ -1,7 +1,0 @@
-.my-liked-posts{
-    width: 80%;
-    margin:2rem auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap:1.5rem
-}
