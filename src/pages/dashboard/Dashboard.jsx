@@ -12,7 +12,6 @@ const Dashboard = () => {
           <ul>
             <li ><Link to="create">Create Post</Link></li>
             <li><Link to="posts">My Posts</Link></li>
-            <li><Link to="analytics">Analytics</Link></li>
             <li><Link to="settings">Settings</Link></li>
           </ul>
       </aside>

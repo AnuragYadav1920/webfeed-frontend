@@ -26,30 +26,11 @@ const Explore = () => {
   },[])
   return (
     <div className="explore-container" >
-      {/* Left Sidebar */}
-      <aside className="explore-sidebar">
-        <section>
-          <h3>Categories</h3>
-          <ul>
-            {
-              categories?.map((category, index)=>(
-                <li key={index}>{category}</li>
-              ))
-            }
-          </ul>
-        </section>
-        <section>
-          <h3>Important Links</h3>
-          <ul>
-            <li>Trending</li>
-            <li>Top Creators</li>
-            <li>Recently Uploaded</li>
-            <li>Most Viewed</li>
-          </ul>
-        </section>
-      
-      </aside>
-
+      <div className='explore-bar '>
+        <span className='explore-item'>Trending</span>
+        <span className='explore-item'>Popular</span>
+        <span className='explore-item'>Top Creators</span>
+      </div>
       {/* Right Content Area */}
       <main className="explore-content">
         {

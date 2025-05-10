@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar/Navbar.jsx";
 import Explore from "../components/Navbar/explore/Explore.jsx";
 import Menu from "../components/Navbar/menu/Menu.jsx";
 import Search from "../components/Navbar/search/Search.jsx";
-import Analytics from "../components/dashboardComponent/Analytics.jsx";
 import Create from "../components/dashboardComponent/Create.jsx"
 import Posts from "../components/dashboardComponent/Posts.jsx";
 import UpdateImage from "../components/dashboardComponent/UpdateImage.jsx";
@@ -17,7 +16,6 @@ const components = {
   Explore,
   Menu,
   Search,
-  Analytics,
   Create,
   Posts,
   UpdateImage,

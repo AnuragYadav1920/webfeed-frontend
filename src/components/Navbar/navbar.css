@@ -58,7 +58,6 @@
   padding-top: 2px;
 }
 .hidden{
-  /* visibility: hidden; */
   display: none;
 }
 
@@ -69,3 +68,16 @@
   min-height: 100vh;
   background-color: rgb(255, 255, 255);
 }
+
+@media (max-width: 768px) {
+  .nav-hidden{
+    display: none;
+  }
+  .hidden{
+    display: block;
+  }
+  .navbar{
+    padding: 0 0.5rem;
+  }
+}
+

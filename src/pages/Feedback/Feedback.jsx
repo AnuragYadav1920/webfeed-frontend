@@ -1,32 +1,48 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
+import {getUser} from "../../features/user/userSlice"
+import {getToken} from "../../features/auth/authSlice"
+import {useSelector, useDispatch} from "react-redux";
 import "./feedback.css"
 
 const Feedback = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    description: "Please share your valuable feedback about our services. It will great help to us.",
-  });
+  const userLoggedInDetails = useSelector((state)=>state.userLoggedIn.data);
+  const userToken = useSelector((state)=>state.authentication.token);
+  const [description, setDescription] = useState("");
+  const dispatch = useDispatch()
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Implement form submission logic here
-    console.log("Submitted data:", formData);
-    // Reset form fields
-    setFormData({
-      username: "",
-      email: "",
-      description: "Feel free to contact us. We will be glad to see you here.",
-    });
+  
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/feedback/send-message`, {
+        method: "POST",
+        headers: {
+          'Authorization': `Bearer ${userToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "description":description
+        })
+      });
+  
+      if (response.ok) {
+        alert('Message sent successfully');
+        setDescription("")
+      } else {
+        alert('Failed to send the message');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while sending the message.');
+    }
   };
+  
+
+  useEffect(()=>{
+    dispatch(getUser())
+    dispatch(getToken())
+  },[])
 
   return (
     <div className="feedback-container">
@@ -39,9 +55,7 @@ const Feedback = () => {
             id="username"
             name="username"
             placeholder="Enter your username"
-            value={formData.username}
-            onChange={handleInputChange}
-            required
+            value={userLoggedInDetails?.username}
           />
         </div>
         <div className="form-group">
@@ -51,9 +65,7 @@ const Feedback = () => {
             id="email"
             name="email"
             placeholder="Enter your email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
+            value={userLoggedInDetails?.email}
           />
         </div>
         <div className="form-group">
@@ -62,8 +74,8 @@ const Feedback = () => {
             id="description"
             name="description"
             rows="5"
-            value={formData.description}
-            onChange={handleInputChange}
+            value={description}
+            onChange={(e)=>setDescription(e.target.value)}
             required
           ></textarea>
         </div>
