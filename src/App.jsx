@@ -15,7 +15,6 @@ const App = () => {
           <Route path="/dashboard" element={<pages.Dashboard />}>
             <Route index element={<components.Settings />} />
             <Route path="create" element={<components.Create />} />
-            <Route path="analytics" element={<components.Analytics />} />
             <Route path="posts" element={<components.Posts />} />
             <Route path="settings" element={<components.Settings />} />
             <Route
