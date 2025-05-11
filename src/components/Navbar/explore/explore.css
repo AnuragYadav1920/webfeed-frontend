@@ -36,7 +36,7 @@
 
   @media (max-width:768px){
     .explore-bar{
-      display: none;
+      margin-top: 80px;
     }
   }
   

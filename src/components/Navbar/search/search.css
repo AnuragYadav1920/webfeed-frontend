@@ -37,3 +37,8 @@
     background-color: #0056b3;
   }
   
+  .creators{
+    padding: 0 2rem ;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }

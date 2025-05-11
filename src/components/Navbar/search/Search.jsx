@@ -1,31 +1,53 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState} from "react";
+import components from "../../../exports/components"
 import "./search.css";
 
-const Search = () => {
+const Search = ({closeComponent}) => {
   const [query, setQuery] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [creators, setCreators] = useState(null)
+  const handleSearch = async() => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/user/search-creators`,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          "query":query
+        })
+      })
+      if(response.ok){
+        const data = await response.json();
+        console.log(data)
+        setCreators(data.creators)
+      }
+    } catch (error) {
+      console.log(error)
+    }
   };
-
 
   return (
     <>
       <div className="search-container">
-        <form
-          className="search"
-          onSubmit={handleSubmit}  
-        >
+        <div className="search">
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search creators here..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="search-input"
           />
-          <button type="submit" className="search-button">
+          <button className="search-button" onClick={handleSearch}  >
             Search
           </button>
-        </form>
+        </div>
+        <main className="creators">
+            {
+              creators?.map((creator, index)=>(
+                <components.ChannelCard creator={creator} key={index} closeComponent={closeComponent}/>
+              ))
+            }
+        </main>
       </div>
     </>
   );

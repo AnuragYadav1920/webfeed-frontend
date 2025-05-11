@@ -1,58 +1,51 @@
-// BlogPage.js
 import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import ReactPaginate from "react-paginate";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import components from "../../exports/components"
+import components from "../../exports/components";
 import "./blogspage.css";
 
-
 const BlogPage = () => {
-  const [posts, setPosts] = useState(null)
+  const [posts, setPosts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState(posts);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const postsPerPage = 8;
-
-  const getAllPosts = async()=>{
-    try {
-      const response = await fetch(`http://localhost:8000/api/v1/blog/get-all-posts`,{
-        method:'GET'
-      })
-      const data = await response.json()
-      if(response.ok){
-        setPosts(data['posts'])
-        console.log(data['msg'])
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+  const blogsPerPage = 8;
 
   useEffect(() => {
-    getAllPosts()
+    const getAllPosts = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/v1/blog/get-all-posts");
+        const data = await response.json();
+        if (response.ok) {
+          setPosts(data.posts || []);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAllPosts();
+  }, []);
+
+  useEffect(() => {
     if (selectedCategory) {
-      setFilteredPosts(
-        posts?.filter((post) => post.category === selectedCategory)
-      );
+      setFilteredBlogs(posts.filter((post) => post.category === selectedCategory));
     } else {
-      setFilteredPosts(posts);
+      setFilteredBlogs(posts);
     }
     setCurrentPage(0);
-  }, [selectedCategory]);
+  }, [selectedCategory, posts]);
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
   };
 
-  const offset = currentPage * postsPerPage;
-  const currentPosts = filteredPosts?.slice(offset, offset + postsPerPage);
-  const pageCount = Math.ceil(filteredPosts?.length / postsPerPage);
-  const categories = [...new Set(posts?.map((post) => post.category))];
-  const featuredPosts = posts?.slice(0, 5); // Adjust as needed
+  const offset = currentPage * blogsPerPage;
+  const currentBlogs = filteredBlogs.slice(offset, offset + blogsPerPage);
+  const pageCount = Math.ceil(filteredBlogs.length / blogsPerPage);
+  const categories = [...new Set(posts.map((post) => post.category))];
 
   const carouselSettings = {
     dots: true,
@@ -63,11 +56,14 @@ const BlogPage = () => {
     autoplay: true,
   };
 
+  // You need to define featuredPosts or fallback to latest few posts
+  const featuredPosts = posts.slice(0, 3); // Adjust as needed
+
   return (
     <div className="blog-page">
       {/* Carousel */}
       <Slider {...carouselSettings}>
-        {featuredPosts?.map((post, index) => (
+        {featuredPosts.map((post, index) => (
           <div key={index} className="carousel-slide">
             <img src={post.postImage} alt={post.title} className="carousel-image" />
             <div className="carousel-caption">
@@ -87,7 +83,7 @@ const BlogPage = () => {
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
           <option value="">All</option>
-          {categories?.map((category, index) => (
+          {categories.map((category, index) => (
             <option key={index} value={category}>
               {category}
             </option>
@@ -97,9 +93,9 @@ const BlogPage = () => {
 
       {/* Blog Posts */}
       <div className="blogs-list">
-        {currentPosts?.map((post,index) => (
+        {currentBlogs.map((post, index) => (
           <Link to={`post/${post._id}`} key={index}>
-          <components.Blogcard post={post}/>
+            <components.Blogcard post={post} creator={post.creator} />
           </Link>
         ))}
       </div>
@@ -118,3 +114,4 @@ const BlogPage = () => {
 };
 
 export default BlogPage;
+

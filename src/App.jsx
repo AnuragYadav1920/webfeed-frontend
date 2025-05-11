@@ -22,15 +22,15 @@ const App = () => {
               element={<components.UpdatePost />}
             />
           </Route>
+          <Route path="/explore" element={<components.Explore />} />
           <Route path="/about" element={<pages.About />} />
           <Route path="/contact" element={<pages.Contact />} />
           <Route path="/feedback" element={<pages.Feedback />} />
-          <Route path="/blogs" >
-            <Route index element={<pages.BlogsPage/>}/>
+          <Route path="/blogs">
+            <Route index element={<pages.BlogsPage />} />
             <Route path="post/:id" element={<pages.SingleBlogPost />} />
           </Route>
-          <Route path="/creator/:id" element={<pages.Creator />} />
-          <Route path="/top-creators" element={<pages.TopCreators />} />
+          <Route path="/creator/:username" element={<pages.Creator />} />
           <Route path="*" element={<pages.Nopage />} />
         </Routes>
         <components.Footer />

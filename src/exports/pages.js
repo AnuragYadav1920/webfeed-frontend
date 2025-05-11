@@ -6,7 +6,6 @@ import Home from "../pages/home/Home"
 import SingleBlogPost from "../pages/singleblogpost/SingleBlogPost"
 import BlogsPage from "../pages/blogspage/BlogsPage"
 import Creator from "../pages/creator/Creator"
-import TopCreators from "../pages/topcreators/TopCreators"
 import UpdatePost from "../components/dashboardComponent/UpdatePost.jsx"
 import Login from "../pages/login/Login.jsx";
 import Register from "../pages/register/Register.jsx";
@@ -22,7 +21,6 @@ const pages = {
   SingleBlogPost,
   BlogsPage,
   Creator,
-  TopCreators,
   UpdatePost,
   Dashboard
 };

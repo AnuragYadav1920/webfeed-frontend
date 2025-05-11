@@ -1,31 +1,53 @@
-.editbox{
-    width: 100%;
-    min-height: 150px;
-    background-color: rgba(214, 214, 214, 0.507);
-    padding: 2rem 1rem;
-    border-radius: 10px;
-    border: 2px solid rgb(248, 247, 247);
-    box-shadow: 2px 2px 2px rgba(222, 222, 222, 0.808);
-}
-.editbox-input{
+.update-form-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .update-form-container label {
     display: block;
-    width: 90%;
-    margin: 0 auto;
-    padding: 0.5rem 1rem;
-    box-shadow: 5px 5px 10px rgba(157, 180, 202, 0.995);
-}
-.editbox-buttons{
-    display: flex;
-    gap:1rem;
-    color:#fff;
-    justify-content: center;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .update-form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .update-form-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .update-form-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .update-form-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .update-form-message {
     margin-top: 1rem;
-}
-.editbox-save{
-    background: #0ea6e1;
-    padding: 0.4rem 0.8rem;
-}
-.editbox-cancel{
-    background: #9c9c9c;
-    padding: 0.4rem 0.8rem;
-}
+    font-size: 0.95rem;
+    color: #28a745;
+  }
+  

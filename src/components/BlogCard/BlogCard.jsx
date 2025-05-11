@@ -1,7 +1,7 @@
 import React from "react";
 import "./blogcard.css";
 
-const Blogcard = ({post}) => {
+const Blogcard = ({post, creator}) => {
   return (
     <div className="blogcard-container">
       <div className="blogcard-image">
@@ -14,7 +14,7 @@ const Blogcard = ({post}) => {
           <span className="blogcard-date">{new Date(post['createdAt']).toLocaleDateString()}</span>
           <div className="creator-image-wrapper">
             <img
-              src={post['creator']?.avatar}
+              src={creator?.avatar}
               alt="creator"
               className="creator-image"
             />

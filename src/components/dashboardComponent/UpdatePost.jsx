@@ -1,37 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import './updatepost.css';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getToken } from "../../features/auth/authSlice";
+import "./updatepost.css";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const UpdatePost = () => {
+  const userToken = useSelector((state) => state.authentication.token);
   const [coverImage, setCoverImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
-  const [description, setDescription] = useState('');
-  const pID= '6814a2093791529877ba1c72'
-
-  const fetchPostDetails = async()=>{
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const fetchPostDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/blog/get-singlepost`,{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify({postId:pID})
-      })
-      if(response.ok){
+      const response = await fetch(
+        `http://localhost:8000/api/v1/blog/get-singlepost`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ postId: id }),
+        }
+      );
+      if (response.ok) {
         const data = await response.json();
-        setTitle(data.postData.title)
-        setCategory(data.postData.category)
-        setDescription(data.postData.description)
-        setImagePreview(data.postData.postImage)
-        setCoverImage(data.postData.postImage)
+        setTitle(data.post.title);
+        setCategory(data.post.category);
+        setDescription(data.post.description);
+        setImagePreview(data.post.postImage);
+        setCoverImage(data.post.postImage);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -39,29 +47,28 @@ const UpdatePost = () => {
       setImagePreview(URL.createObjectURL(file));
     }
   };
-  
+
   const handleDescriptionChange = (value) => {
     setDescription(value);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const form = e.target;
       const formData = new FormData(form);
-      formData.append('title',title)
-      formData.append('category',category)
-      formData.append('description',description)
-      formData.append('postImage',coverImage)
-      formData.append('postId',pID)
-      const token = JSON.parse(localStorage.getItem("token"));
+      formData.append("title", title);
+      formData.append("category", category);
+      formData.append("description", description);
+      formData.append("postImage", coverImage);
+      formData.append("postId", id);
 
       const response = await fetch(
         `http://localhost:8000/api/v1/blog/update-post-details`,
         {
           method: "PUT",
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${userToken}`,
           },
           body: formData,
         }
@@ -69,21 +76,23 @@ const UpdatePost = () => {
 
       if (response.ok) {
         const data = await response.json();
-        alert('post updated successfully')
+        alert("post updated successfully");
         setCategory("");
         setCoverImage(null);
-        setDescription("")
-        setImagePreview(null)
-        setTitle("")
+        setDescription("");
+        setImagePreview(null);
+        setTitle("");
+        navigate("/dashboard/posts");
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
+    dispatch(getToken);
     fetchPostDetails();
-  },[])
+  }, []);
 
   return (
     <div className="create-post-container">
@@ -133,23 +142,28 @@ const UpdatePost = () => {
           <ReactQuill
             value={description}
             onChange={handleDescriptionChange}
-            className='description'
+            className="description"
             modules={{
               toolbar: [
-                [{ 'header': [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                [{ 'color': [] }, { 'background': [] }],
-                [{ 'align': [] }],
-                ['clean']
+                [{ header: [1, 2, 3, false] }],
+                ["bold", "italic", "underline", "strike"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                [{ color: [] }, { background: [] }],
+                [{ align: [] }],
+                ["clean"],
               ],
             }}
             formats={[
-              'header',
-              'bold', 'italic', 'underline', 'strike',
-              'list', 'bullet',
-              'color', 'background',
-              'align'
+              "header",
+              "bold",
+              "italic",
+              "underline",
+              "strike",
+              "list",
+              "bullet",
+              "color",
+              "background",
+              "align",
             ]}
           />
         </div>

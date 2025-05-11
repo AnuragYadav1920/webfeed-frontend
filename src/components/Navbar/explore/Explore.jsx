@@ -1,43 +1,99 @@
-import React, { useEffect, useRef , useState} from 'react';
-import {Link} from "react-router-dom"
-import components from "../../../exports/components"
-import './explore.css';
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import components from "../../../exports/components";
+import "./explore.css";
 
-const Explore = () => {
-  const [posts, setPosts] = useState(null)
-  const categories = ['Health & Fitness', 'Food & Recipes','Travel','Fashion $ Style', 'Technology & Gadgets', 'Finance & Family',  'Education & Learning', 'Lifestyle','DIY & Crafts', 'Photography', 'Gaming', 'Books & Literature', 'Music', 'Politics & Current Events', 'Entrepreneurship & Business']
-  const getAllPosts = async()=>{
+const Explore = ({ closeComponent }) => {
+  const [posts, setPosts] = useState(null);
+  const [creators, setCreators] = useState(null);
+  const [exploreType, setExploreType] = useState("trending");
+  const getAllPosts = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/blog/get-all-posts`,{
-        method:'GET'
-      })
-      const data = await response.json()
-      if(response.ok){
-        setPosts(data['posts'])
-        console.log(data['msg'])
+      const response = await fetch(
+        `http://localhost:8000/api/v1/blog/get-all-posts`,
+        {
+          method: "GET",
+        }
+      );
+      const data = await response.json();
+      if (response.ok) {
+        setPosts(data["posts"]);
+        console.log(data["msg"]);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
+  const getCreators = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/v1/user/creators`,
+        {
+          method: "GET",
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setCreators(data.channels);
+      } else {
+        console.log("Something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  useEffect(()=>{
-    getAllPosts()
-  },[])
+  const handleCreators = () => {
+    getCreators();
+    setExploreType("creators");
+    console.log(creators);
+  };
+
+  const handleTrending = () => {
+    getAllPosts();
+    setExploreType("trending");
+  };
+
+  const handlePopular = () => {
+    getAllPosts();
+    setExploreType("popular");
+  };
+
+  useEffect(() => {
+    getAllPosts();
+  }, [exploreType]);
   return (
-    <div className="explore-container" >
-      <div className='explore-bar '>
-        <span className='explore-item'>Trending</span>
-        <span className='explore-item'>Popular</span>
-        <span className='explore-item'>Top Creators</span>
+    <div className="explore-container">
+      <div className="explore-bar ">
+        <span className="explore-item" onClick={handleTrending}>
+          Trending
+        </span>
+        <span className="explore-item" onClick={handlePopular}>
+          Popular
+        </span>
+        <span className="explore-item" onClick={handleCreators}>
+          Top Creators
+        </span>
       </div>
       {/* Right Content Area */}
       <main className="explore-content">
-        {
-          posts?.map((post, index)=>(
-                <components.Blogcard post={post} key={index}/>
-          ))
-        }
+        {exploreType === "popular" || exploreType === "trending"
+          ? posts?.map((post, index) => (
+              <Link to={`/blogs/post/${post?._id}`} onClick={() => closeComponent()}>
+                <components.Blogcard
+                  post={post}
+                  key={index}
+                  creator={post["creator"]}                 
+                />
+              </Link>
+            ))
+          : creators?.map((creator, index) => (
+              <components.ChannelCard
+                creator={creator}
+                key={index}
+                closeComponent={closeComponent}
+              />
+            ))}
       </main>
     </div>
   );

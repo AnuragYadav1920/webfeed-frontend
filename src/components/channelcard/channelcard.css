@@ -1,0 +1,46 @@
+.creator-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding:20px;
+    text-align: center;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .creator-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Creator Avatar */
+  .creator-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Creator Info */
+  .creator-info-box h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .creator-info-box p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  /* Follow Button */
+  .follow-button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .follow-button:hover {
+    background-color: #218838;
+  }

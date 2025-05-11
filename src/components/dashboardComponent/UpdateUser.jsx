@@ -1,34 +1,47 @@
-import React, { useState } from 'react';
-import './updateuser.css';
+import React, { useState, useRef } from 'react';
+import "./updateuser.css"
 
-const UpdateUser = ({ initialValue = '', onSave }) => {
-  const [value, setValue] = useState(initialValue);
-  const [tempValue, setTempValue] = useState(initialValue);
+const UpdateUser = ({ label, fieldName, value, setValue, handleUpdate, message }) => {
+  const fileInputRef = useRef(null);
 
-  const handleSave = () => {
-    setValue(tempValue);
-    if (onSave) onSave(tempValue);
-  };
-
-  const handleCancel = () => {
-    setTempValue(value);
+  const handleChange = (e) => {
+    if (fieldName === 'avatar' || fieldName === 'cover') {
+      setValue(e.target.files[0]);
+    } else {
+      setValue(e.target.value);
+    }
   };
 
   return (
-    <div className="editbox">
-      <input
-        type="text"
-        value={tempValue}
-        onChange={(e) => setTempValue(e.target.value)}
-        className="editbox-input"
-        placeholder="update details"
-      />
-      <div className="editbox-buttons">
-        <button onClick={handleSave} className="editbox-save">Save</button>
-        <button onClick={handleCancel} className="editbox-cancel">Cancel</button>
-      </div>
+    <div className="update-form-container">
+      <label htmlFor={fieldName}>{label}</label>
+      {fieldName === 'avatar' || fieldName === 'cover' ? (
+        <>
+          <input
+            type="file"
+            id={fieldName}
+            ref={fileInputRef}
+            onChange={handleChange}
+            className="update-form-input"
+          />
+          {/* <button onClick={() => fileInputRef.current.click()} className="update-form-button">
+            Choose File
+          </button> */}
+        </>
+      ) : (
+        <input
+          type="text"
+          id={fieldName}
+          value={value}
+          onChange={handleChange}
+          className="update-form-input"
+        />
+      )}
+      <button onClick={()=>handleUpdate()} className="update-form-button">Update</button>
+      {message && <p className="update-form-message">{message}</p>}
     </div>
   );
 };
 
 export default UpdateUser;
+

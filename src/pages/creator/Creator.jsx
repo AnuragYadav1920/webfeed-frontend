@@ -4,63 +4,103 @@ import ReactPaginate from "react-paginate";
 import "./creator.css";
 import { Link, useParams } from "react-router-dom";
 import components from "../../exports/components"
+import { getToken } from "../../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const CreatorChannelPage = () => {
-  const [creator, setCreator] = useState(null);
-  const {id} = useParams();
+  const userToken = useSelector((state)=>state.authentication.token)
+  const {username} = useParams();
   const [posts, setPosts] = useState(null)
-
+  const [creator, setCreator] = useState(null)
+  const [subscribers, setSubscribers] = useState(0)
+  const [alreadySubscribed, setAlreadySubscribed] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState(posts);
   const [currentPage, setCurrentPage] = useState(0);
   const blogsPerPage = 5;
-
+  const dispatch = useDispatch()
 
   const getCreator = async()=>{
     try {
-      const response = await fetch(`http://localhost:8000/api/v1/user/get-creator`,{
-        method:'POST',
-        headers:{
-          'Content-Type':"application/json"
-        },
-        body:JSON.stringify({
-          'userId':id
-        })
-      })
-      if(response.ok){
-        const data = await response.json();
-        setCreator(data['user'])
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const getCreatorPosts = async()=>{
-    try {
-      const response = await fetch(`http://localhost:8000/api/v1/blog/get-creator-posts`,{
+      const response = await fetch(`http://localhost:8000/api/v1/blog/get-creator`,{
         method:"POST",
         headers:{
           'Content-Type':"application/json"
         },
         body:JSON.stringify({
-          'userId':id
+          'username':username
         })
       })
       if(response.ok){
         const data = await response.json()
         setPosts(data['posts'])
+        setCreator(data['creator'])
+        fetchTotalSubscribers()
       };
 
     } catch (error) {
       console.log(error)
     }
   }
+  const subscribeAndUnsubscribe = async() =>{
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/user/subscribe-and-unsubscribe`, {
+        method:'POST',
+        headers:{
+          Authorization: `Bearer ${userToken}`,
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({'channelId':creator?._id})
+      })
+      if(response.ok){
+        const data = await response.json();
+        alert(data.msg)
+        fetchTotalSubscribers()
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const fetchTotalSubscribers = async()=>{
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/user/get-subscribers`,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({"creatorId":creator?._id})
+      })
+      if(response.ok){
+        const data = await response.json()
+        setSubscribers(data.total)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
+  const checkSubscribed = async()=>{
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/user/check-subscribed`,{
+        method:'POST',
+        headers:{
+          Authorization:`Bearer ${userToken}`,
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({'channelId':creator?._id})
+      })
+      if(response.ok){
+        const data = await response.json()
+        setAlreadySubscribed(data?.isSubscribed)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   useEffect(() => {
+    dispatch(getToken())
     getCreator();
-    getCreatorPosts();
     if (selectedCategory) {
       setFilteredBlogs(
         posts.filter((post) => blog.category === selectedCategory)
@@ -69,7 +109,8 @@ const CreatorChannelPage = () => {
       setFilteredBlogs(posts);
     }
     setCurrentPage(0);
-  }, [selectedCategory, posts]);
+    checkSubscribed()
+  }, [subscribers]);
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
@@ -105,9 +146,9 @@ const CreatorChannelPage = () => {
         <p>
           <strong>Location:</strong> {creator?.location}
         </p>
-        <button className="subscribe-button">Follow</button>
+        <button className="subscribe-button" onClick={subscribeAndUnsubscribe}>{alreadySubscribed?'Following':'Follow'}</button>
         <p>
-          <strong>Followers:</strong> 112
+          <strong>Followers:</strong> {subscribers}
         </p>
       </div>
 
@@ -131,8 +172,8 @@ const CreatorChannelPage = () => {
       {/* Blogs List */}
       <div className="blogs-list">
         {posts?.map((post, index) => (
-          <Link to="/blogpost" key={index}>
-            <components.Blogcard post ={post}/>
+          <Link to={`/blogs/post/${post._id}`} key={index}>
+            <components.Blogcard post ={post} creator={creator}/>
           </Link>
         ))}
       </div>
