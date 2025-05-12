@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./blogpost.css";
 import components from "../../exports/components";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../features/auth/authSlice";
 import { AiOutlineLike } from "react-icons/ai";
+import parse from 'html-react-parser';
 
 const SingleBlogPost = () => {
   const userToken = useSelector((state) => state.authentication.token);
   const { id } = useParams();
   const [post, setPost] = useState(null);
-  const [totalLikes, setTotalLikes] = useState(0)
+  const [totalLikes, setTotalLikes] = useState(0);
   const [recommendedPosts, setRecommendedPosts] = useState(null);
-
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const getAllPosts = async () => {
     try {
@@ -34,45 +35,52 @@ const SingleBlogPost = () => {
   };
 
   const handleLikeAndDislike = async () => {
+    if (userToken) {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/api/v1/blog/like-and-dislike`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ postId: id }),
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          alert(data?.msg);
+          getTotalLikes();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const getTotalLikes = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/v1/blog/like-and-dislike`,
+        `http://localhost:8000/api/v1/blog/get-likes`,
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${userToken}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ postId: id })
+          body: JSON.stringify({ postId: id }),
         }
       );
-      if(response.ok){
-        const data = await response.json()
-        alert(data?.msg);
-        getTotalLikes()
+      if (response.ok) {
+        const data = await response.json();
+        setTotalLikes(data.total);
       }
     } catch (error) {
       console.log(error);
     }
   };
-
-  const getTotalLikes = async()=>{
-    try {
-      const response = await fetch(`http://localhost:8000/api/v1/blog/get-likes`,{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify({'postId':id})
-      })
-      if(response.ok){
-        const data = await response.json();
-        setTotalLikes(data.total)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   useEffect(() => {
     dispatch(getToken());
@@ -101,7 +109,7 @@ const SingleBlogPost = () => {
     };
     getPostDetails();
     getAllPosts();
-    getTotalLikes()
+    getTotalLikes();
   }, [id]);
   return (
     <>
@@ -118,7 +126,12 @@ const SingleBlogPost = () => {
               <span className="blog-post-date">
                 {new Date(post?.createdAt).toLocaleDateString()}
               </span>
-              <span className="blog-post-likes" onClick={()=>handleLikeAndDislike()}><AiOutlineLike style={{fontSize:"1.3rem"}}/> {totalLikes}</span>
+              <span
+                className="blog-post-likes"
+                onClick={() => handleLikeAndDislike()}
+              >
+                <AiOutlineLike style={{ fontSize: "1.3rem",cursor:"pointer" }} /> {totalLikes}
+              </span>
               <h1 className="blog-post-title">{post?.title}</h1>
               <div className="blog-post-meta">
                 <div className="author-info">
@@ -137,7 +150,7 @@ const SingleBlogPost = () => {
                   </button>
                 </div>
               </div>
-              <p className="blog-post-description">{post?.description}</p>
+              <p className="blog-post-description">{parse(`${post?.description}`)}</p>
             </div>
           </div>
           <aside className="recommended-posts">

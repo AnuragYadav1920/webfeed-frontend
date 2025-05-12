@@ -4,9 +4,13 @@
 .blog-container {
   display: flex;
   gap: 1rem;
+  max-height: 140vh;
+  margin: 1rem 0;
 }
 .blog-post-container {
   max-width: 70%;
+  height: 140vh;
+  overflow-y: auto;
   margin: 0 auto;
   padding: 20px;
   box-shadow: 5px 5px 10px #cdcaca;
@@ -21,6 +25,7 @@
 
 .blog-post-content {
   padding: 20px 0;
+  margin: 1rem;
 }
 
 .blog-post-category {
@@ -93,8 +98,8 @@
 
 .recommended-posts {
   max-width: 300px;
-  margin-top: 40px;
-  padding: 20px;
+  height: 140vh;
+  padding: 0 10px;
   background-color: #f0efeff0;
 }
 
@@ -107,16 +112,17 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  max-height: 100vh;
+  max-height: 100%;
   overflow-y: auto;
 }
 
 @media (max-width:768px){
   .recommended-posts{
     display: none;
+    padding: 0;
   }
   .blog-post-container{
     max-width: 100%;
-    padding: 10px;
+    padding: 0px;
   }
 }

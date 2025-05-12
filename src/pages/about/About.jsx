@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import "./about.css";
 
 const About = () => {
@@ -83,7 +84,7 @@ const About = () => {
         <p>
           At webFeed, we believe that the best digital experiences are built together. By joining our community, you become part of a vibrant network of creators, innovators, and digital enthusiasts who are passionate about shaping the future of the web.
         </p>
-        <a href="/join" className="cta-button">Join Our Community ⟶</a>
+        <Link to="/register" className="cta-button">Join Our Community ⟶</Link>
       </div>
     </section>
     </div>

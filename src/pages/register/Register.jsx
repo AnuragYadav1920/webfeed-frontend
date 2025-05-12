@@ -26,12 +26,15 @@ const Register = () => {
        },
        body:JSON.stringify(user)
      })
+     const data = await response.json()
     if(response.ok){
-      alert("user registered successfully")
+      alert(data.msg)
       setUser({username:"", email:"", phone:"",
         password:""
       })
       navigate("/login")
+    }else{
+      alert(data.msg)
     }
    } catch (error) {
     console.log(error)

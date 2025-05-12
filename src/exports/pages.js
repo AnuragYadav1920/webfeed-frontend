@@ -10,6 +10,11 @@ import UpdatePost from "../components/dashboardComponent/UpdatePost.jsx"
 import Login from "../pages/login/Login.jsx";
 import Register from "../pages/register/Register.jsx";
 import Dashboard from "../pages/dashboard/Dashboard.jsx"
+import OurStory from "../pages/ourStory/OurStory.jsx"
+import Careers from "../pages/careers/Career.jsx"
+import Team from "../pages/team/Team.jsx"
+import TermsAndCondition from "../pages/termsAndCondition/TermsAndCondition.jsx"
+import Privacy from "../pages/privacy/Privacy.jsx"
 const pages = {
   Home,
   Login,
@@ -22,7 +27,12 @@ const pages = {
   BlogsPage,
   Creator,
   UpdatePost,
-  Dashboard
+  Dashboard,
+  OurStory,
+  Careers,
+  Team,
+  TermsAndCondition,
+  Privacy
 };
 
 export default pages;

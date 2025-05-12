@@ -12,7 +12,6 @@ const ChannelCard = ({creator, closeComponent}) => {
         />
         <div className="creator-info-box">
           <h2>{creator.username}</h2>
-          <p>112 subscribers</p>
           <Link to={`/creator/${creator.username}`} onClick={()=>closeComponent()}><button className="follow-button">View Creator</button></Link>
         </div>
       </div>

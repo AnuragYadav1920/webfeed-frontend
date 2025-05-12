@@ -34,14 +34,15 @@ const Login = () => {
         },
         body: JSON.stringify(credentials),
       });
-      console.log(response);
+      const data = await response.json();
       if (response.ok) {
-        alert("logged in successfully")
-        const data = await response.json();
+        alert(data.msg)
         dispatch(setUser(data['user']))
         dispatch(setToken(data['token']))
         setCredentials({ email: "", password: "" });
         navigate("/");
+      }else{
+        alert(data.msg)
       }
     } catch (error) {
       console.log(error);
@@ -81,7 +82,7 @@ const Login = () => {
           </button>
           <div className="register-link">
             <span>
-              New user? <Link to="/signup">Register</Link>
+              New user? <Link to="/register">Register</Link>
             </span>
           </div>
         </form>

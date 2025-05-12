@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import "./creator.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import components from "../../exports/components"
 import { getToken } from "../../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,7 @@ const CreatorChannelPage = () => {
   const [filteredBlogs, setFilteredBlogs] = useState(posts);
   const [currentPage, setCurrentPage] = useState(0);
   const blogsPerPage = 5;
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const getCreator = async()=>{
@@ -44,6 +45,7 @@ const CreatorChannelPage = () => {
     }
   }
   const subscribeAndUnsubscribe = async() =>{
+    if(userToken){
     try {
       const response = await fetch(`http://localhost:8000/api/v1/user/subscribe-and-unsubscribe`, {
         method:'POST',
@@ -60,6 +62,8 @@ const CreatorChannelPage = () => {
       }
     } catch (error) {
       console.log(error)
+    }}else{
+      navigate("/login")
     }
   }
   const fetchTotalSubscribers = async()=>{

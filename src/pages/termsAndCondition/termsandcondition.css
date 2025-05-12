@@ -1,0 +1,45 @@
+/* src/components/TermsAndConditions.css */
+.terms-container {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+  .terms-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .terms-container p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .terms-section {
+    margin-bottom: 40px;
+  }
+  
+  .terms-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  @media (max-width: 768px) {
+    .terms-container {
+      padding: 40px 10px;
+    }
+  
+    .terms-container h1 {
+      font-size: 2em;
+    }
+  
+    .terms-section h2 {
+      font-size: 1.2em;
+    }
+  }
+  
