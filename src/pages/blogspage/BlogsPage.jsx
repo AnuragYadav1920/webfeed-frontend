@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import components from "../../exports/components";
 import "./blogspage.css";
+import parse from 'html-react-parser';
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
@@ -68,7 +69,7 @@ const BlogPage = () => {
             <img src={post.postImage} alt={post.title} className="carousel-image" />
             <div className="carousel-caption">
               <h2>{post.title}</h2>
-              <p>{post.description}</p>
+              <p>{parse(`${post?.description}`)}</p>
             </div>
           </div>
         ))}

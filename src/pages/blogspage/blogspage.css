@@ -27,6 +27,8 @@
   border-radius: 5px;
   color: #fff;
   max-width: 70%;
+  max-height: 20vh;
+  overflow:hidden;
 }
 
 .carousel-caption h2 {
