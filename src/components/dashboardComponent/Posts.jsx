@@ -23,7 +23,6 @@ const Posts = () => {
       const data = await response.json()
       if(response.ok){
         setPosts(data['posts'])
-        console.log(data['msg'])
       }
     } catch (error) {
       console.log(error)
@@ -42,7 +41,8 @@ const Posts = () => {
       })
       if(response.ok){
         const data = await response.json();
-        alert(data['msg'])
+        alert(data['msg']);
+        getAllPosts()
       }else{
         alert('failed to delete the post')
       }
@@ -55,7 +55,7 @@ const Posts = () => {
     dispatch(getUser())
     dispatch(getToken())
     getAllPosts()
-  },[posts])
+  },[])
 
   return (
     <div className='post-container'>
